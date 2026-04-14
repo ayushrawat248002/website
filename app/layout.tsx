@@ -48,7 +48,7 @@ export default function RootLayout({
       <body className="m-0 p-0 max-[370px]:w-[375px]  realtive  min-h-full   w-full bg-white text-black font-[var(--font-poppins)]">
 
         {/* 🔝 HEADER */}
-        <header className="sticky z-90 pr-2   top-0 w-full   h-[105px] bg-white">
+        <header className="sticky z-90 pr-2   top-0 w-full   h-[95px] bg-white">
           
           <div className=" relative boc-border h-full w-full items-center justify-between px-10">
 
@@ -61,12 +61,12 @@ export default function RootLayout({
             </div>
 
             {/* Tabs */}
-            <div className="absolute bottom-0 left-10 h-[70px] grid grid-cols-4 ">
+            <div className="absolute bottom-0 left-10 h-[55px] grid grid-cols-4 ">
               {[{img : icon1, text : enabled ? "women" : "men"},{ img : tag , text : "deals"},{img : bag, text : 'All'},{ img : star , text : "For You"}].map((val,i) => (
                 <div
                   key={i}
                   onClick={() => {setIndex(i);setobj(!obj) }}
-                  className=" flex justify-center w-[70px] h-full cursor-pointer"
+                  className=" flex justify-center w-[60px] h-full cursor-pointer"
                 >
                   <div
                     style={{
@@ -79,9 +79,10 @@ export default function RootLayout({
                       ${index === i ? "bg-stone-50 border-2 border-black transition-[border]   border-b-0 ease-out z-40 " : "border-none"}
                     `}
                   >
-                        <Image  src={val.img} height={60} width={35} alt='icon' className="mb-2 p-1 object-contain"   />
-                   <Link href={"#model1"} className="absolute bottom-0 text-[15px] text-black">
-  {val.text}
+                     <Link href={"#model1"} className="absolute bottom-0 text-[15px] text-black">
+ 
+                        <Image  src={val.img} height={50} width={30} alt='icon' className=" p-1 object-contain"   />
+                            {val.text}
 </Link>
                   </div>
                 </div>
