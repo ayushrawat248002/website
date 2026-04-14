@@ -112,7 +112,9 @@ const theme = useCartStore((state)=>state.obj.theme)
             </h2>
 
             <div
-              ref={(el) => (scrollRefs.current[index] = el)}
+              ref={(el) => {
+                scrollRefs.current[index] = el;
+              }}
               onMouseDown={(e) => handleMouseDown(e, index)}
               onMouseLeave={() => handleMouseLeave(index)}
               onMouseUp={() => handleMouseUp(index)}
