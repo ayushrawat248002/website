@@ -11,7 +11,19 @@ export default function Page() {
     
            
                          
-       <section className="flex   min-[400px]: bg-no-repeat  min-[400px]:scale-90 min-[400px]:w-[94vw] translate-x-11 translate-y-4 max-[400px]:scale-89 max-[400px]:w-[100vw]    scale-80  mt-0 flex-col items-center justify-center rounded-3xl [@media(min-height:500px)]:-translate-y-10  [@media(min-height:500px)]:h-[90svh]  bg-yellow-200  px-4  ">
+       <section className="flex flex-col items-center justify-center rounded-3xl mt-0 px-4 bg-yellow-200
+
+scale-80
+
+max-[400px]:scale-89 max-[400px]:w-[94vw]
+
+min-[400px]:bg-no-repeat min-[400px]:scale-90 min-[400px]:w-[94vw]
+
+min-[500px]:translate-x-11 min-[500px]:-translate-y-10
+
+[@media(min-height:500px)]:translate-x-11 
+[@media(min-height:500px)]:-translate-y-10 
+[@media(min-height:500px)]:h-[90svh] ">
 
   {/* Top Text */}
        <p className="text-black tracking-widest text-5xl mt-13  leading-10 ">What emerged is not just a storefront, but a </p>
@@ -28,15 +40,16 @@ export default function Page() {
     <div className="
       border bg-stone-50 
       relative 
-      w-[720px] h-[320px] 
-      md:w-[300px] md:h-[300px]
+      w-[720px] overflow-visible [@media(min-height:500px)]:-translate-y-6 [@media(min-height:500px)]:h-[240px] 
+      md:w-[300px] md:h-[260px]
       md:-translate-x-20
     ">
       <Image 
         alt="model1" 
         height={300} 
         width={300} 
-        className="scale-160 "
+        className="scale-150
+        0 "
         src={model4}
       />
     </div>
@@ -50,7 +63,7 @@ export default function Page() {
       leading-4
     ">
              <p className="text-black tracking-widest"> A place where tradition meets modernity without losing its soul.</p>
-           <p className="text-black tracking-widest ">Where craftsmanship is not rushed, and neither is the experience of discovering it.</p>
+           <p className="text-black tracking-widest mb-2">Where craftsmanship is not rushed, and neither is the experience of discovering it.</p>
     </div>
 
   </div>
