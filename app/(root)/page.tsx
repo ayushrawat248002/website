@@ -11,10 +11,10 @@ export default function Page() {
     
            
                          
-       <section className="flex   min-[400px]: bg-no-repeat  min-[400px]:scale-90 min-[400px]:w-[94vw] translate-x-11 translate-y-4 max-[400px]:scale-75 max-[400px]:w-[94vw] max-[400px]:w-[100vw] scale-80  mt-0 flex-col items-center justify-center rounded-3xl [@media(min-height:500px)]:-translate-y-10  [@media(min-height:500px)]:h-[90svh]  bg-yellow-200  px-4  ">
+       <section className="flex   min-[400px]: bg-no-repeat  min-[400px]:scale-90 min-[400px]:w-[94vw] translate-x-11 translate-y-4 max-[400px]:scale-89 max-[400px]:w-[100vw]    scale-80  mt-0 flex-col items-center justify-center rounded-3xl [@media(min-height:500px)]:-translate-y-10  [@media(min-height:500px)]:h-[90svh]  bg-yellow-200  px-4  ">
 
   {/* Top Text */}
-       <p className="text-black tracking-widest text-5xl  leading-10 ">What emerged is not just a storefront, but a </p>
+       <p className="text-black tracking-widest text-5xl mt-13  leading-10 ">What emerged is not just a storefront, but a </p>
 
   {/* Heading */}
   <h2 className="text-5xl md:text-8xl text-red-500 tracking-tight">
