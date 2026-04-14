@@ -1,35 +1,31 @@
 "use client";
 import Image from "next/image";
-import model4 from '@/assets/model5.png'
+import assam from '@/assets/assam.png'
 import model2 from '@/assets/model7.png'
 import model3 from '@/assets/model6.png'
 import bg from '@/assets/bg.png'
 import Link from "next/link";
 export default function Page() {
   return (
-    <main  style={{ backgroundImage: `url(${bg.src})` }}  className=" bg-blend-multiply bg-red-400 bg-center bg-cover bg-no-repeat  flex flex-col mt-0 p-0  min-h-full justify-center box-border    min-w-full text-white">
+    <main  style={{ backgroundImage: `url(${bg.src})` }}  className=" bg-blend-multiply bg-stone-200 bg-center bg-cover bg-no-repeat  flex flex-col mt-0 p-0  min-h-full justify-center box-border    min-w-full text-white">
     
            
                          
-       <section className="flex flex-col items-center justify-center rounded-3xl mt-0 px-4 bg-yellow-200
+     <section className="
+flex flex-col items-center justify-center
+rounded-l-3xl bg-yellow-200
 
-scale-80
+w-full max-w-[97vw] sm:max-w-[90vw] md:max-w-[80vw]
+ml-auto px-4
 
-max-[400px]:scale-89 max-[400px]:w-[94vw]
-
-min-[400px]:bg-no-repeat min-[400px]:scale-90 min-[400px]:w-[94vw]
-
-min-[500px]:translate-x-11 min-[500px]:-translate-y-10
-
-[@media(min-height:500px)]:translate-x-11 
-[@media(min-height:500px)]:-translate-y-10 
-[@media(min-height:500px)]:h-[90svh] ">
+min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
+">
 
   {/* Top Text */}
-       <p className="text-black tracking-widest text-5xl mt-13  leading-10 ">What emerged is not just a storefront, but a </p>
+       <p className="text-black tracking-widest text-5xl mt-13 font-serif  leading-9 ">What emerged is not just a storefront, but a </p>
 
   {/* Heading */}
-  <h2 className="text-5xl md:text-8xl text-red-500 tracking-tight">
+  <h2 className="text-5xl md:text-8xl translate-x-13 text-red-500 tracking-tight">
     JourNey
   </h2>
 
@@ -50,7 +46,7 @@ min-[500px]:translate-x-11 min-[500px]:-translate-y-10
         width={300} 
         className="scale-150
         0 "
-        src={model4}
+        src={assam}
       />
     </div>
 
@@ -80,15 +76,15 @@ min-[500px]:translate-x-11 min-[500px]:-translate-y-10
     {/* CARD 1 */}
  <div
   style={{ backgroundImage: `url(${bg.src})` }}
-  className="sticky top-20 min-h-screen flex items-center z-10 px-6 md:px-16
-             bg-[#f4e8b9] bg-cover bg-center  bg-blend-multiply"
+  className="sticky top-25 min-h-[110vh] flex items-center z-10 px-6 md:px-16
+            stroke-stone-200 bg-cover bg-center "
 >
 
       <div className="grid md:grid-cols-2 gap-16 items-center w-full">
 
         {/* TEXT */}
         <div>
-          <h2 className="text-5xl md:text-6xl leading-7 font-light text-purple-900">
+          <h2 className="text-5xl mt-6 md:text-6xl leading-7 font-light text-purple-900">
             Meet the <br />
             <span className="font-medium font-sans">founder</span>
           </h2>
@@ -100,14 +96,14 @@ min-[500px]:translate-x-11 min-[500px]:-translate-y-10
         </div>
 
         {/* IMAGE */}
-        <div className="relative">
+        <div className="relative border w-[300px]  -translate-y-14 bg-stone-100 border-black mb-40">
           <Image
-            src={model4}
+            src={assam}
             alt="founder"
-            className="w-full h-[420px] object-contain"
+            className="w-full h-[420px] object-contain scale-75"
           />
 
-          <div className="absolute -bottom-12 -left-12 w-[160px] h-[160px]">
+          <div className="absolute hidden -bottom-12 -left-12 w-[160px] h-[160px]">
             <Image
               src={model2}
               alt="secondary"
