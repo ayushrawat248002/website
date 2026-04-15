@@ -3,12 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
 import { useState } from "react";
-import LoginButtons from "@/components/LoginButtons";
-import icon1 from '@/assets/icon1.png'
-import tag from '@/assets/tag.png'
-import bag from '@/assets/bag.png'
-import star from '@/assets/star.png'
-import {Switch} from "@/components/ui/switch"
+
 import { BiCategory } from "react-icons/bi";
 import { IoHomeOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
