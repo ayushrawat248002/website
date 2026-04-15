@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/carousel"
 
 
- function CarouselSize({data,name}) {
+ function CarouselSize({data}) {
 
   const [api, setApi] = useState()
   const [activeIndex, setActiveIndex] = useState(0)
@@ -54,8 +54,8 @@ import {
             >
               
               <Card
-                className={` ${ name ==='img2' ? "h-[400px]" : "h-[400px]"} border-transparent   relative w-full  rounded-2xl transition-all duration-500 overflow-hidden 
-                  lg:border-t-[30px] z-20
+                className={` h-[500px] border-transparent   relative w-full  rounded-2xl transition-all duration-500 overflow-hidden 
+                  lg:border-t-[30px] z-10
                  lg:opacity-100 `}
               >
                 
@@ -64,9 +64,8 @@ import {
                  <Image
   src={item.image}
   alt={`image${index}`}
-  {...(name === "img2"
-    ? { width: 290, height: 300 }
-    : { fill: true })}
+    width={400}
+    height={200}
   className={`${
     isActive ? "scale-115" : "scale-95"
   } delay-200 duration-400 

@@ -41,50 +41,43 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} w-full scroll-smooth`}
     >
-      <body className="m-0 p-0 max-[370px]:w-[375px]  realtive  min-h-full   w-full bg-white text-black font-[var(--font-poppins)]">
+      <body className="m-0 p-0 min-w-full   relative  min-h-full   w-full bg-white text-black font-[var(--font-poppins)]">
 
         {/* 🔝 HEADER */}
       
         
 
 
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="flex items-center justify-between px-4 py-3">
-        
-        {/* Left: Menu + Logo */}
-        <div className="flex items-center gap-3">
-          <Menu className="md:hidden" size={24} />
-          <h1 className="text-xl font-bold text-pink-600">M</h1>
-        </div>
+                    <header className="w-full border border-transparent bg-white h-auto py-4">
 
-        {/* Center: Search (mobile icon, desktop input) */}
-        <div className="flex items-center">
-          <div className="md:flex hidden items-center bg-gray-100 px-3 py-2 rounded-md w-35 h-9">
-            <Search size={18} className="text-gray-500" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="bg-transparent outline-none px-2 w-full text-sm"
-            />
-          </div>
+  {/* Top Brand Bar */}
+  <div className="w-full h-[50px]  flex items-center justify-center bg-red-400">
+    <h1 className="text-2xl font-bold text-white">Brand Name</h1>
+  </div>
 
-          {/* Mobile Search Icon */}
-          
-        </div>
+  {/* Heading */}
+  <h1 className="text-black text-xl lg:text-2xl mt-8 text-center lg:text-left lg:ml-10 ml-5 tracking-widest font-mono">
+    What Are You Looking for ?
+  </h1>
 
-        {/* Right: Icons */}
-        <div className="flex items-center gap-4 text-gray-700">
-          <User size={20} />
-          <Heart size={20} />
-          <ShoppingBag size={20} />
-        </div>
-      </div>
-    </header>
+  {/* Search Bar */}
+  <div className="w-full flex justify-center mt-5 px-4">
+    <input
+      type="text"
+      placeholder="Enter text here"
+      className="w-full max-w-md h-[45px] text-black rounded-full px-4 border border-black outline-none focus:ring-3 focus:ring-black"
+    />
+  </div>
+
+  {/* Category Buttons */}
+
+
+</header>
   
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className="w-full  min-[400px]:h-full  -translate-y-1">
+        <main className="w-full ">
           {children}
         </main>
 
