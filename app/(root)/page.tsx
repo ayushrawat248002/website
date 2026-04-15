@@ -7,15 +7,15 @@ import bg from '@/assets/bg.png'
 import Link from "next/link";
 export default function Page() {
   return (
-    <main  style={{ backgroundImage: `url(${bg.src})` }}  className=" bg-blend-multiply bg-stone-200 bg-center bg-cover bg-no-repeat  flex flex-col mt-0 p-0  min-h-full justify-center box-border    min-w-full text-white">
+    <main  style={{ backgroundImage: `url(${bg.src})` }}  className=" bg-blend-multiply  bg-white  bg-center bg-cover bg-no-repeat  flex flex-col mt-0 p-0  min-h-full justify-center box-border    min-w-full text-white">
     
            
                          
-     <section className="
-flex flex-col items-center justify-center
-rounded-l-3xl bg-[#FFC000] 
- max-w-sm  md:max-w-sm lg:max-w-md
-ml-auto px-4 border border-black
+     <section style={{ backgroundImage: `url(${bg.src})` }} className="
+flex flex-col items-center justify-center 
+rounded-l-3xl bg-[#FFC000]   mt-10 mb-10
+ max-w-[350px]  md:max-w-sm lg:max-w-md
+ml-auto px-4 
 
 min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
 ">
@@ -65,7 +65,7 @@ min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
 
 </section>
 
- <section id="model1" className="relative w-full bg-[#f4e8b9]">
+ <section id="model1" className="relative w-full ">
 
   {/* TOPOGRAPHY TEXTURE */}
 
@@ -73,10 +73,10 @@ min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
    <div className="relative">
 
     {/* CARD 2 */}
-       <div className="sticky z-20 top-30 min-h-screen flex flex-col justify-center bg-[#f4e8b9] px-6 md:px-16 overflow-y-hidden-hidden">
+       <div style={{ backgroundImage: `url(${bg.src})` }} className="sticky z-20 top-30 min-h-screen flex flex-col justify-center  px-6 md:px-16 overflow-y-hidden-hidden">
 
   {/* HEADING */}
-     <div className="flex relative flex-col">
+     <div className="flex relative h-full flex-col">
     <h2 className="text-4xl  mb-5 md:text-6xl font-mono text-black  -tracking-[2px]">
     Mekhla <span className="font-medium">Chador</span>
     </h2>
@@ -103,10 +103,10 @@ min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
 
        </div>
       
-                <div className="sticky z-30 top-10 min-h-screen flex flex-col justify-center bg-[#f4e8b9] px-6 md:px-16 overflow-hidden">
+                <div style={{ backgroundImage: `url(${bg.src})` }} className="sticky z-30 top-10 min-h-screen flex flex-col justify-center bg-[#f4e8b9] px-6 md:px-16 overflow-hidden">
 
   {/* HEADING */}
-  <div className="relative flex flex-col">
+  <div  className="relative flex flex-col">
     <h2 className="text-4xl mb-5 md:text-6xl font-mono text-black -tracking-[2px]">
       Apparels
     </h2>
@@ -118,7 +118,7 @@ min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
   </p>
 
   {/* HORIZONTAL SCROLL */}
-  <div className="flex gap-6 overflow-x-auto pb-4">
+  <div className="flex gap-6 scrollbar-hide overflow-x-auto pb-4">
     {[1,2,3,4,5,6].map((item) => (
       <div
         key={item}
