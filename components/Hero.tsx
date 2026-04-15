@@ -77,7 +77,7 @@ export default function Hero() {
  
        <div className=" [@media(max-height:400px)]:h-[700px]]mt-20 z-100  absolute top-2 w-full  ">
                 
-                 <CarouselSize  data={products} name={'img2'} />
+                 <CarouselSize  data={products} />
                   
        </div>
 
