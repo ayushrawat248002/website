@@ -73,7 +73,7 @@ min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
    <div className="relative">
 
     {/* CARD 2 */}
-       <div style={{ backgroundImage: `url(${bg.src})` }} className="sticky z-20 top-30 min-h-screen flex flex-col justify-center  px-6 md:px-16 overflow-y-hidden-hidden">
+       <div style={{ backgroundImage: `url(${bg.src})` }} className="sticky z-20 top-10 min-h-screen flex flex-col justify-center  px-6 md:px-16 overflow-y-hidden-hidden">
 
   {/* HEADING */}
      <div className="flex relative h-full flex-col">
@@ -136,11 +136,11 @@ min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
       
       <div
   style={{ backgroundImage: `url(${bg.src})` }}
-  className="sticky top-25 min-h-[110vh] flex items-center z-30 px-6 md:px-16
+  className="sticky top-10 min-h-[110vh] flex items-center z-30 px-6 md:px-16
             stroke-stone-200 bg-cover bg-center "
 >
 
-      <div className="grid md:grid-cols-2 gap-16 items-center w-full">
+      <div className="grid  md:grid-cols-2 gap-16 items-center w-full">
 
         {/* TEXT */}
         <div>
