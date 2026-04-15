@@ -88,7 +88,7 @@ export default function RootLayout({
                 </div>
               ))}
             </div>
-            <div className="absolute w-15 h-[50px] flex  items-center   flex-row-reverse   right-0  bottom-0 mb-3">
+            <div className="absolute w-auto h-auto flex  items-center   flex-row-reverse   right-0  bottom-0 mb-3">
               <Switch
                 className="transform rotate-90 "
                 checked={enabled}

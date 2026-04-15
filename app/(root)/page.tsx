@@ -14,15 +14,14 @@ export default function Page() {
      <section className="
 flex flex-col items-center justify-center
 rounded-l-3xl bg-[#FFC000] 
+ max-w-sm  md:max-w-sm lg:max-w-md
+ml-auto px-4 border border-black
 
-w-full max-w-[97vw] sm:max-w-[90vw] md:max-w-[80vw]
-ml-auto px-4
-
-min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
+min-h-full sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
 ">
 
-  {/* Top Text */}<div className="border  scale-85 overflow-visible translate-x-3 border-transparent ">
-        <p className="text-black tracking-widest text-5xl -translate-x-15 mt-13 font-serif  leading-9 ">What emerged is not just a storefront, but a </p>
+  {/* Top Text */}<div className="border  overflow-visible  border-transparent ">
+        <p className="text-black tracking-widest text-5xl  mt-13 font-serif  leading-9 ">What emerged is not just a storefront, but a </p>
   </div>
        
 
@@ -35,26 +34,24 @@ min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] mt-3 mb-3
   <div className="relative flex justify-center items-center mt-10 w-full max-w-5xl">
 
     {/* Image */}
-    <div className="
-      border bg-stone-50 
-      relative 
-      w-[720px] overflow-visible [@media(min-height:500px)]:-translate-y-6 [@media(min-height:500px)]:h-[240px] 
-      md:w-[300px] md:h-[260px]
-      md:-translate-x-20
-    ">
-      <Image 
-        alt="model1" 
-        height={300} 
-        width={300} 
-        className="scale-150
-        0 "
-        src={assam}
-      />
-    </div>
+  <div className="relative w-full flex justify-center mt-6">
+
+ <div className="relative w-[200px] h-[400px] mr-4 overflow-hidden">
+
+  <Image 
+    src={assam}
+    alt="model1"
+    fill
+    className="object-cover scale-103 md:scale-125"
+  />
+
+</div>
+
+</div>
 
     {/* Text Block */}
     <div className="
-      flex flex-col gap-3 ml-6 mt-0 text-center max-w-xs
+      flex flex-col gap-3 ml-0 mt-0 text-center max-w-xs
       md:absolute md:right-0 md:top-10 md:text-left
       md:w-[130px] md:h-[360px]
       md:translate-x-27 md:-translate-y-40
