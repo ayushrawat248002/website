@@ -4,7 +4,11 @@ import model1 from '@/assets/model.png'
 import model2 from '@/assets/model5.png'
 import model3 from '@/assets/model6.png'
 import model4 from '@/assets/model4.png'
+import badge from '@/assets/badge.png';
+import badge1 from '@/assets/badge1.png';
+
 import { useState } from "react"
+import Image from "next/image"
 const data = [
 
   {image : model2},
@@ -22,14 +26,20 @@ const page = () => {
                     <div className="sticky top-0 z-30 bg-white  flex flex-col py-3 items-center">
                           <h1 className="text-black   font-mono  ">Authentic Assamese Collection</h1>     
                           <div className="w-full sticky gap-2   top-5 z-20 flex shrink justify-center items-center  lg:gap-10 mt-6 px-4">
-                          
-                             <button onClick={() => setindex(0)} className = {`text-black  font-bold h-[50px] px-6  rounded-full  ${index === 0 ? 'underline underline-offset-8' : ''} hover:text-white tracking-wide transition`}>
+                             <div>
+                                <Image alt="men" src={badge} />
+                                <button onClick={() => setindex(0)} className = {`text-black  font-bold h-[50px] px-6  rounded-full  ${index === 0 ? 'underline underline-offset-8' : ''} hover:text-white tracking-wide transition`}>
                                 MEN
                             </button>
-
-                           <button onClick={() => setindex(1)} className={`text-black font-bold h-[50px] ml-2 mr-1 px-2 rounded-full  ${index === 1 ? 'underline underline-offset-8' : ''} hover:text-white transition`}>
-                             WOMAN
-                           </button>
+                             </div>
+                           
+                           <div>
+                               <Image alt="men" src={badge1} />
+                             <button onClick={() => setindex(1)} className={`text-black font-bold h-[50px] ml-2 mr-1 px-2 rounded-full  ${index === 1 ? 'underline underline-offset-8' : ''} hover:text-white transition`}>
+                               WOMAN
+                            </button>
+                           </div>
+                           
 
                           <button onClick={() => setindex(2)} className = {`text-black font-bold h-[50px] px-2 rounded-full  hover:text-white  ${index === 2 ? 'underline underline-offset-8' : ''} transition`}>
                              ACCESSSORIES
