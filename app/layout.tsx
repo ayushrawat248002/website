@@ -77,7 +77,7 @@ export default function RootLayout({
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className ="w-full ">
+        <main className ="w-full bg-white ">
           {children}
         </main>
 
