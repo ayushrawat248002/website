@@ -48,24 +48,24 @@ export default function RootLayout({
         
 
 
-                    <header className="w-full border border-transparent bg-white h-auto py-4">
+                    <header className="w-full border border-white  bg-white h-auto ">
 
   {/* Top Brand Bar */}
-  <div className="w-full h-[50px]  flex items-center justify-center bg-red-400">
+  <div className="w-full h-[50px] border   flex items-center justify-center bg-black">
     <h1 className="text-2xl font-bold text-white">Brand Name</h1>
   </div>
 
   {/* Heading */}
-  <h1 className="text-black text-xl lg:text-2xl mt-8 text-center lg:text-left lg:ml-10 ml-5 tracking-widest font-mono">
+  <h1 className="text-black  lg:text-2xl mt-8 text-center tracking-widest lg:text-left lg:ml-10 ml-5   font-serif">
     What Are You Looking for ?
   </h1>
 
   {/* Search Bar */}
-  <div className="w-full flex justify-center mt-5 px-4">
+  <div className="w-full border border-white flex justify-center mt-5 px-4">
     <input
       type="text"
       placeholder="Enter text here"
-      className="w-full max-w-md h-[45px] text-black rounded-full px-4 border border-black outline-none focus:ring-3 focus:ring-black"
+      className="w-full max-w-md h-[45px] text-black rounded-full px-4 border-3 border-black outline-none focus:ring-3 focus:ring-black"
     />
   </div>
 
@@ -77,7 +77,7 @@ export default function RootLayout({
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className="w-full ">
+        <main className ="w-full ">
           {children}
         </main>
 

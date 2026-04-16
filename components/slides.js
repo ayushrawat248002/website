@@ -10,12 +10,15 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 
-
- function CarouselSize({data}) {
+function CarouselSize({ data }) {
 
   const [api, setApi] = useState()
   const [activeIndex, setActiveIndex] = useState(0)
-
+ const data2 = [
+  { image: "/img1.jpg", text: "First Slide Text" },
+  { image: "/img2.jpg", text: "Second Slide Text" },
+  { image: "/img3.jpg", text: "Third Slide Text" },
+]
   useEffect(() => {
     if (!api) return
 
@@ -29,62 +32,64 @@ import {
   }, [api])
 
   return (
-    <Carousel
-      setApi={setApi}
-      opts={{ align: "center", loop: true }}
-      plugins={[
-        Autoplay({
-          delay: 3500,
-          stopOnInteraction: false,
-          stopOnMouseEnter:true,
-        }),
-      ]}
-      className="w-full  max-w-5xl mx-auto"
-    >
-      <CarouselContent className="-ml-4">
+    <>
+      <Carousel
+        setApi={setApi}
+        opts={{ align: "center", loop: true }}
+        plugins={[
+          Autoplay({
+            delay: 3500,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+          }),
+        ]}
+        className="w-full max-w-5xl mx-auto"
+      >
+        <CarouselContent className="-ml-4">
 
-        {data?.map((item, index) => {
+          {data?.map((item, index) => {
 
-          const isActive = index === activeIndex
-//basis100
-          return (
-            <CarouselItem
-              key={index}
-              className={`basis-[100%]  sm:basis-full lg:basis-[40%] pl-4`}
-            >
-              
-              <Card
-                className={` h-[500px] border-transparent   relative w-full  rounded-2xl transition-all duration-500 overflow-hidden 
-                  lg:border-t-[30px] z-10
-                 lg:opacity-100 `}
+            const isActive = index === activeIndex
+
+            return (
+              <CarouselItem
+                key={index}
+                className={`basis-[90%] sm:basis-full lg:basis-[40%] pl-4`}
               >
-                
-                <CardContent className="relative flex border-transparent justify-center top-0 h-full w-full p-0 ">
+                <Card
+                  className={`h-[450px] border-transparent relative w-full rounded-2xl transition-all duration-500 overflow-hidden 
+                  lg:border-t-[30px] z-10 lg:opacity-100`}
+                >
 
-                 <Image
-  src={item.image}
-  alt={`image${index}`}
-    width={400}
-    height={200}
-  className={`${
-    isActive ? "scale-115" : "scale-95"
-  } delay-200 duration-400 
-  } border-none  p-6 `}
-/>
+                  <CardContent className="relative flex border-transparent justify-center top-0 h-full w-full p-0">
 
-                                
-                </CardContent>
-                   
+                    <Image
+                      src={item.image}
+                      alt={`image${index}`}
+                      width={350}
+                      height={150}
+                      className={`${isActive ? "scale-95" : "scale-95"} delay-200 duration-400 border-none p-6`}
+                    />
 
-              </Card>
+                  </CardContent>
               
+                </Card>
+              </CarouselItem>
+            )
+          })}
 
-            </CarouselItem>
-          )
-        })}
+        </CarouselContent>
+      </Carousel>
 
-      </CarouselContent>
-    </Carousel>
+      {/* ✅ Dynamic Text Based on Active Slide */}
+                <div className="w-full   text-center mt-0">
+        <p className="text-black text-lg font-semibold transition-all duration-300">
+          {data2?.[activeIndex]?.text}
+        </p>
+      </div>
+     
+    </>
   )
 }
+
 export default CarouselSize
