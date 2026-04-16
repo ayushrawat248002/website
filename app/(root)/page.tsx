@@ -44,7 +44,7 @@ const page = () => {
                            
                         <div className=" mt-[8px]  ">
                           <Image alt='jwellery' className="h-[73px] w-[73px] mb-4  ml-4 mt-2" src={jwellery}/>
-                          <button onClick={() => setindex(2)} className = {`text-black mt-[4px] font-bold  px-2 rounded-full  hover:text-white  ${index === 2 ? 'underline underline-offset-8' : ''} transition tracking-tighter`}>
+                          <button onClick={() => setindex(2)} className = {`text-black mt-[1px] font-bold  px-2 rounded-full  hover:text-white  ${index === 2 ? 'underline underline-offset-8' : ''} transition tracking-tighter`}>
                              ACCESSSORIES
                           </button>
                         </div>

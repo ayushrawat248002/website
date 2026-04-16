@@ -21,8 +21,8 @@ type ProductCardProps = {
 
 const Productcard = React.memo(({ doc, addItem }: ProductCardProps) => {
   return (
-    <div className="min-w-[240px] h-[200px] overflow-hidden relative p-4 bg-white rounded-xl shadow border select-none transform duration-100 ease-linear hover:bg-gray-300">
-      <p className="text-sm font-medium">{doc.name}</p>
+    <div className="min-w-[240px] h-[400px] overflow-hidden relative p-4 bg-gray-200 rounded-xl shadow border select-none transform duration-100 ease-linear hover:bg-gray-300">
+      <p className="text-sm font-medium text-black">{doc.name}</p>
       <p className="text-gray-500 text-sm">₹{doc.price}</p>
 
       <div
@@ -93,9 +93,7 @@ const theme = useCartStore((state)=>state.obj.theme)
 
   return (
     <section
-  className={`p-10 sticky top-0 overflow-y-auto flex flex-col gap-12 ${
-    theme === "black" ? "bg-black" : "bg-[#F8F6F2]"
-  }`}
+  className={`p-10 sticky top-0 overflow-y-auto flex flex-col gap-12 bg-white`}
 >
 
       {categories.map((category, index) => {
@@ -122,7 +120,7 @@ const theme = useCartStore((state)=>state.obj.theme)
               className="flex gap-4 overflow-x-scroll scrollbar-hide  cursor-grab active:cursor-grabbing"
             >
              {filtered.map((doc: Product) => (
-                 <Productcard key={doc.id} doc={doc} addItem={addItem} />
+                 <Productcard  key={doc.id} doc={doc} addItem={addItem} />
                 ))}
             </div>
 
