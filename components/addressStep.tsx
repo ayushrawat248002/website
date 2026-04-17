@@ -77,7 +77,7 @@ const AddressStep = ({ dispatch }: Props) => {
     } focus:outline-none focus:ring-2 focus:ring-black`;
 
   return (
-    <div className="h-[100vh] bg-gray-100 p-6">
+    <div className="h-auto bg-gray-100 p-6">
 
       {/* 🔥 Progress Bar */}
       <div className="max-w-5xl mx-auto mb-6 flex justify-between text-sm text-gray-600">

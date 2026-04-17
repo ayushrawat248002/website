@@ -19,7 +19,7 @@ const page = () => {
          },[toogle])
 
          return(
-                    <section className="h-auto   relative w-[100vw] bg-white">
+                    <section className="h-screen   relative w-[100vw] bg-white">
                          {!toogle && <div className="absolute animate-bounce top-48 left-36"><IoMdFemale size ={100}  fill="blue"/></div>}
                          {toogle && <ProductPage/> }
                     </section>

@@ -11,7 +11,7 @@ export async function POST(req : NextRequest) {
     });
 
     const options = {
-      amount: total * 100, // ₹500 in paise
+      amount: total.amount * 100, // ₹500 in paise
       currency: "INR",
       receipt: "receipt_order_1",
     };
