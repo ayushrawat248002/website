@@ -5,7 +5,7 @@ import { useReducer } from "react";
 import checkoutReducer from '@/components/checkoutReducer';
 import AddressStep from "@/components/addressStep";
 import Cart from '@/components/Cartcomponent';
-
+import Home from '@/components/paymentComponent'
 const initialState = {
   step: 'cart',
 };
@@ -14,6 +14,7 @@ const initialState = {
 const stepComponents : any = {
   cart: Cart,
   address: AddressStep,
+  payment : Home
 };
 
 export default function CartPage() {
@@ -23,8 +24,8 @@ export default function CartPage() {
   const StepComponent = stepComponents[state.step];
 
   return (
-    <main>
-      <h1>Current Step: {state.step}</h1>
+    <main className="h-full w-full">
+   
 
       {/* 🚀 Render selected strategy */}
       {StepComponent && <StepComponent dispatch={dispatch} />}

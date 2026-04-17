@@ -7,6 +7,10 @@ import { useState } from "react";
 import { BiCategory } from "react-icons/bi";
 import { IoHomeOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { TiThMenuOutline } from "react-icons/ti";
+import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
  import { Menu, Search, Heart, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 
@@ -31,6 +35,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter()
   const [index, setIndex] = useState<number | null>(null);
   const [enabled, setEnabled] = useState<boolean>(false);
    const[obj,setobj] = useState<boolean>(false);
@@ -41,13 +46,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} w-full scroll-smooth`}
     >
-      <body className="m-0 p-0 min-w-full   relative  min-h-full   w-full bg-white text-black font-[var(--font-poppins)]">
+      <body className="m-0 p-0 min-w-svw  max-h-svh   relative bg-yellow-200  text-black font-[var(--font-poppins)]">
 
         {/* 🔝 HEADER */}
       
         
 
-
+                 
                     <header className="w-full border border-white  bg-white h-auto ">
 
   {/* Top Brand Bar */}
@@ -72,7 +77,7 @@ export default function RootLayout({
   {/* Category Buttons */}
 
 
-</header>
+                    </header>
   
         
 
@@ -80,7 +85,26 @@ export default function RootLayout({
         <main className ="w-full bg-white ">
           {children}
         </main>
+       
+       <footer className="sticky z-90 flex items-center  justify-center bg-white bottom-0 w-full   h-19">
+          <section className="  gap-14 h-[70%] flex items-center  justify-center bg-white w-[80%] mx-auto rounded-full border border-black ">
+             <div >
+              <TiThMenuOutline size={22} className="ml-2"  fill="black"/>     
+               <h2 className="text-black font-bold">Menu</h2>
+             </div>
 
+             <div onClick={() => router.push('/cart')}>
+                <FaShoppingCart  size={22} fill="black"/>
+                 <h2 className="text-black font-bold">Cart</h2>
+             </div>
+
+             <div>
+               <FaHeart size={22} className="ml-3" fill="red"/>
+               <h2 className="text-black font-bold">Wishlist</h2>
+             </div>
+                     
+       </section>
+       </footer>
 
      {/* <footer className="sticky min-[400px]:h-28 bottom-0 z-70 pl-2 pr-2 bg-stone-200 flex justify-between items-center  [@media(min-height:200px)]:h-[72px] lg:h-[72px]   m-0 border-none w-full bg-black">
                    {['Home', 'Category', 'Profile'].map((tag,i)=> {

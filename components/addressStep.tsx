@@ -17,8 +17,7 @@ type FormType = {
 };
 
 const AddressStep = ({ dispatch }: Props) => {
-
-  // ✅ Zustand selectors
+  const cart = useCartStore((state) => state.obj.cart);
   const addAddress = useCartStore((state) => state.setAddress);
   const saveAddress = useCartStore((state) => state.obj.address);
   const currentAddress = useCartStore((state) => state.setcurrentAddress);
@@ -37,44 +36,27 @@ const AddressStep = ({ dispatch }: Props) => {
   const [selected, setSelected] = useState<number | null>(null);
   const [addToggle, setToggle] = useState<boolean>(false);
 
-  // ✅ Validation
+  const total = cart.reduce(
+    (acc: number, item: any) => acc + item.price * item.quantity,
+    0
+  );
+
+  const deliveryFee = total > 499 ? 0 : 40;
+
   const validate = () => {
     const newErrors: Partial<FormType> = {};
 
-    if (!form.fullName.trim()) newErrors.fullName = "Full name is required";
-    if (!/^\d{10}$/.test(form.phone)) newErrors.phone = "Enter valid 10-digit phone";
-    if (!form.address.trim()) newErrors.address = "Address is required";
-    if (!form.city.trim()) newErrors.city = "City is required";
-    if (!form.state.trim()) newErrors.state = "State is required";
-    if (!/^\d{6}$/.test(form.pincode)) newErrors.pincode = "Enter valid 6-digit pincode";
+    if (!form.fullName.trim()) newErrors.fullName = "Required";
+    if (!/^\d{10}$/.test(form.phone)) newErrors.phone = "Invalid phone";
+    if (!form.address.trim()) newErrors.address = "Required";
+    if (!form.city.trim()) newErrors.city = "Required";
+    if (!form.state.trim()) newErrors.state = "Required";
+    if (!/^\d{6}$/.test(form.pincode)) newErrors.pincode = "Invalid pincode";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // ✅ Input handler
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
-  };
-
-  // ✅ Select address
-  const handleClick = (address: FormType, index: number) => {
-    setForm(address);
-    setSelected(index);
-    currentAddress(address); // ✅ keep store in sync                 
-  };
-
-  // ✅ Submit logic (fixed)
   const handleSubmit = () => {
     if (!validate()) return;
 
@@ -84,157 +66,136 @@ const AddressStep = ({ dispatch }: Props) => {
       setToggle(false);
     } else if (selected !== null) {
       currentAddress(saveAddress[selected]);
-    } else {
-      return; // ❌ prevent submit without selection
-    }
-
-    setForm({
-      fullName: "",
-      phone: "",
-      address: "",
-      city: "",
-      state: "",
-      pincode: "",
-    });
+    } else return;
 
     dispatch({ type: "GO_TO_STEP", payload: "payment" });
   };
 
   const inputClass = (field: keyof FormType) =>
-    `w-full px-3 py-2 rounded-lg border ${
-      errors[field] ? "border-red-500" : "border-gray-300"
-    } focus:outline-none focus:ring-2 ${
-      errors[field] ? "focus:ring-red-400" : "focus:ring-black"
-    }`;
-
-  const isDisabled =
-    !addToggle && selected === null && saveAddress?.length > 0;
+    `w-full px-4 py-2.5 rounded-xl border text-sm ${
+      errors[field] ? "border-red-400" : "border-gray-300"
+    } focus:outline-none focus:ring-2 focus:ring-black`;
 
   return (
-    <div className="max-w-md mx-auto h-screen mt-10 p-6 bg-white rounded-2xl shadow-lg">
+    <div className="h-[100vh] bg-gray-100 p-6">
 
-      {/* ✅ Existing Addresses */}
-      {(saveAddress?.length > 0 && !addToggle) && (
-        <div>
-          {saveAddress.map((add: FormType, index: number) => {
-            const isActive =
-              selected === index ||
-              (selectedaddress &&
-                selectedaddress.fullName === add.fullName &&
-                selectedaddress.phone === add.phone &&
-                selectedaddress.address === add.address);
+      {/* 🔥 Progress Bar */}
+      <div className="max-w-5xl mx-auto mb-6 flex justify-between text-sm text-gray-600">
+        <span className="font-semibold">🛒 Cart</span>
+        <span className="font-semibold text-black">📍 Address</span>
+        <span>💳 Payment</span>
+      </div>
 
-            return (
-              <div
-                key={index}
-                className="mb-4 p-3 flex gap-3 border rounded-lg"
-              >
-                <button
-                  onClick={() => handleClick(add, index)}
-                  className={`w-[20px] h-[20px] rounded-full border ${
-                    isActive ? "bg-black" : "bg-white"
-                  }`}
-                />
+      <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
 
-                <div>
-                  <h2 className="font-semibold">{add.fullName}</h2>
-                  <p>{add.address}</p>
-                  <p>{add.city}, {add.state}</p>
-                  <p>{add.pincode}</p>
-                  <p>{add.phone}</p>
-                </div>
+        {/* LEFT - Address */}
+        <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow">
+
+          <h2 className="text-xl font-semibold text-black mb-4">Delivery Address</h2>
+
+          {/* Saved Addresses */}
+          {saveAddress?.length > 0 && !addToggle && (
+            <div className="space-y-4 mb-4">
+              {saveAddress.map((add: FormType, index: number) => {
+                const isActive =
+                  selected === index ||
+                  (selectedaddress &&
+                    selectedaddress.address === add.address);
+
+                return (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setSelected(index);
+                      currentAddress(add);
+                    }}
+                    className={`p-4 border rounded-xl cursor-pointer ${
+                      isActive
+                        ? "border-black bg-gray-50"
+                        : "hover:border-gray-400"
+                    }`}
+                  >
+                    <h3 className="font-semibold text-black">{add.fullName}</h3>
+                    <p className="text-sm text-gray-600">{add.address}</p>
+                    <p className="text-sm text-gray-600">
+                      {add.city}, {add.state} - {add.pincode}
+                    </p>
+                    <p className="text-sm text-gray-500">📞 {add.phone}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Form */}
+          {(saveAddress?.length === 0 || addToggle) && (
+            <div className="space-y-3">
+              <input name="fullName" placeholder="Full Name" className={inputClass("fullName")} onChange={(e)=>setForm({...form,fullName:e.target.value})}/>
+              <input name="phone" placeholder="Phone" className={inputClass("phone")} onChange={(e)=>setForm({...form,phone:e.target.value})}/>
+              <input name="address" placeholder="Street Address" className={inputClass("address")} onChange={(e)=>setForm({...form,address:e.target.value})}/>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <input name="city" placeholder="City" className={inputClass("city")} onChange={(e)=>setForm({...form,city:e.target.value})}/>
+                <input name="state" placeholder="State" className={inputClass("state")} onChange={(e)=>setForm({...form,state:e.target.value})}/>
               </div>
-            );
-          })}
+
+              <input name="pincode" placeholder="Pincode" className={inputClass("pincode")} onChange={(e)=>setForm({...form,pincode:e.target.value})}/>
+            </div>
+          )}
+
+          <button
+            onClick={() =>  { dispatch({ type: "GO_TO_STEP", payload: "payment" });localStorage.setItem('total',JSON.stringify(total))   }}
+            className="mt-5 w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800"
+          >
+            Continue →
+          </button>
+
+          {!addToggle && (
+            <button
+              onClick={() => setToggle(true)}
+              className="mt-3 text-sm text-blue-600"
+            >
+              + Add new address
+            </button>
+          )}
         </div>
-      )}
 
-      {/* ✅ Form */}
-      {(saveAddress?.length === 0 || addToggle) && (
-        <div>
-          <h2 className="text-xl font-semibold mb-5">📍 Delivery Address</h2>
+        {/* RIGHT - Order Summary */}
+        <div className="bg-white p-6 rounded-2xl shadow h-fit">
 
-          <div className="mb-3">
-            <input
-              name="fullName"
-              placeholder="Full Name"
-              value={form.fullName}
-              onChange={handleChange}
-              className={inputClass("fullName")}
-            />
-            {errors.fullName && <p className="text-red-500 text-xs">{errors.fullName}</p>}
+          <h2 className="text-lg text-black font-semibold mb-4">Order Summary</h2>
+
+          <div className="space-y-3 text-black text-sm">
+            {cart.map((item: any) => (
+              <div key={item.id} className="flex justify-between">
+                <span>{item.name} × {item.quantity}</span>
+                <span>₹{item.price * item.quantity}</span>
+              </div>
+            ))}
           </div>
 
-          <div className="mb-3">
-            <input
-              name="phone"
-              placeholder="Phone Number"
-              value={form.phone}
-              onChange={handleChange}
-              className={inputClass("phone")}
-            />
-            {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
+          <hr className="my-4" />
+
+          <div className="flex text-black justify-between text-sm">
+            <span>Subtotal</span>
+            <span>₹{total}</span>
           </div>
 
-          <div className="mb-3">
-            <input
-              name="address"
-              placeholder="Street Address"
-              value={form.address}
-              onChange={handleChange}
-              className={inputClass("address")}
-            />
-            {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
+          <div className="flex text-black justify-between text-sm">
+            <span>Delivery</span>
+            <span>{deliveryFee === 0 ? "Free" : `₹${deliveryFee}`}</span>
           </div>
 
-          <div className="flex gap-3 mb-3">
-            <input
-              name="city"
-              placeholder="City"
-              value={form.city}
-              onChange={handleChange}
-              className={inputClass("city")}
-            />
-            <input
-              name="state"
-              placeholder="State"
-              value={form.state}
-              onChange={handleChange}
-              className={inputClass("state")}
-            />
+          <div className="flex  text-black justify-between font-semibold mt-3">
+            <span>Total</span>
+            <span>₹{total + deliveryFee}</span>
           </div>
 
-          <div className="mb-4">
-            <input
-              name="pincode"
-              placeholder="Pincode"
-              value={form.pincode}
-              onChange={handleChange}
-              className={inputClass("pincode")}
-            />
-            {errors.pincode && <p className="text-red-500 text-xs">{errors.pincode}</p>}
-          </div>
+          <p className="text-xs text-green-600 mt-2">
+            ✔ Estimated delivery in 2-4 days
+          </p>
         </div>
-      )}
-
-      {/* ✅ Submit */}
-      <button
-        onClick={handleSubmit}
-        disabled={isDisabled}
-        className={`w-full py-3 rounded-lg font-semibold ${
-          isDisabled ? "bg-gray-400" : "bg-black text-white hover:bg-gray-800"
-        }`}
-      >
-        Continue to Payment →
-      </button>
-
-      {/* ✅ Toggle */}
-      <button
-        onClick={() => setToggle(true)}
-        className="mt-4 text-sm text-blue-600 underline"
-      >
-        Add new address
-      </button>
+      </div>
     </div>
   );
 };
