@@ -93,7 +93,7 @@ const theme = useCartStore((state)=>state.obj.theme)
 
   return (
     <section
-  className={`p-10 h-full w-full  overflow-y-auto overflow-x-hidden flex flex-col gap-12 bg-white`}
+  className={`p-10 h-full w-full   overflow-x-hidden flex flex-col gap-12 bg-white`}
 >
 
       {categories.map((category, index) => {
