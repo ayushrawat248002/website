@@ -35,8 +35,18 @@ export default function Home() {
       currency: "INR",
       name: "Test App",
       order_id: order.id,
-      handler: function (response: any) {
+      handler: async function (response: any) {
         console.log(response);
+           const res = await fetch('/api/verify-payment', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(response)
+});
+
+  const result = await res.json();
+  console.log(result)
       },
     };
 
@@ -51,12 +61,12 @@ export default function Home() {
         strategy="afterInteractive"
       />
 
-      <h2 className="text-3xl font-bold mb-4">
+      <h2 className="text-3xl text-black font-bold mb-4">
         Total Payment: ₹{total ?? "Loading..."}
       </h2>
 
       <button
-        className="border border-black rounded-3xl px-6 py-3 hover:bg-black hover:text-white transition"
+        className="border border-black text-black rounded-3xl px-6 py-3 hover:bg-black hover:text-white transition"
         onClick={handlePayment}
       >
         Pay Now

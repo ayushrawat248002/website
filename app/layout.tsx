@@ -56,7 +56,7 @@ export default function RootLayout({
                     <header className="w-full border border-white  bg-white h-auto ">
 
   {/* Top Brand Bar */}
-  <div className="w-full h-[50px] border   flex items-center justify-center bg-black">
+  <div className="w-full h-[50px] border   flex items-center justify-center bg-[#FEC05D]">
     <h1 className="text-2xl font-bold text-white">Brand Name</h1>
   </div>
 

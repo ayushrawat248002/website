@@ -18,8 +18,20 @@ export default function Home() {
       order_id: order.id,
       handler: function (response) {
         console.log(response);
-      },
-    };
+
+        const res = fetch('/api/verify-payment', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(response)
+});
+
+  const result = await res.json();
+  console.log(result)
+
+      }
+    }
 
     const rzp = new window.Razorpay(options);
     rzp.open();

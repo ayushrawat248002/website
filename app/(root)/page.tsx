@@ -4,7 +4,7 @@ import model2 from '@/assets/model5.png'
 import model3 from '@/assets/model6.png'
 import model4 from '@/assets/model4.png'
 import badge from '@/assets/badge.png';
-import badge1 from '@/assets/badge1.png';
+import badge2 from '@/assets/badge2.png';
 import icon from '@/assets/icon.png'
 
 import { useState } from "react"
@@ -21,10 +21,10 @@ const page = () => {
    const[index, setindex] = useState<undefined|number>(0)
 
              return(
-              <main className="p-0 m-0 bg-white  h-[200vh] w-full">
-                  <section className="h-full  m-0 p-0 border border-white bg-white w-full">
+              <main className="p-0 m-0 h-[200vh] w-full">
+                  <section className="h-full  bg-white   m-0 p-0 border border-white w-full">
 
-                    <div className="sticky top-0 z-30 bg-white  flex flex-col py-3 items-center">
+                    <div className="sticky top-0 z-30 bg-[#F5E9D8]  flex flex-col py-3 items-center">
                           <h1 className="text-black   font-mono  ">Authentic Assamese Collection</h1>     
                           <div className="w-full sticky gap-2   top-5 z-20 flex shrink justify-center items-center  lg:gap-10 mt-6 px-4">
                              <div>
@@ -35,7 +35,7 @@ const page = () => {
                              </div>
                            
                            <div>
-                               <Image className="h-[76px] w-[76px] ml-2"   onClick={() => { setindex(1);router.push('/womensection') }} alt="men" src={badge1} />
+                               <Image className="h-[76px] w-[76px] ml-2"   onClick={() => { setindex(1);router.push('/womensection') }} alt="men" src={badge2} />
                              <button onClick={() => setindex(1)} className={`text-black font-bold  ml-2 mr-1 px-2 rounded-full  ${index === 1 ? 'underline underline-offset-8' : ''} hover:text-white transition`}>
                                WOMAN
                             </button>
