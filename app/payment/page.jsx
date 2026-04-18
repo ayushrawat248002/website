@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 
-export default function Home() {
+export default async function Home() {
   const handlePayment = async () => {
     const res = await fetch("/api/create-order", {
       method: "POST",
