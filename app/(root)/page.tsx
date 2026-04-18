@@ -6,7 +6,7 @@ import model4 from '@/assets/model4.png'
 import badge from '@/assets/badge.png';
 import badge2 from '@/assets/badge2.png';
 import icon from '@/assets/icon.png'
-
+import girl from '@/assets/girl.jpeg'
 import { useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -22,43 +22,78 @@ const page = () => {
 
              return(
               <main className="p-0 m-0 h-[200vh] w-full">
-                  <section className="h-full  bg-white   m-0 p-0 border border-white w-full">
+             <section style={{ backgroundImage: `url(${girl.src})` }} className="h-[320px] border border-white scale-92 bg-cover bg-[position:0%_15%] w-full">  </section>
+                  <section   className="w-full bg-linear-to-b from-white via-gray-50 to-white m-0 p-0">
 
-                    <div className="sticky top-0 z-30 bg-[#F5E9D8]  flex flex-col py-3 items-center">
-                          <h1 className="text-black   font-mono  ">Authentic Assamese Collection</h1>     
-                          <div className="w-full sticky gap-2   top-5 z-20 flex shrink justify-center items-center  lg:gap-10 mt-6 px-4">
-                             <div>
-                                <Image  onClick={() => {setindex(0); router.push('/mensection')}} alt="men" className="h-[73px] w-[73px]" src={badge} />
-                                <button onClick={() => setindex(0)} className = {`text-black  font-bold  px-6  rounded-full  ${index === 0 ? 'underline underline-offset-8' : ''} hover:text-white tracking-wide transition`}>
-                                MEN
-                            </button>
-                             </div>
-                           
-                           <div>
-                               <Image className="h-[76px] w-[76px] ml-2"   onClick={() => { setindex(1);router.push('/womensection') }} alt="men" src={badge2} />
-                             <button onClick={() => setindex(1)} className={`text-black font-bold  ml-2 mr-1 px-2 rounded-full  ${index === 1 ? 'underline underline-offset-8' : ''} hover:text-white transition`}>
-                               WOMAN
-                            </button>
-                           </div>
-                           
-                        <div className=" mt-0  ">
-                          <Image alt='jwellery' className="h-[57px] w-[57px] mb-3  ml-8 mt-2" src={icon}/>
-                          <button onClick={() => setindex(2)} className = {`text-black mb-0 mt-0 font-bold  px-2 rounded-full  hover:text-white  ${index === 2 ? 'underline underline-offset-8' : ''} transition tracking-tighter`}>
-                             ACCESSSORIES
-                          </button>
-                        </div>
-                          
+  {/* Sticky Header */}
+  <div className="sticky top-0 z-30 backdrop-blur-md bg-white/80 border-b  border-gray-100 flex flex-col items-center py-4 shadow-lg">
 
-                        </div>
-                    </div>
+    <h1 className="text-black font-mono text-lg md:text-xl tracking-wide">
+      Authentic Assamese Collection
+    </h1>
 
-                    <div >
-                        
-                      <CarouselSize  data={data}/>
+    {/* Category Navigation */}
+    <div className="w-full flex justify-center gap-6 md:gap-12 mt-5 px-4">
 
-                    </div>
-                    
-                  </section>
+      {/* MEN */}
+      <div className="flex flex-col items-center group cursor-pointer">
+        <Image
+          onClick={() => { setindex(0); router.push('/mensection') }}
+          alt="men"
+          src={badge}
+          className="h-[75px] w-[75px] transition-transform duration-300 group-hover:scale-110"
+        />
+        <button
+          onClick={() => setindex(0)}
+          className={`mt-2 text-sm font-semibold tracking-wider transition-all
+          ${index === 0 ? 'text-black underline underline-offset-8' : 'text-gray-500 group-hover:text-black'}`}
+        >
+          MEN
+        </button>
+      </div>
+
+      {/* WOMEN */}
+      <div className="flex flex-col items-center group cursor-pointer">
+        <Image
+          onClick={() => { setindex(1); router.push('/womensection') }}
+          alt="women"
+          src={badge2}
+          className="h-[78px] w-[78px] transition-transform duration-300 group-hover:scale-110"
+        />
+        <button
+          onClick={() => setindex(1)}
+          className={`mt-2 text-sm font-semibold tracking-wider transition-all
+          ${index === 1 ? 'text-black underline underline-offset-8' : 'text-gray-500 group-hover:text-black'}`}
+        >
+          WOMEN
+        </button>
+      </div>
+
+      {/* ACCESSORIES */}
+      <div className="flex flex-col items-center group cursor-pointer">
+        <Image
+          alt="jewellery"
+          src={icon}
+          className="h-[60px] w-[60px] mt-2 transition-transform duration-300 group-hover:scale-110"
+        />
+        <button
+          onClick={() => setindex(2)}
+          className={`mt-[18px] text-sm font-semibold tracking-wider transition-all 
+          ${index === 2 ? 'text-black underline underline-offset-8' : 'text-gray-500 group-hover:text-black'}`}
+        >
+          ACCESSORIES
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  {/* Carousel Section */}
+  <div className="px-2 md:px-6 py-4">
+    <CarouselSize data={data} />
+  </div>
+
+</section>
               </main>
              )       
 

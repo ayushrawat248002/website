@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
+import { CiMenuFries } from "react-icons/ci";
 import {
   Drawer,
   DrawerClose,
@@ -14,11 +15,11 @@ import { useRouter } from "next/navigation"
 export function MenuDrawer() {
   const router = useRouter()
   return (
-    <Drawer direction="right">
+    <Drawer direction="left">
 
       {/* Menu Button */}
       <DrawerTrigger asChild>
-        <Button className="scale-140 mr-2 mt-1" variant="outline">Menu</Button>
+        <CiMenuFries fill="black" size={25}/>
       </DrawerTrigger>
 
       {/* Drawer */}

@@ -2,15 +2,18 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
+
 import { useState } from "react";
 
 import { BiCategory } from "react-icons/bi";
 import { IoHomeOutline } from "react-icons/io5";
+import { IoIosSearch } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { TiThMenuOutline } from "react-icons/ti";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
+import {MenuDrawer} from '@/components/drawercomponent' 
  import { Menu, Search, Heart, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 
@@ -53,31 +56,55 @@ export default function RootLayout({
         
 
                  
-                    <header className="w-full border border-white  bg-white h-auto ">
+             <header className="w-full bg-gradient-to-b from-[#F5E9D8] to-[#f8efe3] pb-6 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
 
-  {/* Top Brand Bar */}
-  <div className="w-full h-[50px] border   flex items-center justify-center bg-[#FEC05D]">
-    <h1 className="text-2xl font-bold text-white">Brand Name</h1>
+  {/* Top Bar */}
+  <div className="relative flex items-center justify-center h-[85px] px-4">
+
+    {/* Left - Menu */}
+    <div className="absolute left-4">
+      <MenuDrawer />
+    </div>
+
+    {/* Brand */}
+    <h1 className="text-3xl font-serif tracking-[0.15em] text-black drop-shadow-sm">
+      Brand Name
+    </h1>
+
+    {/* Right - Cart */}
+    <div className="absolute right-4 cursor-pointer active:scale-90 transition">
+      <FaShoppingCart className="text-black" size={22} />
+
+      {/* Cart Badge */}
+      <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] px-1.5 py-[1px] rounded-full">
+        2
+      </span>
+    </div>
   </div>
 
-  {/* Heading */}
-  <h1 className="text-black  lg:text-2xl mt-8 text-center tracking-widest lg:text-left lg:ml-10 ml-5   font-serif">
-    What Are You Looking for ?
-  </h1>
+  {/* Tagline */}
+  <p className="text-center text-xs tracking-widest text-gray-600 -mt-2">
+    ELEVATE YOUR STYLE
+  </p>
 
   {/* Search Bar */}
-  <div className="w-full border border-white flex justify-center mt-5 px-4">
-    <input
-      type="text"
-      placeholder="Enter text here"
-      className="w-full max-w-md h-[45px] text-black rounded-full px-4 border-3 border-black outline-none focus:ring-3 focus:ring-black"
-    />
+  <div className="px-4 mt-4">
+    <div className="flex items-center bg-white/70 backdrop-blur-md rounded-full px-4 py-2 shadow-lg border border-white/40 focus-within:ring-2 focus-within:ring-black/70 transition-all duration-300">
+
+      <IoIosSearch className="text-gray-500" size={20} />
+
+      <input
+        type="text"
+        placeholder="Search kurtas, sarees..."
+        className="w-full ml-3 bg-transparent outline-none text-sm text-black placeholder-gray-400"
+      />
+
+      {/* Optional mic icon */}
+      <span className="text-gray-400 text-sm">🎤</span>
+    </div>
   </div>
 
-  {/* Category Buttons */}
-
-
-                    </header>
+</header>
   
         
 
@@ -85,26 +112,38 @@ export default function RootLayout({
         <main className ="w-full bg-white ">
           {children}
         </main>
-       
-       <footer className="sticky z-90 flex items-center  justify-center bg-white bottom-0 w-full   h-19">
-          <section className="  gap-14 h-[70%] flex items-center  justify-center bg-white w-[80%] mx-auto rounded-full border border-black ">
-             <div >
-              <TiThMenuOutline size={22} className="ml-2"  fill="black"/>     
-               <h2 className="text-black font-bold">Menu</h2>
-             </div>
 
-             <div onClick={() => router.push('/cart')}>
-                <FaShoppingCart  size={22} fill="black"/>
-                 <h2 className="text-black font-bold">Cart</h2>
-             </div>
+     <footer className="sticky bottom-0 z-50  w-full bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.08)]">
+  <section className="flex justify-around items-center py-3 ">
 
-             <div>
-               <FaHeart size={22} className="ml-3" fill="red"/>
-               <h2 className="text-black font-bold">Wishlist</h2>
-             </div>
-                     
-       </section>
-       </footer>
+    {/* Menu */}
+    <div className="flex flex-col  items-center justify-center  cursor-pointer group">
+      <TiThMenuOutline size={22} className="text-black group-hover:scale-110 transition" />
+      <h2 className="text-xs font-semibold text-black mt-1">Menu</h2>
+    </div>
+
+    {/* Cart */}
+    <div
+      onClick={() => router.push('/cart')}
+      className="flex flex-col items-center justify-center cursor-pointer group"
+    >
+      <FaShoppingCart size={22} className="text-black group-hover:scale-110 transition" />
+      <h2 className="text-xs font-semibold text-black mt-1">Cart</h2>
+    </div>
+
+    {/* Wishlist */}
+    <div className="flex flex-col items-center justify-center cursor-pointer group">
+      <FaHeart size={22} className="text-red-500 group-hover:scale-110 transition" />
+      <h2 className="text-xs font-semibold text-black mt-1">Wishlist</h2>
+    </div>
+
+  </section>
+
+  {/* Bottom Indicator */}
+  <div className="flex justify-center pb-2">
+    <span className="w-24 h-1 bg-black/70 rounded-full"></span>
+  </div>
+</footer>
 
      {/* <footer className="sticky min-[400px]:h-28 bottom-0 z-70 pl-2 pr-2 bg-stone-200 flex justify-between items-center  [@media(min-height:200px)]:h-[72px] lg:h-[72px]   m-0 border-none w-full bg-black">
                    {['Home', 'Category', 'Profile'].map((tag,i)=> {
