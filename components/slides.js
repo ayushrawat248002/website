@@ -9,6 +9,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+import { object } from "framer-motion/client"
 
 function CarouselSize({ data }) {
 
@@ -61,7 +62,7 @@ function CarouselSize({ data }) {
   className={`
     h-[480px] relative w-full overflow-hidden rounded-2xl
     transition-all duration-500 group
-    ${isActive ? "scale-100" : "scale-94 opacity-70"}
+    ${isActive ? "scale-100" : "scale-90 opacity-70"}
     shadow-[0_30px_80px_rgba(0,0,0,0.6)]
   `}
 >
@@ -74,8 +75,8 @@ function CarouselSize({ data }) {
       alt={`image${index}`}
       fill
       className={`
-        object-contain object-[130%_0%] backdrop-blur-lg transition-all duration-700
-        ${isActive ? "scale-90" : "scale-75"}
+        ${index === 0 ? 'object-cover' : 'object-contain object-[165%_0%] '} backdrop-blur-lg transition-all duration-700
+       ${isActive ? (index === 0 ? "scale-104 object-[100%_120%]" : "scale-85") : "scale-75"}
         group-hover:scale-110
       `}
     />
@@ -84,17 +85,19 @@ function CarouselSize({ data }) {
   
 
     {/* Side Text Content */}
-    <div className="absolute left-0 top-0 h-full flex flex-col justify-center px-8 z-10 max-w-[60%]">
+    <div className={`absolute top-10 h-full flex flex-col justify-center px-8 z-10 max-w-[60%] ${
+  index === 0 ? "right-0 translate-x-8 -translate-y-24" : "left-0"
+}`}>
 
-      <p className="text-black  relative text-2xl font-semibold leading-6 tracking-tighter">
+      <p className={`${index === 0 ? 'text-white' : 'text-black'}  relative text-2xl font-semibold leading-6 tracking-tighter`}>
     
         {item.text}
       </p>
-
+    
       <p className="text-gray-800 text-sm mt-3 tracking-widest uppercase">
         Premium Collection
       </p>
-
+   
     </div>
 
   </CardContent>

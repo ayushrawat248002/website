@@ -19,7 +19,7 @@ export function MenuDrawer() {
 
       {/* Menu Button */}
       <DrawerTrigger asChild>
-        <CiMenuFries fill="black" size={25}/>
+        <CiMenuFries className="text-orange-800 " size={25}/>
       </DrawerTrigger>
 
       {/* Drawer */}

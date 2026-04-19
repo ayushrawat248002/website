@@ -51,6 +51,13 @@ export default function Home() {
     };
 
     const rzp = new (window as any).Razorpay(options);
+      // ✅ Handle failed payments
+rzp.on("payment.failed", function (response: any) {
+  console.error("Payment Failed:", response);
+
+  alert(
+    `Payment failed!\n\nReason: ${response.error.description}\nCode: ${response.error.code}`);
+  })
     rzp.open();
   };
 

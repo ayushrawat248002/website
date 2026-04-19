@@ -84,10 +84,10 @@ export default function RootLayout({
 
     {/* Right - Cart */}
     <div className="absolute right-4 cursor-pointer active:scale-90 transition">
-      <FaShoppingCart className="text-black" size={22} />
+      <FaShoppingCart className="text-orange-500" size={22} />
 
       {/* Cart Badge */}
-      <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] px-1.5 py-[1px] rounded-full">
+      <span className="absolute -top-3 -right-3 bg-black text-white text-[10px] px-1.5 py-[1px] rounded-full">
         {cartItemsNumber ?? 0}
       </span>
     </div>
@@ -130,7 +130,12 @@ export default function RootLayout({
     {/* Menu */}
     <div className="flex flex-col  items-center justify-center  cursor-pointer group">
       <TiThMenuOutline size={22} className="text-black group-hover:scale-110 transition" />
-      <h2 className="text-xs font-semibold text-black mt-1">Menu</h2>
+      <h2 className="text-xs font-semibold text-black mt-1">Categories</h2>
+    </div>
+
+     <div className="flex flex-col items-center justify-center cursor-pointer group">
+      <FaHeart size={22} className="text-red-500 group-hover:scale-110 transition" />
+      <h2 className="text-xs font-semibold text-black mt-1">Wishlist</h2>
     </div>
 
     {/* Cart */}
@@ -138,15 +143,12 @@ export default function RootLayout({
       onClick={() => router.push('/cart')}
       className="flex flex-col items-center justify-center cursor-pointer group"
     >
-      <FaShoppingCart size={22} className="text-black group-hover:scale-110 transition" />
+      <FaShoppingCart size={22} className="text-orange-400 group-hover:scale-110 transition" />
       <h2 className="text-xs font-semibold text-black mt-1">Cart</h2>
     </div>
 
     {/* Wishlist */}
-    <div className="flex flex-col items-center justify-center cursor-pointer group">
-      <FaHeart size={22} className="text-red-500 group-hover:scale-110 transition" />
-      <h2 className="text-xs font-semibold text-black mt-1">Wishlist</h2>
-    </div>
+   
 
   </section>
 

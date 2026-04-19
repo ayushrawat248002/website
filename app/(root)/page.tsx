@@ -1,6 +1,6 @@
 'use client'
 import CarouselSize from "@/components/slides"
-import model2 from '@/assets/model5.png'
+import model2 from '@/assets/ayush.jpeg'
 import model3 from '@/assets/model6.png'
 import model4 from '@/assets/model4.png'
 import badge from '@/assets/boyicon2.png';
@@ -33,9 +33,9 @@ const page = () => {
               <main className="p-0 m-0 h-[200vh] w-full">
             <section
   style={{ backgroundImage: `url(${girl.src})` }}
-  className=" h-[480px] w-full scale-105 aspect-[14/9] bg-cover bg-no-repeat bg-position-[80%_95%]"
+  className=" h-[480px] w-full backdrop-blur-lg   aspect-[14/9] bg-cover bg-no-repeat bg-position-[80%_100%]"
 /> 
- <section className="w-full h-auto sticky top-0 z-50  bg-gradient-to-b from-white via-gray-50 to-white">
+ <section className="w-full h-auto sticky top-0 border border-black z-50  bg-gradient-to-b from-white via-gray-50 to-white">
 
   {/* Sticky Header */}
   <div
