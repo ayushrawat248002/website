@@ -41,7 +41,7 @@ export default function RootLayout({
 }) {
   const router = useRouter()
   const [index, setIndex] = useState<number | null>(null);
-  const [cartItemsNumber,setItemsnumber] = useState<null|Number>(null)
+  const [cartItemsNumber,setItemsnumber] = useState<null|number>(null)
   const cartiitems = useCartStore((state)=> state.obj.cart.length)
   const [enabled, setEnabled] = useState<boolean>(false);
    const[obj,setobj] = useState<boolean>(false);
@@ -88,7 +88,7 @@ export default function RootLayout({
 
       {/* Cart Badge */}
       <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] px-1.5 py-[1px] rounded-full">
-        {cartItemsNumber ? cartItemsNumber : 0}
+        {cartItemsNumber ?? 0}
       </span>
     </div>
   </div>
