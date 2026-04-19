@@ -64,7 +64,7 @@ export default function RootLayout({
         
 
                  
-             <header className="w-full bg-gradient-to-b from-olive-200 via-olive-50 to-olive-400 pb-6 ">
+             <header className="w-full bg-white pb-6 ">
 
   {/* Top Bar */}
   <div className="relative flex items-center justify-center h-[85px] px-4">
@@ -75,10 +75,10 @@ export default function RootLayout({
     </div>
 
     {/* Brand */}
-    <h1 className="text-3xl font-mono tracking-tighter  text-gray-800 drop-shadow-sm">
+    <h1 className="text-3xl text-shadow-xs text-shadow-orange-700 font-mono tracking-tighter  text-gray-800 drop-shadow-sm">
       DRIP
     </h1>
-    <h1 className="text-3xl font-mono tracking-tighter ml-1  text-gray-800 drop-shadow-sm">
+    <h1 className="text-3xl text-shadow-xs text-shadow-orange-700 font-mono tracking-tighter ml-1  text-gray-800 drop-shadow-sm">
       BOHAG
     </h1>
 
@@ -100,7 +100,7 @@ export default function RootLayout({
 
   {/* Search Bar */}
   <div className="px-4 mt-4">
-    <div className="flex items-center bg-white/70 backdrop-blur-md  rounded-full px-4 py-2 shadow-lg shadow-white border border-white/40 focus-within:ring-2 focus-within:ring-black/70 transition-all duration-300">
+    <div className="flex items-center bg-white/70 backdrop-blur-md  rounded-full px-4 py-2 shadow-lg shadow-black border border-white/40 focus-within:ring-2 focus-within:ring-black/70 transition-all duration-300">
 
       <IoIosSearch className="text-gray-500" size={20} />
 
@@ -124,7 +124,7 @@ export default function RootLayout({
           {children}
         </main>
 
-     <footer className="sticky bottom-0 z-50  w-full  bg-gradient-to-t from-olive-200 via-olive-50 to-olive-200  shadow-[0_-2px_10px_rgba(0,0,0,0.08)]">
+     <footer className="sticky bottom-0 z-50  w-full  bg-white  shadow-[0_-2px_10px_rgba(0,0,0,0.8)]">
   <section className="flex justify-around items-center py-3 ">
 
     {/* Menu */}

@@ -32,7 +32,7 @@ function CarouselSize({ data }) {
   }, [api])
 
   return (
-    <div className="bg-linear-to-t from-orange-50 to-orange-100 ">
+    <div className="bg-linear-to-t from-white via-amber-50 to-orange-200 ">
        <Carousel
   setApi={setApi}
   opts={{ align: "center", loop: true }}
@@ -66,7 +66,7 @@ function CarouselSize({ data }) {
   `}
 >
     
-  <CardContent className="relative h-full w-full p-0">
+  <CardContent className="relative h-full  w-full p-0">
 
     {/* Image */}
     <Image
@@ -74,7 +74,7 @@ function CarouselSize({ data }) {
       alt={`image${index}`}
       fill
       className={`
-        object-contain object-[120%_0%] backdrop-blur-lg transition-all duration-700
+        object-contain object-[130%_0%] backdrop-blur-lg transition-all duration-700
         ${isActive ? "scale-90" : "scale-75"}
         group-hover:scale-110
       `}
@@ -86,7 +86,7 @@ function CarouselSize({ data }) {
     {/* Side Text Content */}
     <div className="absolute left-0 top-0 h-full flex flex-col justify-center px-8 z-10 max-w-[60%]">
 
-      <p className="text-black  relative text-xl font-mono leading-5 tracking-tighter">
+      <p className="text-black  relative text-2xl font-semibold leading-6 tracking-tighter">
     
         {item.text}
       </p>
