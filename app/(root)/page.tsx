@@ -7,7 +7,7 @@ import badge from '@/assets/boyicon2.png';
 import badge2 from '@/assets/girlicon3.png';
 import icon from '@/assets/jwellery1.png'
 import bg from '@/assets/bg.png'
-import girl from '@/assets/girlmodel11.png'
+import girl from '@/assets/boyband.jpeg'
 import { useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -33,15 +33,16 @@ const page = () => {
               <main className="p-0 m-0 h-[200vh] w-full">
             <section
   style={{ backgroundImage: `url(${girl.src})` }}
-  className=" h-[320px] w-full aspect-[16/9] bg-cover bg-no-repeat bg-[0%_20%]"
+  className=" h-[480px] w-full scale-105 aspect-[14/9] bg-cover bg-no-repeat bg-position-[80%_95%]"
 /> 
  <section className="w-full h-auto sticky top-0 z-50  bg-gradient-to-b from-white via-gray-50 to-white">
 
   {/* Sticky Header */}
   <div
-    style={{ backgroundImage: `url(${bg.src})` }}
+     
     className="
-    bg-white/80 backdrop-blur-md
+    
+    bg-white/40 backdrop-blur-md
     border-b border-gray-200/40
     flex flex-col items-center py-5
     shadow-sm"

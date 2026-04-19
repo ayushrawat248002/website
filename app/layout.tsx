@@ -75,10 +75,10 @@ export default function RootLayout({
     </div>
 
     {/* Brand */}
-    <h1 className="text-3xl text-shadow-xs text-shadow-orange-700 font-mono tracking-tighter  text-gray-800 drop-shadow-sm">
+    <h1 className=" text-3xl text-white  font-semibold text-shadow-md text-shadow-orange-700 font-mono tracking-tighter  text-white drop-shadow-sm">
       DRIP
     </h1>
-    <h1 className="text-3xl text-shadow-xs text-shadow-orange-700 font-mono tracking-tighter ml-1  text-gray-800 drop-shadow-sm">
+    <h1 className="text-3xl text-white  font-semibold text-shadow-md text-shadow-orange-700 font-mono tracking-tighter ml-1  drop-shadow-sm">
       BOHAG
     </h1>
 
@@ -99,7 +99,7 @@ export default function RootLayout({
   </p>
 
   {/* Search Bar */}
-  <div className="px-4 mt-4">
+  <div className="px-4 mt-4 mb-3">
     <div className="flex items-center bg-white/70 backdrop-blur-md  rounded-full px-4 py-2 shadow-lg shadow-black border border-white/40 focus-within:ring-2 focus-within:ring-black/70 transition-all duration-300">
 
       <IoIosSearch className="text-gray-500" size={20} />
