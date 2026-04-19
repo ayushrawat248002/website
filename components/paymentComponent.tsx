@@ -2,10 +2,12 @@
 
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const [total, setTotal] = useState<number | null>(null);
-
+  const [order, setorder] = useState<null|number>(null);
   useEffect(() => {
     const stored = localStorage.getItem("total");
     if (stored) setTotal(JSON.parse(stored));
@@ -28,36 +30,42 @@ export default function Home() {
     });
 
     const order = await res.json();
+     setorder(order.id)
 
-    const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-      amount: order.amount,
-      currency: "INR",
-      name: "Test App",
-      order_id: order.id,
-      handler: async function (response: any) {
-        console.log(response);
-           const res = await fetch('/api/verify-payment', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
+  const options = {
+  key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+  amount: order.amount,
+  currency: "INR",
+  name: "Test App",
+  order_id: order.id,
+
+  handler: async function (response: any) {
+    console.log(response);
+
+    const res = await fetch('/api/verify-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(response)
+    });
+           router.push(`/statuspage/${order.id}`)
+    const result = await res.json();
+    console.log(result);
   },
-  body: JSON.stringify(response)
-});
 
-  const result = await res.json();
-  console.log(result)
-      },
-    };
-
+  // ✅ Handle modal close (user cancels payment)
+  modal: {
+    ondismiss: async function () {
+      console.log("Payment popup closed by user");
+          router.push(`/statuspage/${order.id}`)
+    }
+  }
+};
     const rzp = new (window as any).Razorpay(options);
       // ✅ Handle failed payments
 rzp.on("payment.failed", function (response: any) {
   console.error("Payment Failed:", response);
-
-  alert(
-    `Payment failed!\n\nReason: ${response.error.description}\nCode: ${response.error.code}`);
-  })
+         router.push(`/statuspage/${order.id}`)
+})
     rzp.open();
   };
 

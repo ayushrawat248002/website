@@ -9,7 +9,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
-import { object } from "framer-motion/client"
+
 
 function CarouselSize({ data }) {
 
@@ -47,7 +47,7 @@ function CarouselSize({ data }) {
   className="w-full  max-w-5xl mx-auto"
 >
   <CarouselContent className="-ml-4 w-auto">
-
+       
     {data?.map((item, index) => {
 
       const isActive = index === activeIndex
@@ -57,6 +57,7 @@ function CarouselSize({ data }) {
           key={index}
           className="basis-[105%] sm:basis-full lg:basis-[40%]  ml-2"
         >
+           
            
          <Card
   className={`
@@ -68,7 +69,7 @@ function CarouselSize({ data }) {
 >
     
   <CardContent className="relative h-full  w-full p-0">
-
+       
     {/* Image */}
     <Image
       src={item.image}
@@ -76,10 +77,11 @@ function CarouselSize({ data }) {
       fill
       className={`
         ${index === 0 ? 'object-cover' : 'object-contain object-[165%_0%] '} backdrop-blur-lg transition-all duration-700
-       ${isActive ? (index === 0 ? "scale-104 object-[100%_120%]" : "scale-85") : "scale-75"}
-        group-hover:scale-110
+       ${isActive ? (index === 0 ? "scale-110 object-top" : "scale-85") : "scale-75"}
+        group-hover:scale-110 
       `}
     />
+
 
     {/* LEFT gradient only (for readability, not full black) */}
   

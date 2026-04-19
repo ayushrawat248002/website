@@ -1,97 +1,96 @@
-"use client";
-
-import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
-import { useCartStore } from "@/components/Cartstore";
-
-import men from '@/assets/men.jpg'
-import women from '@/assets/women.jpg'
-import kids from '@/assets/kids.jpg'
-import shoes from '@/assets/shoes.jpg'
-import model from '@/assets/model.png'
+'use client'
 
 
+import badge from '@/assets/boyicon2.png';
+import badge2 from '@/assets/girlicon3.png';
+import icon from '@/assets/jwellery1.png'
+import { useState } from "react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+const Hero = () => {
 
-import model4 from '@/assets/model4.png'
-import model5 from '@/assets/model5.png'
-import model6 from '@/assets/model6.png'
-import model7 from '@/assets/model7.png'
+      const router = useRouter()
+      const[index, setindex] = useState<undefined|number>(0)
 
-const CarouselSize = dynamic(() => import("@/components/slides.js"), {
-  ssr: false,
-});
+  return(
+     <div className="w-full flex justify-center gap-8 md:gap-14 mt-5 px-4">
 
-const categories = [
-  { name: "Men", image: men },
-  { name: "Women", image: women },
-  { name: "Kids", image: kids },
-  { name: "Shoes", image: shoes },
-]
-const products = [
+      {/* MEN */}
+      <div className="flex flex-col items-center group cursor-pointer">
+        <Image
+          onClick={() => { setindex(0); router.push('/mensection') }}
+          alt="men"
+          src={badge}
+          className="h-[75px] w-[75px] 
+          transition-all duration-500 ease-out
+          group-hover:scale-105 group-hover:-translate-y-1"
+        />
 
- {image:model4},
- {image:model5},
- {image:model6},
- {image:model7},
-]
-export default function Hero() {
-  const router = useRouter();
-  const heroRef = useRef(null);
-  const theme = useCartStore((state) => state.obj.theme);
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkScreen = () => setIsMobile(window.innerWidth < 768);
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const heroY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isMobile ? ["0%", "0%"] : ["0%", "15%"]
-  );
-
-  const textY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isMobile ? ["0%", "0%"] : ["0%", "-20%"]
-  );
-
-  return (
-    <section
-      ref={heroRef}
-      className={`relative min-w-screen flex bg-stone-50  [@media(max-height:950px)]:h-[990px]   flex-col justify-center overflow-hidden
-      min-h-screen sm:px-6 lg:px-10`}
-    > 
- 
-       <div className=" [@media(max-height:400px)]:h-[700px]]mt-20 z-100  absolute top-2 w-full  ">
-                
-                 <CarouselSize  data={products} />
-                  
-       </div>
-
-      
-   
-     
-
-      {/* 💥 Deals strip */}
-      <div className="absolute w-full mt-10 flex justify-center z-20">
-        <div className="bg-black text-white px-6 py-2 rounded-full text-sm sm:text-base">
-          ⚡ Flat 50% OFF | Free Shipping | Limited Time
-        </div>
+        <button
+          onClick={() => setindex(0)}
+          className={`mt-2 text-xs md:text-sm font-medium tracking-wider transition-all
+          ${index === 0 
+            ? 'text-black' 
+            : 'text-gray-400 group-hover:text-black'}`}
+        >
+          MEN
+          {index === 0 && (
+            <div className="h-[2px] w-5 bg-black mx-auto mt-1 rounded-full"></div>
+          )}
+        </button>
       </div>
 
-    </section>
-  );
+      {/* WOMEN */}
+      <div className="flex flex-col items-center -translate-y-2 group cursor-pointer">
+        <Image
+          onClick={() => { setindex(1); router.push('/womensection') }}
+          alt="women"
+          src={badge2}
+          className="h-[95px] w-[95px] 
+          transition-all duration-500 ease-out
+          group-hover:scale-105 group-hover:-translate-y-1"
+        />
+
+        <button
+          onClick={() => setindex(1)}
+          className={`-translate-y-[6px] text-xs md:text-sm font-medium tracking-wider transition-all
+          ${index === 1 
+            ? 'text-black' 
+            : 'text-gray-400 group-hover:text-black'}`}
+        >
+          WOMEN
+          {index === 1 && (
+            <div className="h-[2px] w-5 bg-black mx-auto mt-1 rounded-full"></div>
+          )}
+        </button>
+      </div>
+
+      {/* ACCESSORIES */}
+      <div className="flex flex-col items-center group cursor-pointer">
+        <Image
+          alt="jewellery"
+          src={icon}
+          className="h-[60px] w-[60px] mt-2
+          transition-all duration-500 ease-out
+          group-hover:scale-105 group-hover:-translate-y-2"
+        />
+
+        <button
+          onClick={() => setindex(2)}
+          className={`mt-[15px] text-xs md:text-sm font-medium tracking-wider transition-all 
+          ${index === 2 
+            ? 'text-black' 
+            : 'text-gray-400 group-hover:text-black'}`}
+        >
+          ACCESSORIES
+          {index === 2 && (
+            <div className="h-[2px] w-6 bg-black mx-auto mt-1 rounded-full"></div>
+          )}
+        </button>
+      </div>
+
+    </div>
+  )
 }
+
+export default Hero;
