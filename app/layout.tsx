@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { BiCategory } from "react-icons/bi";
 import { IoHomeOutline } from "react-icons/io5";
@@ -14,6 +14,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import {MenuDrawer} from '@/components/drawercomponent' 
+import { useCartStore } from "@/components/Cartstore";
  import { Menu, Search, Heart, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 
@@ -40,10 +41,17 @@ export default function RootLayout({
 }) {
   const router = useRouter()
   const [index, setIndex] = useState<number | null>(null);
+  const [cartItemsNumber,setItemsnumber] = useState<null|Number>(null)
+  const cartiitems = useCartStore((state)=> state.obj.cart.length)
   const [enabled, setEnabled] = useState<boolean>(false);
    const[obj,setobj] = useState<boolean>(false);
    const [toogledindex, setIndextoogle] = useState<number|null>(null)
    const icons = [IoHomeOutline,BiCategory,CgProfile]
+
+   useEffect(()=>{
+           setItemsnumber(cartiitems)
+   },[cartiitems])
+
   return (
     <html
       lang="en"
@@ -56,7 +64,7 @@ export default function RootLayout({
         
 
                  
-             <header className="w-full bg-gradient-to-b from-orange-200 to-orange-500 pb-6 ">
+             <header className="w-full bg-gradient-to-b from-olive-200 via-olive-50 to-olive-400 pb-6 ">
 
   {/* Top Bar */}
   <div className="relative flex items-center justify-center h-[85px] px-4">
@@ -80,7 +88,7 @@ export default function RootLayout({
 
       {/* Cart Badge */}
       <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] px-1.5 py-[1px] rounded-full">
-        2
+        {cartItemsNumber ? cartItemsNumber : 0}
       </span>
     </div>
   </div>
@@ -116,7 +124,7 @@ export default function RootLayout({
           {children}
         </main>
 
-     <footer className="sticky bottom-0 z-50  w-full  bg-gradient-to-t from-orange-200 to-orange-500  shadow-[0_-2px_10px_rgba(0,0,0,0.08)]">
+     <footer className="sticky bottom-0 z-50  w-full  bg-gradient-to-t from-olive-200 via-olive-50 to-olive-200  shadow-[0_-2px_10px_rgba(0,0,0,0.08)]">
   <section className="flex justify-around items-center py-3 ">
 
     {/* Menu */}
@@ -136,7 +144,7 @@ export default function RootLayout({
 
     {/* Wishlist */}
     <div className="flex flex-col items-center justify-center cursor-pointer group">
-      <FaHeart size={22} className="text-black group-hover:scale-110 transition" />
+      <FaHeart size={22} className="text-red-500 group-hover:scale-110 transition" />
       <h2 className="text-xs font-semibold text-black mt-1">Wishlist</h2>
     </div>
 

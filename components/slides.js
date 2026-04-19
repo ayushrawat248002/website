@@ -32,63 +32,84 @@ function CarouselSize({ data }) {
   }, [api])
 
   return (
-    <>
-      <Carousel
-        setApi={setApi}
-        opts={{ align: "center", loop: true }}
-        plugins={[
-          Autoplay({
-            delay: 3500,
-            stopOnInteraction: false,
-            stopOnMouseEnter: true,
-          }),
-        ]}
-        className="w-full max-w-5xl mx-auto"
-      >
-        <CarouselContent className="-ml-4">
+    <div className="bg-linear-to-t from-orange-50 to-orange-100 ">
+       <Carousel
+  setApi={setApi}
+  opts={{ align: "center", loop: true }}
+  plugins={[
+    Autoplay({
+      delay: 3500,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    }),
+  ]}
+  className="w-full  max-w-5xl mx-auto"
+>
+  <CarouselContent className="-ml-4 w-auto">
 
-          {data?.map((item, index) => {
+    {data?.map((item, index) => {
 
-            const isActive = index === activeIndex
+      const isActive = index === activeIndex
 
-            return (
-              <CarouselItem
-                key={index}
-                className={`basis-[90%] sm:basis-full lg:basis-[40%] pl-4`}
-              >
-                <Card
-                  className={`h-[450px] border-transparent relative w-full rounded-2xl transition-all duration-500 overflow-hidden 
-                  lg:border-t-[30px] z-10 lg:opacity-100`}
-                >
+      return (
+        <CarouselItem
+          key={index}
+          className="basis-[105%] sm:basis-full lg:basis-[40%]  ml-2"
+        >
+           
+         <Card
+  className={`
+    h-[480px] relative w-full overflow-hidden rounded-2xl
+    transition-all duration-500 group
+    ${isActive ? "scale-100" : "scale-94 opacity-70"}
+    shadow-[0_30px_80px_rgba(0,0,0,0.6)]
+  `}
+>
+    
+  <CardContent className="relative h-full w-full p-0">
 
-                  <CardContent className="relative flex border-transparent justify-center top-0 h-full w-full p-0">
+    {/* Image */}
+    <Image
+      src={item.image}
+      alt={`image${index}`}
+      fill
+      className={`
+        object-contain object-[120%_0%] backdrop-blur-lg transition-all duration-700
+        ${isActive ? "scale-90" : "scale-75"}
+        group-hover:scale-110
+      `}
+    />
 
-                    <Image
-                      src={item.image}
-                      alt={`image${index}`}
-                      width={350}
-                      height={150}
-                      className={`${isActive ? "scale-95" : "scale-95"} delay-200 duration-400 border-none p-6`}
-                    />
+    {/* LEFT gradient only (for readability, not full black) */}
+  
 
-                  </CardContent>
-              
-                </Card>
-              </CarouselItem>
-            )
-          })}
+    {/* Side Text Content */}
+    <div className="absolute left-0 top-0 h-full flex flex-col justify-center px-8 z-10 max-w-[60%]">
 
-        </CarouselContent>
-      </Carousel>
+      <p className="text-black  relative text-xl font-mono leading-5 tracking-tighter">
+    
+        {item.text}
+      </p>
+
+      <p className="text-gray-800 text-sm mt-3 tracking-widest uppercase">
+        Premium Collection
+      </p>
+
+    </div>
+
+  </CardContent>
+</Card>
+        </CarouselItem>
+      )
+    })}
+
+  </CarouselContent>
+</Carousel>
 
       {/* ✅ Dynamic Text Based on Active Slide */}
-                <div className="w-full   text-center mt-0">
-        <p className="text-black text-lg font-semibold transition-all duration-300">
-          {data2?.[activeIndex]?.text}
-        </p>
-      </div>
+            
      
-    </>
+    </div>
   )
 }
 
