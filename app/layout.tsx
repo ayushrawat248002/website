@@ -56,7 +56,7 @@ export default function RootLayout({
         
 
                  
-             <header className="w-full bg-gradient-to-b from-[#F5E9D8] to-[#f8efe3] pb-6 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+             <header className="w-full bg-gradient-to-b from-orange-200 to-orange-500 pb-6 ">
 
   {/* Top Bar */}
   <div className="relative flex items-center justify-center h-[85px] px-4">
@@ -67,8 +67,11 @@ export default function RootLayout({
     </div>
 
     {/* Brand */}
-    <h1 className="text-3xl font-serif tracking-[0.15em] text-black drop-shadow-sm">
-      Brand Name
+    <h1 className="text-3xl font-mono tracking-tighter  text-gray-800 drop-shadow-sm">
+      DRIP
+    </h1>
+    <h1 className="text-3xl font-mono tracking-tighter ml-1  text-gray-800 drop-shadow-sm">
+      BOHAG
     </h1>
 
     {/* Right - Cart */}
@@ -83,20 +86,20 @@ export default function RootLayout({
   </div>
 
   {/* Tagline */}
-  <p className="text-center text-xs tracking-widest text-gray-600 -mt-2">
-    ELEVATE YOUR STYLE
+  <p className="text-center text-xs text-shadow-2xs tracking-widest text-gray-600 -mt-2">
+    Whats Your Move Today ?
   </p>
 
   {/* Search Bar */}
   <div className="px-4 mt-4">
-    <div className="flex items-center bg-white/70 backdrop-blur-md rounded-full px-4 py-2 shadow-lg border border-white/40 focus-within:ring-2 focus-within:ring-black/70 transition-all duration-300">
+    <div className="flex items-center bg-white/70 backdrop-blur-md  rounded-full px-4 py-2 shadow-lg shadow-white border border-white/40 focus-within:ring-2 focus-within:ring-black/70 transition-all duration-300">
 
       <IoIosSearch className="text-gray-500" size={20} />
 
       <input
         type="text"
         placeholder="Search kurtas, sarees..."
-        className="w-full ml-3 bg-transparent outline-none text-sm text-black placeholder-gray-400"
+        className="w-full ml-3 bg-transparent outline-none text-sm text-black placeholder-gray-700"
       />
 
       {/* Optional mic icon */}
@@ -113,7 +116,7 @@ export default function RootLayout({
           {children}
         </main>
 
-     <footer className="sticky bottom-0 z-50  w-full bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.08)]">
+     <footer className="sticky bottom-0 z-50  w-full  bg-gradient-to-t from-orange-200 to-orange-500  shadow-[0_-2px_10px_rgba(0,0,0,0.08)]">
   <section className="flex justify-around items-center py-3 ">
 
     {/* Menu */}
@@ -133,7 +136,7 @@ export default function RootLayout({
 
     {/* Wishlist */}
     <div className="flex flex-col items-center justify-center cursor-pointer group">
-      <FaHeart size={22} className="text-red-500 group-hover:scale-110 transition" />
+      <FaHeart size={22} className="text-black group-hover:scale-110 transition" />
       <h2 className="text-xs font-semibold text-black mt-1">Wishlist</h2>
     </div>
 
