@@ -3,15 +3,25 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { Spinner } from "./ui/spinner";
+import { useCartStore } from "./Cartstore";
 export default function Home() {
   const router = useRouter();
   const [total, setTotal] = useState<number | null>(null);
   const [order, setorder] = useState<null|number>(null);
+  const[loading,setloading] = useState<boolean>(false);
+  const AddOrder = useCartStore((state)=>state.setorderSummary)
   useEffect(() => {
     const stored = localStorage.getItem("total");
     if (stored) setTotal(JSON.parse(stored));
   }, []);
+
+  useEffect(()=>{
+
+      return()=>{
+        setloading(false)
+      }
+  },[])
 
   const handlePayment = async () => {
     if (!total) return;
@@ -41,13 +51,15 @@ export default function Home() {
 
   handler: async function (response: any) {
     console.log(response);
-
+    setloading(true);
     const res = await fetch('/api/verify-payment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(response)
     });
-           router.push(`/statuspage/${order.id}`)
+  
+       await new Promise<void>((res) => setTimeout(() => {res()},3000) )
+           router.push(`/statuspage`)
     const result = await res.json();
     console.log(result);
   },
@@ -55,16 +67,23 @@ export default function Home() {
   // ✅ Handle modal close (user cancels payment)
   modal: {
     ondismiss: async function () {
+
       console.log("Payment popup closed by user");
-          router.push(`/statuspage/${order.id}`)
+      
+         setloading(true)
+            await new Promise<void>((res) => setTimeout(() => {res()},3000) )
+          router.push(`/statuspage`)
     }
   }
 };
     const rzp = new (window as any).Razorpay(options);
       // ✅ Handle failed payments
-rzp.on("payment.failed", function (response: any) {
+rzp.on("payment.failed", async function (response: any) {
   console.error("Payment Failed:", response);
-         router.push(`/statuspage/${order.id}`)
+  
+  setloading(true);
+        await new Promise<void>((res) => setTimeout(() => {res()},3000) )
+         router.push(`/statuspage`)
 })
     rzp.open();
   };
@@ -76,7 +95,9 @@ rzp.on("payment.failed", function (response: any) {
         strategy="afterInteractive"
       />
 
-      <h2 className="text-3xl text-black font-bold mb-4">
+      {loading ? (<div><Spinner className="h-30" /></div>) : <>
+      
+                 <h2 className="text-3xl text-black font-bold mb-4">
         Total Payment: ₹{total ?? "Loading..."}
       </h2>
 
@@ -86,6 +107,9 @@ rzp.on("payment.failed", function (response: any) {
       >
         Pay Now
       </button>
+      </>}
+
+     
     </div>
   );
 }

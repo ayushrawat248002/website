@@ -14,16 +14,19 @@ type Store = {
     address: any;
     currentaddress : any,
     cart: CartItem[];
+    orders : []
     theme : 'white'|'black',
   };
   setcurrentAddress : (adress : Object) => void
   setAddress: (address: Object) => void;
+  setorderSummary : (orderSummary : Object) => void;
   addItem: (item: Omit<CartItem, "quantity">) => void;
   increase: (id: string) => void;
   decrease: (id: string) => void;
   removeItem: (id: string) => void;
   setTheme : (theme : 'white'|'black') => void
   clearCart: () => void;
+   changeorderSummary : (orderid : any) => void
 };
 
      const isSameAddress = (a: any, b: any) =>
@@ -41,6 +44,7 @@ export const useCartStore = create<Store>()(
         address: [],
         currentaddress : null,
         cart: [],
+        orders :[], 
         theme : 'black',
       },
 
@@ -51,6 +55,28 @@ export const useCartStore = create<Store>()(
             theme: theme,
           },
         };
+      }),
+
+      setorderSummary : (orderSummary : any) => set((state :any) => {
+        return  {
+               obj : {
+                ...state.obj,orders : [...state.obj.orders,orderSummary]
+               }
+        }
+      }),
+
+       changeorderSummary : (orderid : any) => set((state :any) => {
+        return  {
+               obj : {
+                ...state.obj,orders : state.obj.orders.map((order : any) => {
+                     if(order.order_id === orderid){
+                      return {...order,status : 'paid' }
+                     }else{
+                      return order
+                     }
+                })
+               }
+        }
       }),
 
       // ✅ set address

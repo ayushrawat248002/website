@@ -1,5 +1,5 @@
 import connectDB from "@/lib/mongodb";
-import { Order } from "@/models/order";
+import {Payment } from "@/models/payment";
 
 export async function GET(
   req: Request,
@@ -9,7 +9,7 @@ export async function GET(
 
   const { orderId } = await params;
 
-  const order = await Order.findOne({
+  const order = await Payment.findOne({
     order_id: orderId,
   });
 

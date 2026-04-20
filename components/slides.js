@@ -34,88 +34,86 @@ function CarouselSize({ data }) {
 
   return (
     <div className="bg-linear-to-t from-white via-amber-50 to-orange-200 ">
-       <Carousel
-  setApi={setApi}
-  opts={{ align: "center", loop: true }}
-  plugins={[
-    Autoplay({
-      delay: 3500,
-      stopOnInteraction: false,
-      stopOnMouseEnter: true,
-    }),
-  ]}
+        <Carousel
+          setApi={setApi}
+          opts={{ align: "center", loop: true }}
+          plugins={[
+            Autoplay({
+              delay: 3500,
+              stopOnInteraction: false,
+              stopOnMouseEnter: true,
+            }),
+          ]}
   className="w-full  max-w-5xl mx-auto"
->
-  <CarouselContent className="-ml-4 w-auto">
-       
-    {data?.map((item, index) => {
-
-      const isActive = index === activeIndex
-
-      return (
-        <CarouselItem
-          key={index}
-          className="basis-[105%] sm:basis-full lg:basis-[40%]  ml-2"
         >
+          <CarouselContent className="-ml-4 w-auto">
+
+            {data?.map((item, index) => {
+
+              const isActive = index === activeIndex
+
+              return (
+                <CarouselItem
+                  key={index}
+          className="basis-[105%] sm:basis-full lg:basis-[40%]  ml-2"
+                >
            
-           
-         <Card
-  className={`
-    h-[480px] relative w-full overflow-hidden rounded-2xl
-    transition-all duration-500 group
-    ${isActive ? "scale-100" : "scale-90 opacity-70"}
-    shadow-[0_30px_80px_rgba(0,0,0,0.6)]
-  `}
->
-    
+
+                  <Card
+                    className={`
+                      h-[480px] relative w-full overflow-hidden rounded-2xl
+                      transition-all duration-500 group
+                      ${isActive ? "scale-100" : "scale-90 opacity-70"}
+                      shadow-[0_30px_80px_rgba(0,0,0,0.6)]
+                    `}
+                  >
+   
   <CardContent className="relative h-full  w-full p-0">
-       
+
     {/* Image */}
-    <Image
-      src={item.image}
-      alt={`image${index}`}
-      fill
-      className={`
+                      <Image
+                        src={item.image}
+                        alt={`image${index}`}
+                        fill
+                        className={`
         ${index === 0 ? 'object-cover' : 'object-contain object-[165%_0%] '} backdrop-blur-lg transition-all duration-700
        ${isActive ? (index === 0 ? "scale-110 object-top" : "scale-85") : "scale-75"}
-        group-hover:scale-110 
-      `}
-    />
+                          group-hover:scale-110
+                        `}
+                      />
 
 
     {/* LEFT gradient only (for readability, not full black) */}
   
 
     {/* Side Text Content */}
-    <div className={`absolute top-10 h-full flex flex-col justify-center px-8 z-10 max-w-[60%] ${
-  index === 0 ? "right-0 translate-x-8 -translate-y-24" : "left-0"
-}`}>
+                      <div className={`absolute top-10 h-full flex flex-col justify-center px-8 z-10 max-w-[60%] ${
+                        index === 0 ? "right-0 translate-x-8 -translate-y-24" : "left-0"
+                      }`}>
 
       <p className={`${index === 0 ? 'text-white' : 'text-black'}  relative text-2xl font-semibold leading-6 tracking-tighter`}>
     
-        {item.text}
-      </p>
-    
-      <p className="text-gray-800 text-sm mt-3 tracking-widest uppercase">
-        Premium Collection
-      </p>
-   
-    </div>
+                          {item.text}
+                        </p>
 
-  </CardContent>
-</Card>
-        </CarouselItem>
+                        <p className="text-gray-800 text-sm mt-3 tracking-widest uppercase">
+                          Premium Collection
+                        </p>
+
+                      </div>
+
+                    </CardContent>
+                  </Card>
+
+                </CarouselItem>
+              )
+            })}
+
+          </CarouselContent>
+        </Carousel>
+      </div>
+
       )
-    })}
-
-  </CarouselContent>
-</Carousel>
-
-      {/* ✅ Dynamic Text Based on Active Slide */}
-            
-     
-    </div>
-  )
 }
 
 export default CarouselSize

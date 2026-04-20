@@ -30,7 +30,7 @@ return(
       className="flex flex-col items-center justify-center cursor-pointer group"
     >
       <CgProfile size={25} className="text-orange-400 group-hover:scale-110 transition" />
-      <h2 className="text-xs font-semibold text-black mt-1">Cart</h2>
+      <h2 className="text-xs font-semibold text-black mt-1">Profile</h2>
     </div>
 
     {/* Wishlist */}
