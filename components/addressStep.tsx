@@ -21,7 +21,6 @@ const AddressStep = ({ dispatch }: Props) => {
   const addAddress = useCartStore((state) => state.setAddress);
   const saveAddress = useCartStore((state) => state.obj.address);
   const currentAddress = useCartStore((state) => state.setcurrentAddress);
-  const selectedaddress = useCartStore((state) => state.obj.currentaddress);
 
   const [form, setForm] = useState<FormType>({
     fullName: "",
@@ -58,16 +57,21 @@ const AddressStep = ({ dispatch }: Props) => {
   };
 
   const handleSubmit = () => {
-    if (!validate()) return;
-
     if (addToggle) {
+      if (!validate()) return;
+
       addAddress(form);
       currentAddress(form);
       setToggle(false);
-    } else if (selected !== null) {
+    } else {
+      if (selected === null) {
+        alert("Please select an address");
+        return;
+      }
       currentAddress(saveAddress[selected]);
-    } else return;
+    }
 
+    localStorage.setItem('total', JSON.stringify(total));
     dispatch({ type: "GO_TO_STEP", payload: "payment" });
   };
 
@@ -79,7 +83,7 @@ const AddressStep = ({ dispatch }: Props) => {
   return (
     <div className="h-auto bg-gray-100 p-6">
 
-      {/* 🔥 Progress Bar */}
+      {/* Progress */}
       <div className="max-w-5xl mx-auto mb-6 flex justify-between text-sm text-gray-600">
         <span className="font-semibold">🛒 Cart</span>
         <span className="font-semibold text-black">📍 Address</span>
@@ -88,33 +92,33 @@ const AddressStep = ({ dispatch }: Props) => {
 
       <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
 
-        {/* LEFT - Address */}
+        {/* LEFT */}
         <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow">
 
-          <h2 className="text-xl font-semibold text-black mb-4">Delivery Address</h2>
+          <h2 className="text-xl font-semibold text-black mb-4">
+            Delivery Address
+          </h2>
 
           {/* Saved Addresses */}
           {saveAddress?.length > 0 && !addToggle && (
             <div className="space-y-4 mb-4">
-              {saveAddress.map((add: FormType, index: number) => {
-                const isActive =
-                  selected === index ||
-                  (selectedaddress &&
-                    selectedaddress.address === add.address);
+              {saveAddress.map((add: FormType, index: number) => (
+                <label
+                  key={index}
+                  className={`flex gap-3 p-4 border rounded-xl cursor-pointer ${
+                    selected === index
+                      ? "border-black bg-gray-50"
+                      : "hover:border-gray-400"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="address"
+                    checked={selected === index}
+                    onChange={() => setSelected(index)}
+                  />
 
-                return (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      setSelected(index);
-                      currentAddress(add);
-                    }}
-                    className={`p-4 border rounded-xl cursor-pointer ${
-                      isActive
-                        ? "border-black bg-gray-50"
-                        : "hover:border-gray-400"
-                    }`}
-                  >
+                  <div>
                     <h3 className="font-semibold text-black">{add.fullName}</h3>
                     <p className="text-sm text-gray-600">{add.address}</p>
                     <p className="text-sm text-gray-600">
@@ -122,29 +126,50 @@ const AddressStep = ({ dispatch }: Props) => {
                     </p>
                     <p className="text-sm text-gray-500">📞 {add.phone}</p>
                   </div>
-                );
-              })}
+                </label>
+              ))}
             </div>
           )}
 
           {/* Form */}
           {(saveAddress?.length === 0 || addToggle) && (
-            <div className="space-y-3">
-              <input name="fullName" placeholder="Full Name" className={inputClass("fullName")} onChange={(e)=>setForm({...form,fullName:e.target.value})}/>
-              <input name="phone" placeholder="Phone" className={inputClass("phone")} onChange={(e)=>setForm({...form,phone:e.target.value})}/>
-              <input name="address" placeholder="Street Address" className={inputClass("address")} onChange={(e)=>setForm({...form,address:e.target.value})}/>
-              
+            <div className="space-y-3 text-black">
+              <input value={form.fullName} placeholder="Full Name" 
+                className={inputClass("fullName")}
+                onChange={(e)=>setForm({...form,fullName:e.target.value})}
+              />
+
+              <input value={form.phone} placeholder="Phone"
+                className={inputClass("phone")}
+                onChange={(e)=>setForm({...form,phone:e.target.value})}
+              />
+
+              <input value={form.address} placeholder="Street Address"
+                className={inputClass("address")}
+                onChange={(e)=>setForm({...form,address:e.target.value})}
+              />
+
               <div className="grid grid-cols-2 gap-3">
-                <input name="city" placeholder="City" className={inputClass("city")} onChange={(e)=>setForm({...form,city:e.target.value})}/>
-                <input name="state" placeholder="State" className={inputClass("state")} onChange={(e)=>setForm({...form,state:e.target.value})}/>
+                <input value={form.city} placeholder="City"
+                  className={inputClass("city")}
+                  onChange={(e)=>setForm({...form,city:e.target.value})}
+                />
+
+                <input value={form.state} placeholder="State"
+                  className={inputClass("state")}
+                  onChange={(e)=>setForm({...form,state:e.target.value})}
+                />
               </div>
 
-              <input name="pincode" placeholder="Pincode" className={inputClass("pincode")} onChange={(e)=>setForm({...form,pincode:e.target.value})}/>
+              <input value={form.pincode} placeholder="Pincode"
+                className={inputClass("pincode")}
+                onChange={(e)=>setForm({...form,pincode:e.target.value})}
+              />
             </div>
           )}
 
           <button
-            onClick={() =>  { dispatch({ type: "GO_TO_STEP", payload: "payment" });localStorage.setItem('total',JSON.stringify(total))   }}
+            onClick={handleSubmit}
             className="mt-5 w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800"
           >
             Continue →
@@ -152,7 +177,10 @@ const AddressStep = ({ dispatch }: Props) => {
 
           {!addToggle && (
             <button
-              onClick={() => setToggle(true)}
+              onClick={() => {
+                setToggle(true);
+                setSelected(null);
+              }}
               className="mt-3 text-sm text-blue-600"
             >
               + Add new address
@@ -160,10 +188,11 @@ const AddressStep = ({ dispatch }: Props) => {
           )}
         </div>
 
-        {/* RIGHT - Order Summary */}
+        {/* RIGHT */}
         <div className="bg-white p-6 rounded-2xl shadow h-fit">
-
-          <h2 className="text-lg text-black font-semibold mb-4">Order Summary</h2>
+          <h2 className="text-lg text-black font-semibold mb-4">
+            Order Summary
+          </h2>
 
           <div className="space-y-3 text-black text-sm">
             {cart.map((item: any) => (
@@ -186,14 +215,10 @@ const AddressStep = ({ dispatch }: Props) => {
             <span>{deliveryFee === 0 ? "Free" : `₹${deliveryFee}`}</span>
           </div>
 
-          <div className="flex  text-black justify-between font-semibold mt-3">
+          <div className="flex text-black justify-between font-semibold mt-3">
             <span>Total</span>
             <span>₹{total + deliveryFee}</span>
           </div>
-
-          <p className="text-xs text-green-600 mt-2">
-            ✔ Estimated delivery in 2-4 days
-          </p>
         </div>
       </div>
     </div>

@@ -5,10 +5,12 @@ import useSWR from "swr";
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 export default function Orders() {
+
   const { data, error, isLoading } = useSWR("/api/order", fetcher, {
-    refreshInterval: 5000,
+    refreshInterval: 10000,
   });
   console.log(data)
+
 
   if (isLoading) {
     return (
@@ -33,7 +35,7 @@ export default function Orders() {
       <h1 className="text-3xl text-black font-bold mb-6">🛍️ My Orders</h1>
 
       <div className="grid gap-4">
-        {data.order.map((order: any) => (
+        {data.orders.map((order: any) => (
           <div
             key={order.order_id}
             className="bg-white shadow-md rounded-2xl p-5 border flex justify-between items-center"
@@ -44,12 +46,12 @@ export default function Orders() {
                 Order ID: {order.order_id}
               </p>
 
-              <p className="text-lg font-semibold">
+              <p className="text-lg text-black font-semibold">
                 ₹{order.amount || "N/A"}
               </p>
 
               {/* Status messages */}
-              {order.status === "captured" && (
+              {order.status === "paid" && (
                 <p className="text-green-600 font-medium mt-1">
                   ✅ Payment successful. Your order is confirmed!
                 </p>
@@ -61,7 +63,7 @@ export default function Orders() {
                 </p>
               )}
 
-              {order.status === "pending" && (
+              {order.status === "created" && (
                 <p className="text-yellow-500 font-medium mt-1">
                   ⏳ Payment pending...
                 </p>
@@ -72,14 +74,14 @@ export default function Orders() {
             <div>
               <span
                 className={`px-4 py-1 rounded-full text-sm font-semibold ${
-                  order.status === "captured"
+                  order.status === "paid"
                     ? "bg-green-100 text-green-700"
                     : order.status === "failed"
                     ? "bg-red-100 text-red-700"
                     : "bg-yellow-100 text-yellow-700"
                 }`}
               >
-                {order.status}
+               
               </span>
             </div>
           </div>

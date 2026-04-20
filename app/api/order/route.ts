@@ -1,31 +1,28 @@
-import connectDB from "@/lib/mongodb";
-import { Payment } from "@/models/payment";
+import { NextResponse } from 'next/server';
+import connectDB from '@/lib/mongodb';
+import {Order} from '@/models/order';
 
-export async function GET(
-
-) {
+export async function GET() {
   try {
     await connectDB();
 
-   
+    const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000);
 
-    const order = await Payment.find();
-    console.log(order)
-    if (!order) {
-      return Response.json(
-        { success: false, message: "Order not found" },
-        { status: 404 }
+    try {
+      const updated = await Order.findOneAndUpdate(
+        { createdAt: { $lt: tenMinutesAgo }, paymentStatus: 'pending' },
+        { $set: { paymentStatus: 'failed' } },
+        { new: true }
       );
+      console.log('updated order:', updated);
+    } catch (err) {
+      console.error('update error:', err);
     }
 
-    return Response.json({
-      success: true,
-      order,
-    });
+    const orders = await Order.find().lean();
+
+    return NextResponse.json({ success: true, orders });
   } catch (err: any) {
-    return Response.json(
-      { success: false, error: err.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
