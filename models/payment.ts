@@ -8,7 +8,11 @@ const paymentSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
-
+    
+      payment_createdAt : {
+           type : Number
+      },
+    
     // 💳 Razorpay payment id (IMPORTANT)
     payment_id: {
       type: String,
@@ -40,10 +44,16 @@ const paymentSchema = new mongoose.Schema(
     },
 
   },
+
+
   {
-    timestamps: true,
+    timestamps : true
   }
+  
+
+  
 );
+paymentSchema.index({payment_createdAt : -1})
 
 export const Payment =  mongoose.models.Payment ||
   mongoose.model("Payment", paymentSchema);

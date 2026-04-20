@@ -30,7 +30,7 @@ const page = () => {
         {/* HERO IMAGE SECTION */}
         <section
           style={{ backgroundImage: `url(${girl.src})` }}
-          className="h-[480px] w-full bg-gray-800 bg-blend-hard-light aspect-[14/9] bg-cover bg-no-repeat bg-position-[80%_100%]"
+          className="h-[480px] w-full   aspect-[14/9] bg-cover bg-no-repeat bg-position-[80%_100%]"
         />
 
         {/* STICKY SECTION */}

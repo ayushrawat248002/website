@@ -6,15 +6,15 @@ export async function GET() {
   try {
     await connectDB();
 
-    const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000);
+    const MinutesAgo = Math.floor(Date.now() - 30 * 1000);
 
     try {
-      const updated = await Order.findOneAndUpdate(
-        { createdAt: { $lt: tenMinutesAgo }, paymentStatus: 'pending' },
-        { $set: { paymentStatus: 'failed' } },
-        { new: true }
+      const updated = await Order.updateMany(
+        { order_createdAt: { $lt: MinutesAgo }, status : 'created' },
+        { $set: { status : 'failed' } },
       );
-      console.log('updated order:', updated);
+
+      console.log('updated order:', updated.modifiedCount);
     } catch (err) {
       console.error('update error:', err);
     }

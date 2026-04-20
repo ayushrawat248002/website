@@ -7,7 +7,7 @@ const fetcher = (url: string) => fetch(url).then(res => res.json());
 export default function Orders() {
 
   const { data, error, isLoading } = useSWR("/api/order", fetcher, {
-    refreshInterval: 10000,
+    refreshInterval: 2000,
   });
   console.log(data)
 
@@ -34,7 +34,7 @@ export default function Orders() {
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl text-black font-bold mb-6">🛍️ My Orders</h1>
 
-      <div className="grid gap-4">
+      <div className="grid gap-4 ">
         {data.orders.map((order: any) => (
           <div
             key={order.order_id}
