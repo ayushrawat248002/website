@@ -47,7 +47,7 @@ function CarouselSize({ data }) {
   className="w-full  max-w-5xl mx-auto"
         >
           <CarouselContent className="-ml-4 w-auto">
-
+     
             {data?.map((item, index) => {
 
               const isActive = index === activeIndex
@@ -69,12 +69,14 @@ function CarouselSize({ data }) {
                   >
    
   <CardContent className="relative h-full  w-full p-0">
-
+ 
     {/* Image */}
                       <Image
                         src={item.image}
                         alt={`image${index}`}
-                        fill
+                          fill
+    priority
+    fetchPriority="high"
                         className={`
         ${index === 0 ? 'object-cover' : 'object-contain object-[167%_0%] '} backdrop-blur-lg transition-all duration-700
        ${isActive ? (index === 0 ? "scale-100 object-top "  : "scale-85") : "scale-75"}
@@ -88,17 +90,15 @@ function CarouselSize({ data }) {
 
     {/* Side Text Content */}
                       <div className={`absolute top-10 h-full flex flex-col justify-center px-8 z-10 max-w-[60%] ${
-                        index === 0 ? "right-0 translate-x-8 -translate-y-24" : "left-0"
+                        index === 0 ? "" : "left-0"
                       }`}>
 
-      <p className={`${index === 0 ? 'text-white' : 'text-black'}  relative text-2xl font-semibold leading-6 tracking-tighter`}>
+      <p className={`${index === 0 ? 'text-none' : 'text-black'} text-2xl relative font-bebas leading-6 tracking-widest`}>
     
-                          {item.text}
+                          { index !== 0 ? item.text: ''}
                         </p>
 
-                        <p className="text-gray-800 text-sm mt-3 tracking-widest uppercase">
-                          Premium Collection
-                        </p>
+                     
 
                       </div>
 

@@ -1,9 +1,10 @@
 
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+
 import Image from "next/image";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import {bebas,rockSalt} from '@/lib/font'
 
 export const metadata = {
   metadataBase: new URL("https://dripbohag.com"),
@@ -32,21 +33,6 @@ export const metadata = {
   },
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-});
 
 export default function RootLayout({
   children,
@@ -60,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} w-full scroll-smooth`}
+      className={` w-full scroll-smooth`}
     >
       <body className="m-0 p-0 min-w-svw  max-h-svh   relative bg-yellow-200  text-black font-[var(--font-poppins)]">
 
@@ -68,13 +54,13 @@ export default function RootLayout({
       
         
 
-                 
+               <div className={rockSalt.className}>
              <Header prop={''}/>
-  
+             </div>
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className ="w-full h-[650vh] bg-white ">
+        <main className ={`w-full h-[650vh] bg-white ${bebas.className} `}>
           {children}
              
         </main>

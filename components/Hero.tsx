@@ -1,9 +1,7 @@
 'use client'
 
 
-import badge from '@/assets/boyicon2.png';
-import badge2 from '@/assets/girlicon3.png';
-import icon from '@/assets/jwellery1.png'
+
 import { useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -15,21 +13,27 @@ const Hero = () => {
   return(
        <div className="w-full h-24   flex justify-center">
   <div className="flex justify-center gap-8 h-full pb-2 md:gap-14 lg:gap-20  px-4 w-full max-w-5xl">
-
+     
     {/* MEN */}
     <div className="flex flex-col items-center group cursor-pointer">
-      <Image
-        onClick={() => { setindex(0); router.push('/mensection') }}
-        alt="men"
-        src={badge}
-        className="h-[75px] w-[75px] md:h-[80px] md:w-[80px] lg:h-[85px] lg:w-[85px]
-        transition-all duration-500 ease-out
-        group-hover:scale-105 group-hover:-translate-y-1"
-      />
-
+     <Image
+  onClick={() => {
+    setindex(0);
+    router.push('/mensection');
+  }}
+  alt="men"
+  width={80}
+  height={80}
+  src="https://res.cloudinary.com/dfehgukz3/image/upload/w_160,q_auto,f_auto/v1776796427/boyicon2_tfwzwe.png"
+  className="
+    h-[80px] w-[80px]
+    transition-all duration-500 ease-out
+    group-hover:scale-105 group-hover:-translate-y-1
+  "
+/>
       <button
         onClick={() => setindex(0)}
-        className={`mt-2 text-xs md:text-sm font-medium tracking-wider transition-all
+        className={`mt-2 text-xs font-mono  md:text-sm font-medium tracking-wider transition-all
         ${index === 0 
           ? 'text-black' 
           : 'text-gray-400 group-hover:text-black'}`}
@@ -43,18 +47,25 @@ const Hero = () => {
 
     {/* WOMEN */}
     <div className="flex flex-col items-center -translate-y-2 group cursor-pointer">
-      <Image
-        onClick={() => { setindex(1); router.push('/womensection') }}
-        alt="women"
-        src={badge2}
-        className="h-[95px] w-[95px] md:h-[100px] md:w-[100px] lg:h-[110px] lg:w-[110px]
-        transition-all duration-500 ease-out
-        group-hover:scale-105 group-hover:-translate-y-1"
-      />
+  <Image
+  onClick={() => {
+    setindex(1);
+    router.push('/womensection');
+  }}
+  alt="women"
+  width={80}
+  height={80}
+  src="https://res.cloudinary.com/dfehgukz3/image/upload/w_160,q_auto,f_auto/v1776797077/girlicon3_jkt8bh.png"
+  className="
+    h-[100px] w-[100px] md:h-[110px] md:w-[110px] lg:h-[120px] lg:w-[120px]
+    transition-all duration-500 ease-out
+    group-hover:scale-105 group-hover:-translate-y-1
+  "
+/>
 
       <button
         onClick={() => setindex(1)}
-        className={`-translate-y-[6px] text-xs md:text-sm font-medium tracking-wider transition-all
+        className={`-translate-y-[6px] font-mono  tracking-widest text-xs md:text-sm font-medium  transition-all
         ${index === 1 
           ? 'text-black' 
           : 'text-gray-400 group-hover:text-black'}`}
@@ -70,7 +81,9 @@ const Hero = () => {
     <div className="flex flex-col items-center group cursor-pointer">
       <Image
         alt="jewellery"
-        src={icon}
+          width={80}
+        height={80}
+        src="https://res.cloudinary.com/dfehgukz3/image/upload/w_160,q_auto,f_auto/v1776796428/jwellery1_jvsadj.png"
         className="h-[60px] w-[60px] md:h-[65px] md:w-[65px] lg:h-[70px] lg:w-[70px] mt-2
         transition-all duration-500 ease-out
         group-hover:scale-105 group-hover:-translate-y-2"
@@ -78,7 +91,7 @@ const Hero = () => {
 
       <button
         onClick={() => setindex(2)}
-        className={`mt-[15px] text-xs md:text-sm font-medium tracking-wider transition-all 
+        className={`mt-[15px] font-mono text-xs md:text-sm font-medium tracking-wider transition-all 
         ${index === 2 
           ? 'text-black' 
           : 'text-gray-400 group-hover:text-black'}`}

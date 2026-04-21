@@ -1,8 +1,8 @@
 'use client'
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import assamgirl from '@/assets/assam1.jpeg'
-import assam1 from '@/assets/assam3.jpeg'
+import Image from "next/image";
+import {caveat} from "@/lib/font"
 const Animatedsection = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -42,27 +42,30 @@ const { scrollYProgress: scrollZProgress } = useScroll({
   const scaleFg2 = useTransform(scrollZProgress, [0.43, 0.52 ], [0.5, 1]); // settle in
 
 return(
-    <>
+    <div className={caveat.className}>    
+      
           <section ref={ref} className="h-auto bg-gray-200  backdrop-blur-md">
       
       <div  className="relative flex flex-col items-start">
-         <style jsx global>{`
-  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-  .handwriting {
-    font-family: 'Pacifico', cursive;
-  }
-`}</style>
+   
         {/* First image (fade out + shrink) */}
         <motion.div
-          style={{
-            backgroundImage: `url(${assamgirl.src})`,
-            y: yBg,
-            opacity: opacityBg,
-            scale: scaleBg,
-          }}
-          className="h-[550px] w-full sticky top-20 bg-cover scale-100 bg-center rounded-none shadow-xl z-[10]"
-        />
+  style={{
+    y: yBg,
+    opacity: opacityBg,
+    scale: scaleBg,
+  }}
+  className="h-[550px] w-full sticky top-20 rounded-none shadow-xl z-[10] overflow-hidden relative"
+>
+  <Image
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
+    alt="background"
+    fill
+    priority
+    fetchPriority="high"
+    className="object-cover object-center"
+  />
+</motion.div>
 
         {/* Second image (fade in + zoom in slightly) */}
         <motion.div
@@ -72,13 +75,13 @@ return(
             scale: scaleFg,
           }}
   className="min-h-[600px] w-full sticky top-32 mt-24 rounded-3xl shadow-xl z-[20] 
-          bg-white backdrop-blur-3xl   border border-gray-200 
+          bg-white    border border-gray-200 
                      p-10 flex flex-col justify-between"
         >
           {/* Header */}
           <div className="max-w-xl">
             <p className="text-lg handwriting text-gray-500  mb-2">New Arrival</p>
-    <h2 className="text-4xl  handwriting text-black font-bold leading-tight">
+    <h2 className="text-4xl  handwriting text-orange-500 font-bold leading-tight">
               Minimal Summer Essentials
             </h2>
             <p className="text-gray-600 tracking-widest handwriting    text-lg mt-3">
@@ -87,22 +90,22 @@ return(
           </div>
 
   {/* Product Grid */}
-  <div className="grid overflow-x-scroll snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-10">
+  <div className="grid overflow-x-scroll shadow-2xl  bg-gray-300 snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-10">
 
     {/* Card */}
-    <div className="bg-white rounded-2xl snap-start p-4 shadow-sm hover:shadow-md transition">
+    <div className="bg-white shadow-sm   snap-start p-4  hover:shadow-md transition">
                 <div className="h-60 bg-gray-100 rounded-xl mb-4" />
       <p className="text-gray-800 font-medium">Linen Shirt</p>
       <p className="text-gray-500 text-sm">₹2,499</p>
               </div>
 
-    <div className="bg-white rounded-2xl p-4 snap-center shadow-sm hover:shadow-md transition">
+    <div className="bg-white p-4 snap-center shadow-sm hover:shadow-md transition">
       <div className="h-60 bg-gray-100 rounded-xl mb-4" />
       <p className="text-gray-800 font-medium">Relaxed Trousers</p>
       <p className="text-gray-500 text-sm">₹3,199</p>
     </div>
 
-    <div className="bg-white rounded-2xl snap-start p-4 shadow-sm hover:shadow-md transition">
+    <div className="bg-white  snap-start p-4 shadow-sm hover:shadow-md transition">
       <div className="h-60 bg-gray-100 rounded-xl mb-4" />
       <p className="text-gray-800 font-medium">Classic Sneakers</p>
       <p className="text-gray-500 text-sm">₹4,999</p>
@@ -127,23 +130,27 @@ return(
 
       <section ref={secondRef} className="h-auto mt-6 bg-black/10 backdrop-blur-lg">
                 <div  className="relative flex flex-col items-start">
-            <style jsx global>{`
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
-
-    .handwriting {
-      font-family: 'Caveat', cursive;
-    }
-  `}</style>
+          
         {/* First image (fade out + shrink) */}
-        <motion.div
-          style={{
-            backgroundImage: `url(${assam1.src})`,
-            y: yBg2,
-            opacity: opacityBg2,
-            scale: scaleBg2,
-          }}
-          className="h-[450px] w-full sticky top-40 bg-cover scale-100 bg-center rounded-none shadow-xl z-[30]"
-        />
+   
+
+<motion.div
+  style={{
+    y: yBg2,
+    opacity: opacityBg2,
+    scale: scaleBg2,
+  }}
+  className="h-[500px] w-full sticky top-40 rounded-none shadow-xl z-[30] overflow-hidden relative"
+>
+  <Image
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
+    alt="assam background"
+    fill
+    priority
+    fetchPriority="high"
+    className="object-cover object-center"
+  />
+</motion.div>
 
         {/* Second image (fade in + zoom in slightly) */}
         <motion.div
@@ -153,7 +160,7 @@ return(
     scale: scaleFg2,
   }}
   className="min-h-[820px] w-full  sticky rounded-2xl  shadow-xl z-[40] 
-              bg-black/90 
+              bg-orange-300
              p-12 flex flex-col justify-between"
 >
   {/* Header */}
@@ -225,7 +232,7 @@ return(
 
       
 
-    </>
+    </div>
 )
 }
 export default Animatedsection;

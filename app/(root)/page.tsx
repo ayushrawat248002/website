@@ -1,11 +1,8 @@
 
 import CarouselSize from "@/components/slides"
-import model2 from '@/assets/ayush.jpeg'
-import model3 from '@/assets/model7.png'
-import model4 from '@/assets/model4.png'
-import girl from '@/assets/boyband.jpeg'
 import Hero from "@/components/Hero"
-import Animatedsection from "@/components/animatedsection"
+import Animatedsection from "@/components/animatedsection";
+    import Image from "next/image";
 ;
 
 
@@ -14,15 +11,15 @@ import Animatedsection from "@/components/animatedsection"
 
 const data = [
   { 
-    image: model2,
+    image: "https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776795696/ayush2_sm04lo.png",
     text: "Elegant casual wear model featuring a modern fit and comfortable fabric, perfect for everyday style."
   },
   { 
-    image: model3,
+    image: "https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776796428/model4_fpvmwt.png",
     text: "Trendy outfit with a sleek design, ideal for both casual outings and semi-formal occasions."
   },
   { 
-    image: model4,
+    image: "https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776796431/model7_cnaslx.png",
     text: "Premium fashion piece with a bold look, crafted for style and confidence."
   }
 ];
@@ -37,17 +34,23 @@ const Page = () => {
       <div className="block md:hidden">
 
         {/* HERO IMAGE SECTION */}
-        <section
-          style={{ backgroundImage: `url(${girl.src})` }}
-          className="h-[480px] w-full   aspect-[14/9] bg-cover bg-no-repeat bg-position-[80%_100%]"
-        />
+   <section className="relative h-[580px] w-full overflow-hidden">
+  <Image
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776795695/boyband2_kgfuol.png"
+    alt="hero"
+    fill
+    priority
+    fetchPriority="high"
+    className="object-cover object-[80%_100%]"
+  />
+</section>
 
         {/* STICKY SECTION */}
         <section className="w-full h-auto sticky shadow-xl  top-0 z-50 bg-gradient-to-b from-white via-gray-50 to-white pb-2">
 
           <div className="bg-white/40 backdrop-blur-md  border-b-0 flex flex-col items-center py-3  ">
-
-            <h1 className="text-gray-900 font-semibold text-sm tracking-widest uppercase text-center">
+           
+            <h1 className="text-gray-900  text-[16px] font-mono  text-sm tracking-widest uppercase text-center">
               Authentic Assamese Collection
             </h1>
 
@@ -80,11 +83,18 @@ const Page = () => {
           {/* LEFT HERO IMAGE */}
           <div className="col-span-7 relative">
 
-            <div
-              style={{ backgroundImage: `url(${girl.src})` }}
-              className="h-[600px] lg:h-[720px] w-full rounded-2xl bg-cover bg-center shadow-xl"
-            />
+        
 
+<section className="relative h-[480px] w-full overflow-hidden">
+  <Image
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776795695/boyband2_kgfuol.png"
+    alt="hero"
+    fill
+    priority
+    fetchPriority="high"
+    className="object-cover object-[80%_100%]"
+  />
+</section>
             {/* OVERLAY TEXT */}
             <div className="absolute bottom-6 left-6 bg-white/70 backdrop-blur-md px-5 py-3 rounded-xl">
               <h1 className="text-xl lg:text-2xl font-semibold tracking-widest uppercase text-gray-900">

@@ -20,7 +20,7 @@ const Header = ({prop} : {prop : string}) => {
   return (
     <>
       <header className={`w-full ${prop === 'section' ? ' sticky z-70 top-0' : ''}  bg-white pb-6`}>
-
+       
         {/* Top Bar */}
         <div className="relative flex items-center justify-center h-[85px] px-4 md:px-10 lg:px-16">
 
@@ -31,10 +31,10 @@ const Header = ({prop} : {prop : string}) => {
 
           {/* Brand */}
           <div className="flex items-center">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-shadow-md text-shadow-orange-700 font-mono tracking-tighter drop-shadow-sm">
+            <h1 className="text-2xl   md:text-4xl lg:text-5xl text-orange-600 tracking-tighter drop-shadow-sm">
               DRIP
             </h1>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-shadow-md text-shadow-orange-700 font-mono tracking-tighter ml-1 drop-shadow-sm">
+            <h1 className="text-2xl  md:text-4xl lg:text-5xl text-orange-600  tracking-tighter ml-1 drop-shadow-sm">
               BOHAG
             </h1>
           </div>
@@ -54,7 +54,7 @@ const Header = ({prop} : {prop : string}) => {
         </div>
 
         {/* Tagline */}
-        <p className="text-center text-xs md:text-sm text-shadow-2xs tracking-widest text-gray-600 -mt-2">
+        <p className="text-center  mt-2 text-[10px] md:text-sm text-shadow-2xs tracking-widest text-gray-600 -mt-2">
           Whats Your Move Today ?
         </p>
 
@@ -67,7 +67,7 @@ const Header = ({prop} : {prop : string}) => {
             <input
               type="text"
               placeholder="Search kurtas, sarees..."
-              className="w-full ml-3 bg-transparent outline-none text-sm md:text-base text-black placeholder-gray-700"
+              className="w-full font-mono ml-3 bg-transparent outline-none text-sm md:text-base text-black placeholder-gray-700"
             />
 
             <span className="text-gray-400 text-sm">🎤</span>
