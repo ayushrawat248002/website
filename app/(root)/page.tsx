@@ -36,12 +36,12 @@ const Page = () => {
         {/* HERO IMAGE SECTION */}
    <section className="relative h-[580px] w-full overflow-hidden">
   <Image
-    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776795695/boyband2_kgfuol.png"
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_700,q_auto,f_auto/v1776795695/boyband2_kgfuol.png"
     alt="hero"
     fill
     priority
     fetchPriority="high"
-    className="object-cover object-[80%_100%]"
+    className="object-cover object-[30%_120%]"
   />
 </section>
 

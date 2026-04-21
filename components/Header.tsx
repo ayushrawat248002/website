@@ -67,7 +67,7 @@ const Header = ({prop} : {prop : string}) => {
             <input
               type="text"
               placeholder="Search kurtas, sarees..."
-              className="w-full font-mono ml-3 bg-transparent outline-none text-sm md:text-base text-black placeholder-gray-700"
+              className="w-full  ml-3 bg-transparent outline-none text-[10px] md:text-base text-black placeholder-gray-700"
             />
 
             <span className="text-gray-400 text-sm">🎤</span>
