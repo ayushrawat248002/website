@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { MenuDrawer } from '@/components/drawercomponent'
 import { useCartStore } from "@/components/Cartstore";
 
-const Header = () => {
+const Header = ({prop} : {prop : string}) => {
 
   const router = useRouter()
   const [cartItemsNumber, setItemsnumber] = useState<null | number>(null)
@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full bg-white pb-6">
+      <header className={`w-full ${prop === 'section' ? ' sticky z-70 top-0' : ''}  bg-white pb-6`}>
 
         {/* Top Bar */}
         <div className="relative flex items-center justify-center h-[85px] px-4 md:px-10 lg:px-16">

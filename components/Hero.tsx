@@ -13,8 +13,8 @@ const Hero = () => {
       const[index, setindex] = useState<undefined|number>(0)
 
   return(
-       <div className="w-full flex justify-center">
-  <div className="flex justify-center gap-8 md:gap-14 lg:gap-20 mt-5 px-4 w-full max-w-5xl">
+       <div className="w-full h-24   flex justify-center">
+  <div className="flex justify-center gap-8 h-full pb-2 md:gap-14 lg:gap-20  px-4 w-full max-w-5xl">
 
     {/* MEN */}
     <div className="flex flex-col items-center group cursor-pointer">

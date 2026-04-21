@@ -33,7 +33,7 @@ function CarouselSize({ data }) {
   }, [api])
 
   return (
-    <div className="bg-linear-to-t from-white via-amber-50 to-orange-200 ">
+    <div className="bg-white border border-white">
         <Carousel
           setApi={setApi}
           opts={{ align: "center", loop: true }}
@@ -61,10 +61,10 @@ function CarouselSize({ data }) {
 
                   <Card
                     className={`
-                      h-[480px] relative w-full overflow-hidden rounded-2xl
-                      transition-all duration-500 group
-                      ${isActive ? "scale-100" : "scale-90 opacity-70"}
-                      shadow-[0_30px_80px_rgba(0,0,0,0.6)]
+                      h-[480px] rounded-lg relative w-full overflow-hidden
+                      transition-all duration-800 group
+                      ${isActive ? "scale-100" : "scale-90 "}
+                     
                     `}
                   >
    
@@ -76,8 +76,8 @@ function CarouselSize({ data }) {
                         alt={`image${index}`}
                         fill
                         className={`
-        ${index === 0 ? 'object-cover' : 'object-contain object-[165%_0%] '} backdrop-blur-lg transition-all duration-700
-       ${isActive ? (index === 0 ? "scale-110 object-top" : "scale-85") : "scale-75"}
+        ${index === 0 ? 'object-cover' : 'object-contain object-[167%_0%] '} backdrop-blur-lg transition-all duration-700
+       ${isActive ? (index === 0 ? "scale-100 object-top rounded-4xl"  : "scale-85") : "scale-75"}
                           group-hover:scale-110
                         `}
                       />

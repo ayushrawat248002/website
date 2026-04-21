@@ -1,9 +1,16 @@
+
 import CarouselSize from "@/components/slides"
 import model2 from '@/assets/ayush.jpeg'
-import model3 from '@/assets/model6.png'
+import model3 from '@/assets/model7.png'
 import model4 from '@/assets/model4.png'
 import girl from '@/assets/boyband.jpeg'
 import Hero from "@/components/Hero"
+import Animatedsection from "@/components/animatedsection"
+;
+
+
+
+  // 🔥 Animation mappings
 
 const data = [
   { 
@@ -20,7 +27,9 @@ const data = [
   }
 ];
 
-const page = () => {
+const Page = () => {
+  
+ 
   return (
     <main className="p-0 m-0 h-[200vh] w-full">
 
@@ -34,15 +43,15 @@ const page = () => {
         />
 
         {/* STICKY SECTION */}
-        <section className="w-full h-auto sticky top-0 z-50 bg-gradient-to-b from-white via-gray-50 to-white">
+        <section className="w-full h-auto sticky shadow-xl  top-0 z-50 bg-gradient-to-b from-white via-gray-50 to-white pb-2">
 
-          <div className="bg-white/40 backdrop-blur-md border-b border-gray-200/40 flex flex-col items-center py-5 shadow-sm">
+          <div className="bg-white/40 backdrop-blur-md  border-b-0 flex flex-col items-center py-3  ">
 
             <h1 className="text-gray-900 font-semibold text-sm tracking-widest uppercase text-center">
               Authentic Assamese Collection
             </h1>
 
-            <div className="mt-3 w-full flex justify-center">
+            <div className="mt-3 w-full   flex justify-center">
               <Hero />
             </div>
 
@@ -51,9 +60,15 @@ const page = () => {
         </section>
 
         {/* CAROUSEL */}
-        <div>
+        <div className="h-auto  scale-100  mt-1 ">
           <CarouselSize data={data} />
         </div>
+            <>
+             <Animatedsection/>
+            </>
+           
+
+        
 
       </div>
 
@@ -105,4 +120,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

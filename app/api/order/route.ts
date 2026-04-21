@@ -6,7 +6,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const MinutesAgo = Math.floor(Date.now() - 30 * 1000);
+    const MinutesAgo = Math.floor(Date.now() - (40 * 1000));
 
     try {
       const updated = await Order.updateMany(

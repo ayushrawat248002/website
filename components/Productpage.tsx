@@ -4,7 +4,7 @@ import { data } from '@/lib/data.js'
 import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useCartStore } from '@/components/Cartstore'
-
+import { Heart } from "lucide-react";
 
 
 type Product = {
@@ -18,18 +18,65 @@ type ProductCardProps = {
   doc: Product;
   addItem: (p: Product) => void;
 };
-
-const Productcard = React.memo(({ doc, addItem }: ProductCardProps) => {
+export const ProductCard = React.memo(({ doc, addItem, addWishlist }: any) => {
   return (
-    <div className="min-w-[250px] h-[400px] overflow-hidden relative p-4 bg-gray-200 rounded-xl shadow border select-none transform duration-100 ease-linear hover:bg-gray-300">
-      <p className="text-sm font-medium text-black">{doc.name}</p>
-      <p className="text-gray-500 text-sm">₹{doc.price}</p>
+    <div className="group min-w-[260px] h-[350px] rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300">
 
-      <div
-        onClick={() => addItem(doc)}
-        className="bg-gray-500 hover:bg-black text-center text-white w-[200px] rounded-3xl h-11 absolute bottom-2"
-      >
-        Add to Bag
+      {/* 🖼️ Image Section */}
+      <div className="relative h-[280px] w-full overflow-hidden bg-gray-100">
+
+        <img
+          src={doc.image}
+          alt={doc.name}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        {/* 🌑 Gradient Overlay (premium feel) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300" />
+
+        {/* ❤️ Wishlist */}
+        <button
+          onClick={() => addWishlist(doc)}
+          className="absolute top-3 right-3 bg-white/70 backdrop-blur-md p-2 rounded-full shadow-md hover:scale-110 transition"
+        >
+          <Heart size={18} className="text-red-500" />
+        </button>
+
+        {/* 🛒 Floating CTA (appears on hover) */}
+        <button
+  onClick={() => addItem(doc)}
+  className="
+    absolute bottom-4 left-1/2 -translate-x-1/2 
+    bg-black text-white text-sm px-5 py-2 rounded-full
+
+    /* 📱 Mobile: always visible */
+    opacity-100 translate-y-0
+
+    /* 💻 Desktop: hover behavior */
+    md:opacity-0 md:translate-y-4 
+    md:group-hover:opacity-100 md:group-hover:translate-y-0
+
+    transition-all duration-300
+  "
+>
+  Add to Bag
+</button>
+      </div>
+
+      {/* 📄 Info */}
+      <div className="p-4 space-y-1">
+        <p className="text-sm font-medium text-gray-900 truncate">
+          {doc.name}
+        </p>
+
+        <div className="flex items-center justify-between">
+          <p className="text-base font-semibold text-black">
+            ₹{doc.price}
+          </p>
+
+          {/* subtle tag */}
+          <span className="text-xs text-gray-400">In stock</span>
+        </div>
       </div>
     </div>
   );
@@ -93,7 +140,7 @@ const theme = useCartStore((state)=>state.obj.theme)
 
   return (
     <section
-  className={`p-10 h-full w-full   overflow-x-hidden flex flex-col gap-12 bg-white`}
+  className={`pl-2 pr-8 h-full w-full   overflow-x-hidden flex flex-col gap-12 bg-white`}
 >
 
       {categories.map((category, index) => {
@@ -120,7 +167,7 @@ const theme = useCartStore((state)=>state.obj.theme)
               className="flex gap-4 w-[100vw] overflow-x-scroll scrollbar-hide  cursor-grab active:cursor-grabbing"
             >
              {filtered.map((doc: Product) => (
-                 <Productcard  key={doc.id} doc={doc} addItem={addItem} />
+                 <ProductCard  key={doc.id} doc={doc} addItem={addItem} />
                 ))}
             </div>
 

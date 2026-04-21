@@ -64,17 +64,9 @@ export default function RootLayout({
     >
       <body className="m-0 p-0 min-w-svw  max-h-svh   relative bg-yellow-200  text-black font-[var(--font-poppins)]">
 
-        {/* 🔝 HEADER */}
-      
-        
-
-                 
-             <Header/>
-  
-        
-
         {/* 📦 MAIN CONTENT */}
         <main className ="w-full bg-white ">
+             <Header prop ={'section'}/>
           {children}
         </main>
 

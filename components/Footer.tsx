@@ -10,7 +10,7 @@ const Footer = () => {
   
 return(
     <>
-<footer className="sticky bottom-0 z-50  w-full  bg-white  shadow-[0_-2px_10px_rgba(0,0,0,0.8)]">
+<footer className="sticky bottom-0 z-90  w-full  bg-white  shadow-[0_-2px_10px_rgba(0,0,0,0.8)]">
   <section className="flex justify-around items-center py-3 ">
 
     {/* Menu */}
