@@ -50,9 +50,9 @@ export function MenuDrawer() {
     font-family: 'Rock Salt', cursive;
   }
 `}</style>
-          <MenuItem icon={<ShoppingBag size={18} />}  label="Orders" />
+          <MenuItem icon={<ShoppingBag size={18} />} label="Orders" onClick={undefined} />
 
-          <MenuItem icon={<Heart size={18} />} label="Wishlist" />
+          <MenuItem icon={<Heart size={18} />} label="Wishlist" onClick={undefined} />
 
           <MenuItem
             icon={<ShoppingCart size={18} />}
@@ -60,9 +60,9 @@ export function MenuDrawer() {
             onClick={() => router.push('/cart')}
           />
 
-          <MenuItem icon={<User size={18} />} label="Profile" />
+          <MenuItem icon={<User size={18} />} label="Profile" onClick={undefined} />
 
-          <MenuItem icon={<Settings size={18} />} label="Settings" />
+          <MenuItem icon={<Settings size={18} />} label="Settings" onClick={undefined} />
 
         </div>
 
@@ -84,7 +84,7 @@ export function MenuDrawer() {
 }
 
 // Reusable Menu Item
-function MenuItem({ icon, label, onClick }) {
+function MenuItem({ icon , label, onClick }:{icon : any,label :any, onClick: any}) {
   return (
     <button
       onClick={onClick}
