@@ -74,7 +74,7 @@ export default function RootLayout({
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className ="w-full h-[650vh] bg-white ">
+        <main className ="w-full h-[200vh]  bg-white ">
           {children}
              
         </main>
