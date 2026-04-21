@@ -12,7 +12,7 @@ const Animatedsection = () => {
 
   // Background image (slower movement)
   const yBg = useTransform(scrollYProgress, [0, 0.4], [0, -10]);
-  const yFg = useTransform(scrollYProgress, [0, 0.4], [80, -100]);
+  const yFg = useTransform(scrollYProgress, [0, 0.4], [80, -60]);
 
   // Crossfade
   const opacityBg = useTransform(scrollYProgress, [0.2, 0.3], [1, 0]);
