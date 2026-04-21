@@ -61,7 +61,7 @@ function CarouselSize({ data }) {
 
                   <Card
                     className={`
-                      h-[480px] rounded-lg relative w-full overflow-hidden
+                      h-[480px]  relative w-full overflow-hidden
                       transition-all duration-800 group
                       ${isActive ? "scale-100" : "scale-90 "}
                      
@@ -77,7 +77,7 @@ function CarouselSize({ data }) {
                         fill
                         className={`
         ${index === 0 ? 'object-cover' : 'object-contain object-[167%_0%] '} backdrop-blur-lg transition-all duration-700
-       ${isActive ? (index === 0 ? "scale-100 object-top rounded-4xl"  : "scale-85") : "scale-75"}
+       ${isActive ? (index === 0 ? "scale-100 object-top "  : "scale-85") : "scale-75"}
                           group-hover:scale-110
                         `}
                       />
