@@ -1,7 +1,7 @@
 'use client'
 
 
-
+import Link from "next/link"
 import { useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -12,10 +12,10 @@ const Hero = () => {
 
   return(
        <div className="w-full h-24   flex justify-center">
-  <div className="flex justify-center gap-8 h-full pb-2 md:gap-14 lg:gap-20  px-4 w-full max-w-5xl">
+  <div className="flex justify-center  gap-10 h-full pb-2 md:gap-14 lg:gap-20  px-4 w-full max-w-5xl">
      
     {/* MEN */}
-    <div className="flex flex-col items-center group cursor-pointer">
+    <div className="flex flex-col  items-center group cursor-pointer">
      <Image
   onClick={() => {
     setindex(0);
@@ -46,7 +46,7 @@ const Hero = () => {
     </div>
 
     {/* WOMEN */}
-    <div className="flex flex-col items-center -translate-y-2 group cursor-pointer">
+    <div className="flex flex-col  items-center -translate-y-2 group cursor-pointer">
   <Image
   onClick={() => {
     setindex(1);
@@ -63,9 +63,10 @@ const Hero = () => {
   "
 />
 
-      <button
+      <Link
+      href=''
         onClick={() => setindex(1)}
-        className={`-translate-y-[6px] font-mono  tracking-widest text-xs md:text-sm font-medium  transition-all
+        className={`-mt-1 font-mono  tracking-widest text-xs md:text-sm font-medium  transition-all
         ${index === 1 
           ? 'text-black' 
           : 'text-gray-400 group-hover:text-black'}`}
@@ -74,7 +75,7 @@ const Hero = () => {
         {index === 1 && (
           <div className="h-[2px] w-5 bg-black mx-auto mt-1 rounded-full"></div>
         )}
-      </button>
+      </Link>
     </div>
 
     {/* ACCESSORIES */}
@@ -89,9 +90,10 @@ const Hero = () => {
         group-hover:scale-105 group-hover:-translate-y-2"
       />
 
-      <button
+      <Link
+      href=''
         onClick={() => setindex(2)}
-        className={`mt-[15px] font-mono text-xs md:text-sm font-medium tracking-wider transition-all 
+        className={`mt-[20px] ml-2 font-mono text-xs md:text-sm font-medium tracking-wider transition-all 
         ${index === 2 
           ? 'text-black' 
           : 'text-gray-400 group-hover:text-black'}`}
@@ -100,7 +102,7 @@ const Hero = () => {
         {index === 2 && (
           <div className="h-[2px] w-6 bg-black mx-auto mt-1 rounded-full"></div>
         )}
-      </button>
+      </Link>
     </div>
 
   </div>

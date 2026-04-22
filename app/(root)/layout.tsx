@@ -54,9 +54,9 @@ export default function RootLayout({
       
         
 
-               <div className={rockSalt.className}>
+              
              <Header prop={''}/>
-             </div>
+             
         
 
         {/* 📦 MAIN CONTENT */}

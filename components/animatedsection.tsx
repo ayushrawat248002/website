@@ -19,8 +19,7 @@ const { scrollYProgress: scrollZProgress } = useScroll({
 
 
   // Background image (slower movement)
-  const yBg = useTransform(scrollYProgress, [0, 0.4], [0, -10]);
-  const yFg = useTransform(scrollYProgress, [0.2, 0.4], [100, 0]);
+  
 
   // Crossfade
   const opacityBg = useTransform(scrollYProgress, [0.4, 1], [1, 0]);
@@ -28,10 +27,9 @@ const { scrollYProgress: scrollZProgress } = useScroll({
 
   // 🔥 Scale effect
   const scaleBg = useTransform(scrollYProgress, [0.3, 0.5], [1, 0.2]); // shrink
-  const scaleFg = useTransform(scrollYProgress, [0.43, 0.48], [0.5, 1]); // settle in
+  const scaleFg = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1]); // settle in
       
-    const yBg2 = useTransform(scrollZProgress, [0, 1], [-20, 50]);
-  const yFg2= useTransform(scrollZProgress, [0.2, 0.4], [300, 200]);
+  
 
   // Crossfade
   const opacityBg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
@@ -39,7 +37,7 @@ const { scrollYProgress: scrollZProgress } = useScroll({
 
   // 🔥 Scale effect
   const scaleBg2 = useTransform(scrollZProgress, [0.3, 0.5], [1, 0.3]); // shrink
-  const scaleFg2 = useTransform(scrollZProgress, [0.43, 0.52 ], [0.5, 1]); // settle in
+  const scaleFg2 = useTransform(scrollZProgress, [0.3, 0.4 ], [0.5, 1]); // settle in
 
 return(
     <div className={caveat.className}>    
@@ -51,11 +49,11 @@ return(
         {/* First image (fade out + shrink) */}
         <motion.div
   style={{
-    y: yBg,
+    
     opacity: opacityBg,
     scale: scaleBg,
   }}
-  className="h-[550px] w-full sticky top-20 rounded-none shadow-xl z-[10] overflow-hidden relative"
+  className="h-[550px] w-full sticky top-0 rounded-none shadow-xl z-[10] overflow-hidden relative"
 >
   <Image
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
@@ -70,30 +68,32 @@ return(
         {/* Second image (fade in + zoom in slightly) */}
         <motion.div
           style={{
-    y: yFg,
+  
             opacity: opacityFg,
             scale: scaleFg,
           }}
-  className="min-h-[600px] w-full sticky top-32 mt-24 rounded-3xl shadow-xl z-[20] 
-          bg-white    border border-gray-200 
+  className="min-h-[600px] w-full  shadow-xl z-[20] 
+          bg-blue-200  rounded-3xl  border border-gray-200 
                      p-10 flex flex-col justify-between"
         >
+         
           {/* Header */}
           <div className="max-w-xl">
-            <p className="text-lg handwriting text-gray-500  mb-2">New Arrival</p>
-    <h2 className="text-4xl  handwriting text-orange-500 font-bold leading-tight">
+            
+            <p className="text-2xl  handwriting text-gray-700 mb-2">New Arrival</p>
+    <h2 className="text-5xl  handwriting text-white  leading-tight">
               Minimal Summer Essentials
             </h2>
-            <p className="text-gray-600 tracking-widest handwriting    text-lg mt-3">
+            <p className="text-gray-600 tracking-widest handwriting    text-xl mt-3">
       Thoughtfully designed pieces for everyday comfort and effortless style.
             </p>
           </div>
 
   {/* Product Grid */}
-  <div className="grid overflow-x-scroll shadow-2xl  bg-gray-300 snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-10">
+  <div className="grid overflow-x-scroll scrollbar-hide rounded-2xl shadow-2xl  bg-blue-200 snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-10">
 
     {/* Card */}
-    <div className="bg-white shadow-sm   snap-start p-4  hover:shadow-md transition">
+    <div className="bg-white shadow-sm  snap-start p-4  hover:shadow-md transition">
                 <div className="h-60 bg-gray-100 rounded-xl mb-4" />
       <p className="text-gray-800 font-medium">Linen Shirt</p>
       <p className="text-gray-500 text-sm">₹2,499</p>
@@ -114,8 +114,8 @@ return(
           </div>
 
           {/* CTA */}
-  <div className="mt-12">
-    <button className="px-8 py-3 rounded-xl bg-black text-white text-sm font-medium hover:bg-gray-800 transition">
+  <div className="mt-12 ml-20">
+    <button className="px-5 py-3 rounded-xl bg-white text-black text-sm font-medium hover:bg-gray-800 transition">
             Explore Collection
           </button>
   </div>
@@ -136,11 +136,11 @@ return(
 
 <motion.div
   style={{
-    y: yBg2,
+  
     opacity: opacityBg2,
     scale: scaleBg2,
   }}
-  className="h-[500px] w-full sticky top-40 rounded-none shadow-xl z-[30] overflow-hidden relative"
+  className="h-[500px] w-full sticky top-10 rounded-none shadow-xl z-[30] overflow-hidden relative"
 >
   <Image
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
@@ -155,7 +155,7 @@ return(
         {/* Second image (fade in + zoom in slightly) */}
         <motion.div
   style={{
-    y: yFg2,
+  
     opacity: opacityFg2,
     scale: scaleFg2,
   }}
@@ -165,7 +165,7 @@ return(
 >
   {/* Header */}
   <div className="max-w-2xl">
-    <p className="text-xs tracking-[0.3em] uppercase text-white mb-3">
+    <p className="text-2xl tracking-[0.3em] uppercase text-white mb-3">
       Men's Collection
     </p>
 
@@ -173,14 +173,14 @@ return(
       Modern Summer Staples
     </h2>
 
-    <p className="text-white  handwriting mt-4  text-xl">
+    <p className="text-white  handwriting mt-4 tracking-wider  text-xl">
       Elevated essentials designed for everyday wear — clean silhouettes,
       breathable fabrics, and timeless appeal.
     </p>
   </div>
 
   {/* Product Scroll */}
-  <div className="mt-12 overflow-x-auto snap-x snap-mandatory flex gap-8 pb-8">
+  <div className="mt-12 overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-8 pb-8">
 
     {/* Card 1 */}
     <div className="min-w-[270px] snap-start bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all duration-300">

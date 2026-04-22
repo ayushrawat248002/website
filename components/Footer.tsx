@@ -10,27 +10,27 @@ const Footer = () => {
   
 return(
     <>
-<footer className="sticky bottom-0 z-90  w-full  bg-white  shadow-[0_-2px_10px_rgba(0,0,0,0.8)]">
-  <section className="flex justify-around items-center py-3 ">
+<footer className="sticky -bottom-5 pb-2 z-90 px-10 w-full  bg-white  shadow-[0_-2px_10px_rgba(0,0,0,0.8)]">
+  <section className="flex  justify-between items-center py-3 ">
 
     {/* Menu */}
-    <div className="flex flex-col  items-center justify-center  cursor-pointer group">
+    <div className="flex flex-col s  items-center justify-center  cursor-pointer group">
       <TiThMenuOutline size={22} className="text-black group-hover:scale-110 transition" />
-      <h2 className="text-xs font-semibold text-black mt-1">Categories</h2>
+      
     </div>
 
-     <div className="flex flex-col mr-10 items-center justify-center cursor-pointer group">
+     <div className="flex flex-col  items-center justify-center cursor-pointer group">
       <FaHeart size={22} className="text-red-500 group-hover:scale-110 transition" />
-      <h2 className="text-xs font-semibold text-black mt-1">Wishlist</h2>
+    
     </div>
 
     {/* Cart */}
     <div
       onClick={() => router.push('/cart')}
-      className="flex flex-col items-center justify-center cursor-pointer group"
+      className="flex  flex-col items-center justify-center cursor-pointer group"
     >
       <CgProfile size={25} className="text-orange-400 group-hover:scale-110 transition" />
-      <h2 className="text-xs font-semibold text-black mt-1">Profile</h2>
+
     </div>
 
     {/* Wishlist */}

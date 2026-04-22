@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { MenuDrawer } from '@/components/drawercomponent'
 import { useCartStore } from "@/components/Cartstore";
-
+import { rockSalt} from "@/lib/font";
 const Header = ({prop} : {prop : string}) => {
 
   const router = useRouter()
@@ -19,7 +19,7 @@ const Header = ({prop} : {prop : string}) => {
 
   return (
     <>
-      <header className={`w-full ${prop === 'section' ? ' sticky z-70 top-0' : ''}  bg-white pb-6`}>
+      <header className={`w-full  ${prop === 'section' ? ' sticky z-70 top-0' : ''}  bg-white pb-6`}>
        
         {/* Top Bar */}
         <div className="relative flex items-center justify-center h-[85px] px-4 md:px-10 lg:px-16">
@@ -30,7 +30,7 @@ const Header = ({prop} : {prop : string}) => {
           </div>
 
           {/* Brand */}
-          <div className="flex items-center">
+          <div className={`flex ${rockSalt.className} items-center`}>
             <h1 className="text-2xl   md:text-4xl lg:text-5xl text-orange-600 tracking-tighter drop-shadow-sm">
               DRIP
             </h1>
@@ -42,9 +42,9 @@ const Header = ({prop} : {prop : string}) => {
           {/* Right - Cart */}
           <div
             onClick={() => router.push('/cart')}
-            className="absolute right-4 md:right-8 lg:right-12 cursor-pointer active:scale-90 transition"
+            className={`absolute  ${rockSalt.className} right-4 md:right-8 lg:right-12 cursor-pointer active:scale-90 transition`}
           >
-            <FaShoppingCart className="text-orange-500" size={22} />
+            <FaShoppingCart className={`text-orange-500`} size={22} />
 
             {/* Cart Badge */}
             <span className="absolute -top-3 -right-3 bg-black text-white text-[10px] px-1.5 py-[1px] rounded-full">
@@ -54,7 +54,7 @@ const Header = ({prop} : {prop : string}) => {
         </div>
 
         {/* Tagline */}
-        <p className="text-center  mt-2 text-[10px] md:text-sm text-shadow-2xs tracking-widest text-gray-600 -mt-2">
+        <p className={`text-center ${rockSalt.className}  mt-2 text-[10px] md:text-sm text-shadow-2xs tracking-widest text-gray-600 -mt-2`}>
           Whats Your Move Today ?
         </p>
 
@@ -67,7 +67,7 @@ const Header = ({prop} : {prop : string}) => {
             <input
               type="text"
               placeholder="Search kurtas, sarees..."
-              className="w-full  ml-3 bg-transparent outline-none text-[10px] md:text-base text-black placeholder-gray-700"
+              className="w-full font-mono  ml-3 bg-transparent outline-none text-[10px] md:text-base text-black placeholder-gray-700"
             />
 
             <span className="text-gray-400 text-sm">🎤</span>

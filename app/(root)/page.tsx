@@ -46,11 +46,11 @@ const Page = () => {
 </section>
 
         {/* STICKY SECTION */}
-        <section className="w-full h-auto sticky shadow-xl  top-0 z-50 bg-gradient-to-b from-white via-gray-50 to-white pb-2">
+        <section className="w-full h-auto sticky shadow-xl  -top-30 z-50 bg-gradient-to-b from-white via-gray-50 to-white pb-2">
 
           <div className="bg-white/40 backdrop-blur-md  border-b-0 flex flex-col items-center py-3  ">
            
-            <h1 className="text-gray-900  text-[16px] font-mono  text-sm tracking-widest uppercase text-center">
+            <h1 className="text-gray-900  text-[16px]   text-sm tracking-widest uppercase text-center">
               Authentic Assamese Collection
             </h1>
 
