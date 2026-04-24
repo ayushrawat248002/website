@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import {rockSalt} from "@/lib/font"
+import {caveat,rockSalt} from "@/lib/font"
 const Animatedsection = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -29,7 +29,7 @@ const { scrollYProgress: scrollZProgress } = useScroll({
   const scaleBg = useTransform(scrollYProgress, [0.6, 0.82], [0.6, 1]); // shrink
   const scaleFg = useTransform(scrollYProgress, [0.5, 1], [0, 1]); // settle in
       
-const x = useTransform(scrollYProgress, [0, 1], ["-0%", "-125%"]);
+const x = useTransform(scrollYProgress, [0, 1], ["-0%", "-145%"]);
 const y =   useTransform(scrollYProgress, [0, 0.2], ["100%", "0%"]);
   // Crossfade
   const opacityBg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
@@ -46,11 +46,11 @@ return(
         
   <div className="h-[100vh] w-[100vw]   flex flex-row sticky top-5 overflow-hidden">
        <motion.div style={{opacity:opacityFg}} className="text-xl   shrink-0 mt-10 h-12 w-[100vw] text-black text-center"> New Arrivals</motion.div>
-    <motion.div style={{ x : x , scale:scaleBg,opacity:opacityFg}} className="flex   rounded-3xl h-[100vh] gap-2 py-1  bg-amber-50    w-max">
+    <motion.div style={{ x : x , scale:scaleBg,opacity:opacityFg}} className="flex   rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
       
       {/* Card 1 */}
     
-      <div className=" w-[600px] rounded-3xl mr-1  relative text-black   text-center  shrink-0">
+      <div className=" w-[600px] shadow-2xl rounded-3xl mr-1  relative text-black   text-center  shrink-0">
        <Image
            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg"
            alt="background"
@@ -62,17 +62,17 @@ return(
       </div>
 
       {/* Card 2 */}
-      <div className="relative w-[600px] h-full   text-black shrink-0">
+      <div className="relative w-[600px] h-full shadow-2xl   text-black shrink-0">
         <Image
             src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
             alt="background"
             fill
             priority
             fetchPriority="high"
-            className="object-cover scale-115 object-left"
+            className="object-cover  object-center"
           />
       </div>
-        <div className="relative  w-[600px] text-black text-center shrink-0">
+        <div className="relative  w-[600px] shadow-2xl text-black text-center shrink-0">
        <Image
            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
            alt="background"
@@ -82,25 +82,25 @@ return(
            className="object-cover object-center"
          />
       </div>
-        <div className=" w-[600px]  sticky left-0 text-black text-center  shrink-0">
+        <div className=" w-[600px] shadow-2xl sticky left-0 text-black text-center  shrink-0">
        <Image 
            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582825/samples/shoe.jpg"
            alt="background"
            fill
            priority
            fetchPriority="high"
-           className="object-cover scale-115 object-center"
+           className="object-cover  object-center"
            
          />
       </div>
-       <div className=" w-[600px]  relative text-black  text-center  shrink-0">
+       <div className=" w-[600px] shadow-2xl relative text-black  text-center  shrink-0">
        <Image
            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582823/samples/two-ladies.jpg"
            alt="background"
            fill
            priority
            fetchPriority="high"
-           className="object-cover scale-90 object-center"
+           className="object-cover  object-center"
          />
       </div>
 
@@ -111,7 +111,7 @@ return(
      
      
   </div>
-        <motion.div style={{opacity:opacityBg , scale:scaleBg ,y : 300 }} className="bg-white h-[120vh] w-full  sticky top-0 z-20">
+        <motion.div style={{opacity:opacityBg , scale:scaleBg ,y : 300 }} className={`bg-white ${caveat.className} h-[120vh] w-full  sticky top-0 shadow-[0_-5px_6px_-1px_rgba(0,0,0,0.2)] z-20`}>
          <motion.div
         
   className="min-h-[300px] w-full  shadow-2xl inset-shadow-black z-[20] 
@@ -122,17 +122,17 @@ return(
           {/* Header */}
           <div className="max-w-xl">
             
-            <p className="text-2xl   text-gray-700 mb-2">New Arrival</p>
-    <h2 className="text-5xl mt-10   text-orange-600  leading-15">
+            <p className="text-3xl   text-gray-700 mb-2">New Arrival</p>
+    <h2 className="text-5xl mt-10   text-orange-600  leading-6">
               Minimal Summer Essentials
             </h2>
-            <p className="text-gray-600 mt-10 tracking-widest handwriting    text-xl mt-3">
+            <p className="text-gray-600 mt-10 tracking-widest handwriting    text-2xl mt-3">
       Thoughtfully designed pieces for everyday comfort and effortless style.
             </p>
           </div>
 
   {/* Product Grid */}
-  <div className="grid overflow-x-scroll scrollbar-hide rounded-2xl shadow-xl shadow-orange-400  bg-blue-200 snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-10">
+  <div className="grid overflow-x-scroll scrollbar-hide rounded-2xl shadow-2xl  bg-blue-200 snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-10">
 
     {/* Card */}
     <div className="bg-white shadow-sm  snap-start p-4  hover:shadow-md transition">
@@ -168,7 +168,7 @@ return(
 </section>
 
      
-      <section ref={secondRef} className="h-auto mt-100 bg-black/10 backdrop-blur-lg">
+      <section ref={secondRef} className={`h-auto ${caveat.className} mt-100 bg-black/10 backdrop-blur-lg`}>
                 <div  className="relative flex flex-col items-start">
           
         {/* First image (fade out + shrink) */}

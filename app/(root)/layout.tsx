@@ -60,7 +60,7 @@ export default function RootLayout({
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className ={`w-full h-[950vh] bg-white ${caveat.className} `}>
+        <main className ={`w-full h-[950vh] bg-white ${bebas.className} `}>
           {children}
              
         </main>

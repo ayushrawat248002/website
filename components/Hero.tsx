@@ -4,6 +4,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import Image from "next/image"
+import { bebas } from "@/lib/font"
 import { useRouter } from "next/navigation"
 const Hero = () => {
 
@@ -15,7 +16,7 @@ const Hero = () => {
   <div className="flex justify-center  gap-10 h-full pb-2 md:gap-14 lg:gap-20  px-4 w-full max-w-5xl">
      
     {/* MEN */}
-    <div className="flex flex-col  items-center group cursor-pointer">
+    <div className={`flex flex-col ${bebas.className}  items-center group cursor-pointer`}>
      <Image
   onClick={() => {
     setindex(0);
