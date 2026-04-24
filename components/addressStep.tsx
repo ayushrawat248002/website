@@ -16,7 +16,7 @@ type FormType = {
   pincode: string;
 };
 
-const AddressStep = ({ dispatch }: Props) => {
+const AddressStep = ({ dispatch, changeState }:any) => {
   const cart = useCartStore((state) => state.obj.cart);
   const addAddress = useCartStore((state) => state.setAddress);
   const saveAddress = useCartStore((state) => state.obj.address);
@@ -73,6 +73,7 @@ const AddressStep = ({ dispatch }: Props) => {
 
     localStorage.setItem('total', JSON.stringify(total));
     dispatch({ type: "GO_TO_STEP", payload: "payment" });
+     changeState(false)
   };
 
   const inputClass = (field: keyof FormType) =>

@@ -7,7 +7,7 @@ const page = () => {
    const [toogle, setToogle] = useState(false)
 
    const pauseMechanism = async() => {
-      await new Promise<void>((res)=>setTimeout(()=> {res()},3500));
+      await new Promise<void>((res)=>setTimeout(()=> {res()},2500));
       setToogle(true);
    }
          useEffect(()=>{

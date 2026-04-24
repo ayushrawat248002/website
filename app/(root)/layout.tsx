@@ -4,7 +4,7 @@ import Image from "next/image";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {bebas,rockSalt} from '@/lib/font'
+import {bebas,caveat,rockSalt} from '@/lib/font'
 
 export const metadata = {
   metadataBase: new URL("https://dripbohag.com"),
@@ -60,7 +60,7 @@ export default function RootLayout({
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className ={`w-full h-[650vh] bg-white ${bebas.className} `}>
+        <main className ={`w-full h-[950vh] bg-white ${caveat.className} `}>
           {children}
              
         </main>

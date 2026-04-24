@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 
 import { useCartStore } from "@/components/Cartstore";
 
-const Cart = ({ dispatch }: any) => {
+const Cart = ({ dispatch , changeState }: any) => {
   const cart = useCartStore((state) => state.obj.cart);
   const increase = useCartStore((state) => state.increase);
   const decrease = useCartStore((state) => state.decrease);
@@ -89,8 +89,11 @@ const Cart = ({ dispatch }: any) => {
             </p>
 
             <button
-              onClick={() =>
-                dispatch({ type: "GO_TO_STEP", payload: "address" })
+              onClick={() =>{
+                 changeState(false) 
+                dispatch({ type: "GO_TO_STEP", payload: "address" });
+                
+              }
               }
               className="mt-4 md:mt-0 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow"
             >
