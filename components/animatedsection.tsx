@@ -292,7 +292,7 @@ return(
       
     </section>
              
-             <section ref={ref2} className="h-[400vh] w-full relative">
+             <section ref={ref2} className="h-[350vh] w-full relative">
             <div className="absolute inset-0">
            <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-10 text-3xl">Collection</h2>
