@@ -28,7 +28,7 @@ const Page = () => {
   
  
   return (
-    <main className="p-0 m-0 h-[200vh] w-full">
+    <main className="p-0 m-0 h-full w-full">
 
       {/* ================= MOBILE (UNCHANGED) ================= */}
       <div className="block md:hidden">
@@ -66,9 +66,9 @@ const Page = () => {
         <div className="h-auto  scale-100  mt-1 ">
           <CarouselSize data={data} />
         </div>
-            <>
+            <div className="h-auto">
              <Animatedsection/>
-            </>
+            </div>
            
 
         

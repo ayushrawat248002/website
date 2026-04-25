@@ -8,9 +8,11 @@ import { useCartStore } from "./Cartstore";
 export default function Home() {
   const router = useRouter();
   const [total, setTotal] = useState<number | null>(null);
+  const displayTotal = total ?? 0;
   const [order, setorder] = useState<null|number>(null);
   const[loading,setloading] = useState<boolean>(false);
   const clearcart = useCartStore((state)=>state.clearCart)
+  const buyerDetail = useCartStore((state) => state.obj.currentaddress)
   useEffect(() => {
     const stored = localStorage.getItem("total");
     if (stored) setTotal(JSON.parse(stored));
@@ -30,7 +32,7 @@ export default function Home() {
       alert("Payment SDK not loaded. Please wait.");
       return;
     }
-
+    setloading(true)
     const res = await fetch("/api/create-order", {
       method: "POST",
       headers: {
@@ -41,6 +43,7 @@ export default function Home() {
 
     const order = await res.json();
      setorder(order.id)
+     setloading(false)
 
   const options = {
   key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
@@ -95,27 +98,73 @@ rzp.on("payment.failed", async function (response: any) {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-white">
-      <Script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        strategy="afterInteractive"
-      />
+   <div className="min-h-screen  bg-gray-100 flex justify-center items-center p-6">
+  <Script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    strategy="afterInteractive"
+  />
 
-      {loading ? (<div><Spinner className="h-30" /></div>) : <>
-      
-                 <h2 className="text-3xl text-black font-bold mb-4">
-        Total Payment: ₹{total ?? "Loading..."}
+  {loading ? (
+    <div>
+      <Spinner className="h-30" />
+    </div>
+  ) : (
+    <div className="bg-white overflow-y-scroll h-auto text-black shadow-xl rounded-2xl w-full max-w-3xl p-6 space-y-6">
+
+      {/* Heading */}
+      <h2 className="text-2xl font-bold text-black">
+        Checkout
       </h2>
 
+      {/* User Info */}
+      <div className="border p-4 rounded-lg">
+        <h3 className="font-semibold mb-2">Customer Details</h3>
+        <p>{buyerDetail.fullName}</p>
+        <p>{buyerDetail.address}</p>
+        <p>{buyerDetail.city}</p>
+         <p>{buyerDetail.pincode}</p>
+         <p>{buyerDetail.phone}</p>
+        <p>Email: johndoe@email.com</p>
+      </div>
+
+      {/* Address */}
+  
+
+      {/* Price Breakdown */}
+      <div className="border p-4 rounded-lg space-y-2">
+        <div className="flex justify-between">
+          <span>Subtotal</span>
+          <span>₹{total}</span>
+        </div>
+
+        <div className="flex justify-between">
+          <span>Shipping</span>
+          <span>₹50</span>
+        </div>
+
+        <div className="flex justify-between">
+          <span>Tax</span>
+          <span>₹100</span>
+        </div>
+
+        <hr />
+
+        <div className="flex justify-between font-bold text-lg">
+          <span>Total</span>
+          <span>₹{displayTotal + 150}</span>
+        </div>
+      </div>
+
+      {/* Pay Button */}
       <button
-        className="border border-black text-black rounded-3xl px-6 py-3 hover:bg-black hover:text-white transition"
+        className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition"
         onClick={handlePayment}
       >
-        Pay Now
+        Pay 
       </button>
-      </>}
 
-     
     </div>
+  )}
+</div>
   );
 }

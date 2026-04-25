@@ -43,11 +43,11 @@ const ref2 = useRef(null);
   const scaleFg = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1]); // settle in
 
      const opacityFg3 = useTransform(scrollMProgress, [0.65, 0.75], [1, 0]);//adsa
-        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.65], [0.6,0.7]); // shrink
+        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.7], [0.5,0.65]); // shrink
   // Crossfade
   const opacityBg2 = useTransform(scrollZProgress, [0.35, 0.5], [1, 0]);
   const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
-  const  x = useTransform(scrollMProgress, [0.2, 0.7], ["-20%", "-84%"]);
+  const  x = useTransform(scrollMProgress, [0.2, 0.7], ["-20%", "-82.5%"]);
   // 🔥 Scale effect
   const scaleBg2 = useTransform(scrollZProgress, [0.2, 1], [1, 0.7]); // shrink
   const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
@@ -78,7 +78,7 @@ const ref2 = useRef(null);
       console.log(visible)
    },[visible])
 return(
-    <div className={caveat.className}>    
+    <div className={`${caveat.className} h-full`}>    
       
           <section ref={ref} className="h-auto text-shadow-2xs  text-shadow-orange-500 bg-gray-200 font-bold  backdrop-blur-md">
       
@@ -98,7 +98,7 @@ return(
     fill
     priority
     fetchPriority="high"
-    className="object-cover object-center"
+    className="object-cover opacity-95 object-center"
   />
 </motion.div>
 
@@ -110,7 +110,7 @@ return(
             scale: scaleFg,
           }}
   className="min-h-[600px] w-full   z-[20] 
-        bg-white text-shadow-none  text-black  rounded-3xl border  border-gray-200
+        bg-white text-shadow-none  text-black  rounded-3xl 
                      p-10 flex flex-col justify-between"
         >
          
@@ -206,14 +206,14 @@ return(
   }}
   className=" w-full h-full  relative rounded-none shadow-xl overflow-hidden "
 >
-  <div className="absolute inset-0 z-20"></div>
+     
   <Image
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
     alt="assam background"
     fill
     priority
     fetchPriority="high"
-    className="object-cover object-center"
+    className="object-cover opacity-90 object-center"
   />
 </motion.div>
 </div>
@@ -225,16 +225,16 @@ return(
     scale: scaleFg2,
   }}
   className="min-h-[400px] w-full sticky rounded-2xl  shadow-xl z-[40] 
-              bg-orange-300
+              bg-orange-100
              p-10 flex flex-col "
 >
   {/* Header */}
   <div className=" text-xs  max-w-2xl">
-    <p className=" tracking-[0.3em] uppercase text-2xl text-white mb-3">
+    <p className=" tracking-[0.3em] uppercase text-2xl text-black mb-3">
       Men's Collection
     </p>
 
-    <h2 className="text-[20px] tracking-widest handwriting font-semibold text-white leading-tight">
+    <h2 className="text-[20px] tracking-widest handwriting font-semibold text-black leading-tight">
       Modern Summer Staples
     </h2>
 
@@ -276,7 +276,7 @@ return(
 
   {/* CTA */}
   <div className="mt-0 flex items-center justify-between">
-    <p className=" handwriting text-[22px] leading-6 text-white">
+    <p className=" handwriting text-[22px] leading-6 text-black">
       Discover refined menswear essentials crafted for modern lifestyles.
     </p>
 
@@ -351,7 +351,7 @@ return(
     </div>
     </div>
      <div className="absolute inset-0 overflow-y-scroll">
-     <section className={`min-h-[1200px] ${!visible ? 'absolute z-10 opacity-100' : 'opacity-0'} bg-black transition-opacity ease-in-out duration-200  text-white px-6 py-20`}>
+     <section className={`min-h-[1200px] ${!visible ? 'absolute z-10 opacity-100' : 'opacity-0'} bg-white transition-opacity ease-in-out duration-200  text-black px-6 py-20`}>
   <div className="max-w-7xl mx-auto space-y-20">
 
     {/* 🔥 Minimal Heading */}
@@ -359,7 +359,7 @@ return(
       <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
         New Drop
       </h2>
-      <span className="text-gray-400 text-sm uppercase tracking-widest">
+      <span className="text-black text-sm uppercase tracking-widest">
         SS / 24 Collection
       </span>
     </div>
@@ -396,7 +396,7 @@ return(
               className="w-full h-[240px] object-cover group-hover:scale-105 transition duration-700"
             />
             <div className="absolute inset-0 bg-black/40"></div>
-            <div className="absolute bottom-5 left-5 text-lg font-medium">
+            <div className="absolute bottom-5 left-5 text-lg text-black font-medium">
               {text}
             </div>
           </div>
@@ -409,7 +409,7 @@ return(
     <div>
       <div className="flex justify-between items-center mb-8">
         <h3 className="text-2xl font-medium">Featured Pieces</h3>
-        <span className="text-gray-500 text-sm">View All</span>
+        <span className="text-black text-sm">View All</span>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -449,7 +449,7 @@ return(
             
 
       <section  ref={ref3}
-             className="bg-black text-white px-6 py-24 ">
+             className="bg-white text-white px-6 py-24 ">
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
     {/* 🖼 Image */}
@@ -463,7 +463,7 @@ return(
 
     {/* ✍️ Story */}
     <div>
-      <p className="text-xs tracking-[0.3em] text-gray-500 mb-4">
+      <p className="text-xs tracking-[0.3em] text-black mb-4">
         OUR STORY
       </p>
 
@@ -496,6 +496,73 @@ return(
 
   </div>
 </section>
+
+     <footer className={`bg-orange-100 ${bebas.className} tracking-widest text-orange-500 px-6 py-16 text-3xl border-t border-gray-800`}>
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+        
+        {/* Brand */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="text-2xl font-bold mb-4">
+            Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Brand</span>
+          </h3>
+          <p className="text-black leading-relaxed tracking-widest text-xl">
+            Crafting beautiful, modern web experiences with a focus on
+            performance and design precision.
+          </p>
+        </motion.div>
+
+        {/* Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <h4 className="font-semibold mb-4 text-orange-500">Navigation</h4>
+          <ul className="space-y-2 text-black text-sm">
+            {["Home", "About", "Services", "Contact"].map((item) => (
+              <li
+                key={item}
+                className=" transition cursor-pointer relative w-fit group"
+              >
+                {item}
+             
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* Newsletter */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h4 className="font-semibold mb-4 text-orange-500">Stay Updated</h4>
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 blur-lg opacity-20 rounded-2xl"></div>
+            <div className="relative flex bg-gray-900 rounded-2xl overflow-hidden">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-transparent px-4 py-3 outline-none w-full text-sm text-gray-300"
+              />
+              <button className="px-5 text-white py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-sm font-semibold hover:scale-105 transition">
+                Join
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Bottom */}
+      <div className="text-center text-gray-500 text-sm mt-12">
+        © {new Date().getFullYear()} YourBrand. All rights reserved.
+      </div>
+    </footer>
     
   
 
