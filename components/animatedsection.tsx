@@ -292,7 +292,7 @@ return(
       
     </section>
              
-             <section ref={ref2} className="h-[350vh] w-full relative">
+             <section ref={ref2} className="h-[300vh]  w-full relative">
             <div className="absolute inset-0">
            <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-10 text-3xl">Collection</h2>
@@ -350,8 +350,8 @@ return(
      <h2 className="text-black w-full h-10 text-lg">heyyydyasdyasydaysdyady</h2>
     </div>
     </div>
-     <div className="absolute inset-0">
-     <section className={`min-h-[800px] ${!visible ? 'absolute z-10 opacity-100' : 'opacity-0'} bg-black transition-opacity ease-in-out duration-200  text-white px-6 py-20`}>
+     <div className="absolute inset-0 overflow-y-scroll">
+     <section className={`min-h-[1200px] ${!visible ? 'absolute z-10 opacity-100' : 'opacity-0'} bg-black transition-opacity ease-in-out duration-200  text-white px-6 py-20`}>
   <div className="max-w-7xl mx-auto space-y-20">
 
     {/* 🔥 Minimal Heading */}
@@ -449,7 +449,7 @@ return(
             
 
       <section  ref={ref3}
-             className="bg-black text-white px-6 py-24">
+             className="bg-black text-white px-6 py-24 ">
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
     {/* 🖼 Image */}
