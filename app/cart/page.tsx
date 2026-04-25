@@ -20,7 +20,7 @@ const stepComponents : any = {
 
 export default function CartPage() {
   const [state, dispatch] = useReducer(checkoutReducer, initialState);
-  const[loading, setloading] = useState(false)
+  const[loading, setloading] = useState(true)
  
   const changeState = (state : any) => {
     setloading(state)
@@ -42,11 +42,11 @@ export default function CartPage() {
   const StepComponent = stepComponents[state.step];
 
   return (
-    <main className="h-full w-full">
+    <main className="h-[100vh] ">
    
-      {!loading && <Spinner/>}
+      {!loading && <div className="h-full  flex items-center justify-center "><Spinner/></div>}
       {/* 🚀 Render selected strategy */}
-      { (StepComponent&&loading) && <StepComponent dispatch={dispatch} changeState = {changeState} />}
+      { (StepComponent&&loading) && <div className="h-[100vh] overflow-y-scroll"><StepComponent dispatch={dispatch} changeState = {changeState} /></div>}
     </main>
   );
 }
