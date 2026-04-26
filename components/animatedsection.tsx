@@ -37,7 +37,7 @@ const ref2 = useRef(null);
   // Crossfade
   const opacityBg = useTransform(scrollYProgress, [0.35, 0.5], [1, 0]);
   const opacityFg = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
-
+  const y = useTransform(scrollMProgress,[0 ,0.1],[0 , 0])
   // 🔥 Scale effect
   const scaleBg = useTransform(scrollYProgress, [0.3, 1], [0.95, 0.7]); // shrink
   const scaleFg = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1]); // settle in
@@ -110,7 +110,7 @@ return(
             scale: scaleFg,
           }}
   className="min-h-[600px] w-full   z-[20] 
-        bg-white text-shadow-none  text-black  rounded-3xl 
+        bg-orange-100 text-shadow-none  text-black  rounded-3xl 
                      p-10 flex flex-col justify-between"
         >
          
@@ -193,15 +193,15 @@ return(
     </section>
 
       <section ref={secondRef} className="h-auto mt-6 font-bold  bg-white">
-                <div  className="relative flex flex-col items-start">
+                <div    className="relative flex flex-col items-start">
           
         {/* First image (fade out + shrink) */}
    
-<div className=" h-[500px]  sticky top-10 w-full">
+<div className=" h-[600px]  sticky top-10 w-full">
 <motion.div
   style={{
   
-
+      
     scale: scaleBg2,
   }}
   className=" w-full h-full  relative rounded-none shadow-xl overflow-hidden "
@@ -220,9 +220,10 @@ return(
         {/* Second image (fade in + zoom in slightly) */}
         <motion.div
   style={{
-  
+     y : y,
     opacity: opacityFg2,
     scale: scaleFg2,
+  
   }}
   className="min-h-[400px] w-full sticky rounded-2xl  shadow-xl z-[40] 
               bg-orange-100
@@ -347,12 +348,19 @@ return(
 
    
     </motion.div>
-     <h2 className="text-black w-full h-10 text-lg">heyyydyasdyasydaysdyady</h2>
+    
     </div>
     </div>
-     <div className="absolute inset-0 overflow-y-scroll">
-     <section className={`min-h-[1200px] ${!visible ? 'absolute z-10 opacity-100' : 'opacity-0'} bg-white transition-opacity ease-in-out duration-200  text-black px-6 py-20`}>
-  <div className="max-w-7xl mx-auto space-y-20">
+
+     <div className="absolute  inset-0 ">
+      
+    <section
+  className={`min-h-[1100px] 
+  ${!visible ? 'opacity-100 absolute z-10' : 'opacity-0'} 
+  bg-white transition-opacity duration-500 ease-in-out 
+  text-black px-6 py-20`}
+>
+  <div className="max-w-7xl mx-auto  space-y-20">
 
     {/* 🔥 Minimal Heading */}
     <div className="flex justify-between items-end">
@@ -370,18 +378,18 @@ return(
       {/* Large Editorial Card */}
       <div className="md:col-span-2 relative group overflow-hidden rounded-2xl">
         <img
-          src="https://images.unsplash.com/photo-1523398002811-999ca8dec234"
+          src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
           className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
 
         <div className="absolute bottom-8 left-8">
-          <p className="text-xs tracking-widest text-gray-400 mb-2">
+          <p className="text-xs tracking-widest text-white mb-2">
             LIMITED EDITION
           </p>
-          <h3 className="text-3xl font-semibold">Urban Shadow Fit</h3>
-          <button className="mt-4 px-6 py-2 border border-white/40 hover:border-white text-sm tracking-wide">
+          <h3 className="text-3xl text-white font-semibold">Urban Shadow Fit</h3>
+          <button className="mt-4 px-6 text-white py-2 border border-white/40 hover:border-white text-sm tracking-wide">
             EXPLORE
           </button>
         </div>
@@ -392,11 +400,11 @@ return(
         {["Oversized Tees", "Minimal Sets"].map((text, i) => (
           <div key={i} className="relative group overflow-hidden rounded-2xl">
             <img
-              src="https://images.unsplash.com/photo-1516826957135-700dedea698c"
+              src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183530/photo-1516826957135-700dedea698c_yw21xp.jpg"
               className="w-full h-[240px] object-cover group-hover:scale-105 transition duration-700"
             />
             <div className="absolute inset-0 bg-black/40"></div>
-            <div className="absolute bottom-5 left-5 text-lg text-black font-medium">
+            <div className="absolute bottom-5 left-5 text-lg text-white font-medium">
               {text}
             </div>
           </div>
@@ -406,35 +414,35 @@ return(
     </div>
 
     {/* 🛍 Product Grid */}
-    <div>
+    <div className="">
       <div className="flex justify-between items-center mb-8">
         <h3 className="text-2xl font-medium">Featured Pieces</h3>
         <span className="text-black text-sm">View All</span>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {[1,2,3,4,5,6,7,8].map((item) => (
+      <div className="grid grid-cols-2  md:grid-cols-2 gap-6">
+        {[1,2,3,4].map((item) => (
           <div
             key={item}
             className="group cursor-pointer"
           >
             <div className="relative overflow-hidden rounded-xl bg-neutral-900">
               <img
-                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b"
+                src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183566/photo-1523381210434-271e8be1f52b_yquzuo.jpg"
                 className="w-full h-60 object-cover group-hover:scale-105 transition duration-500"
               />
 
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                <button className="px-4 py-2 border border-white text-sm">
+                <button className="px-4 py-2 border border-white text-black text-sm">
                   Quick View
                 </button>
               </div>
             </div>
 
             <div className="mt-3">
-              <p className="text-sm text-gray-300">Oversized Hoodie</p>
-              <p className="text-white font-medium">₹4,999</p>
+              <p className="text-sm text-black text-[20px]">Oversized Hoodie</p>
+              <p className="text-black font-medium">₹4,999</p>
             </div>
           </div>
         ))}
@@ -443,7 +451,8 @@ return(
 
   </div>
 </section>
-  </div>
+</div>
+
   
    </section>
             
@@ -455,7 +464,7 @@ return(
     {/* 🖼 Image */}
     <div className="relative group overflow-hidden rounded-2xl">
       <img
-        src="https://images.unsplash.com/photo-1523398002811-999ca8dec234"
+        src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
         className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
@@ -463,29 +472,29 @@ return(
 
     {/* ✍️ Story */}
     <div>
-      <p className="text-xs tracking-[0.3em] text-black mb-4">
+      <p className="text-xl tracking-[0.3em] text-black mb-4">
         OUR STORY
       </p>
 
-      <h2 className="text-4xl md:text-5xl font-semibold leading-tight mb-6">
+      <h2 className="text-4xl text-black md:text-5xl font-semibold leading-tight mb-6">
         Built from the Streets.
         <br />
         Designed for the Culture.
       </h2>
 
-      <p className="text-gray-400 leading-relaxed mb-6">
+      <p className="text-gray-400 text-[20px] leading-relaxed mb-6">
         What started as a small idea between creators turned into a movement.
         We weren’t trying to follow trends — we were creating pieces that
         reflected identity, attitude, and individuality.
       </p>
 
-      <p className="text-gray-400 leading-relaxed mb-6">
+      <p className="text-gray-400 text-[20px] leading-relaxed mb-6">
         Every drop is intentional. Every design tells a story. From oversized
         silhouettes to minimal palettes, we craft clothing that blends
         comfort with statement.
       </p>
 
-      <p className="text-gray-500 leading-relaxed mb-8">
+      <p className="text-gray-500 text-[30px] leading-relaxed mb-8">
         This isn’t just fashion. It’s expression. It’s culture.
       </p>
 
@@ -497,7 +506,7 @@ return(
   </div>
 </section>
 
-     <footer className={`bg-orange-100 ${bebas.className} tracking-widest text-orange-500 px-6 py-16 text-3xl border-t border-gray-800`}>
+     <footer className={`bg-white/40 shadow-2xl ${bebas.className} tracking-widest text-orange-500 px-6 py-16 text-3xl`}>
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
         
         {/* Brand */}

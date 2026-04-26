@@ -26,7 +26,7 @@ return(
 
     {/* Cart */}
     <div
-      onClick={() => router.push('/cart')}
+      onClick={() => router.push('/profile')}
       className="flex  flex-col items-center justify-center cursor-pointer group"
     >
       <CgProfile size={25} className="text-orange-400 group-hover:scale-110 transition" />
