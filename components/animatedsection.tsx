@@ -319,7 +319,7 @@ return(
             <div className="absolute  inset-0">
            <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
-                    <section className={`bg-gray-50 h-screen ${!visiblesec ? 'opacity-0 ' :'opacity-100'} transform transition-opacity duration-600 ease-linear absolute py-16 px-6 md:px-20`}>
+                    <section className={`bg-gray-50 h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ease-linear absolute py-16 px-6 md:px-20`}>
       <div className="max-w-4xl mx-auto text-center">
         
         {/* Heading */}
@@ -419,11 +419,10 @@ return(
     </div>
     </div>
 
-     <div className="absolute  inset-0   ">
+     <div className={`absolute ${!visible ? 'opacity-100  z-10' : '  opacity-0 -z-10'}  inset-0   `}>
       <div className=" absolute overflow-y-auto top-10 h-full w-full">
     <section
   className={`min-h-full
-  ${!visible ? 'opacity-100 absolute z-10' : 'opacity-0'} 
   bg-gray-100/80
   backdrop-blur-lg  transform  transition-opacity duration-500 ease-linear 
   text-black px-6 py-20`}
