@@ -55,10 +55,10 @@ const ref2 = useRef(null);
   
   useEffect(()=>{
         const unsubscribe = scrollMProgress.on("change", (v) => {
-    if(v >= 0.2){
+    if(v >= 0.3){
      setVisibleSec(false)
     }
-    if (v >= 1) {
+    if (v >= 0.9) {
       setVisible(false)
     }
   });
@@ -97,7 +97,7 @@ return(
   className="h-[550px] w-full sticky top-0 rounded-none shadow-xl z-[10] overflow-hidden relative"
 >
   <Image
-    src="https://res.cloudinary.com/dfehgukz3/image/upload/v1776796425/assam1_ma7htp.jpg"
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
     alt="background"
     fill
     priority
@@ -140,9 +140,8 @@ return(
                   <Image
                   alt="girl"
                   fill
-                   priority
-                  fetchPriority="high"
-                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/v1766582818/samples/bike.jpg'}
+                  sizes="100vw"
+                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1766582818/samples/bike.jpg'}
                    className="object-cover object-center"
                   />
                 </div>
@@ -157,7 +156,7 @@ return(
                   fill
                    priority
                   fetchPriority="high"
-                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/v1766582828/samples/look-up.jpg'}
+                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1766582828/samples/look-up.jpg'}
                    className="object-cover object-center"
                   />
       </div>
@@ -172,7 +171,7 @@ return(
                   fill
                    priority
                   fetchPriority="high"
-                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/v1766582831/samples/upscale-face-1.jpg'}
+                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1766582831/samples/upscale-face-1.jpg'}
                    className="object-cover object-center"
                   />
         </div>
@@ -211,8 +210,7 @@ return(
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
     alt="assam background"
     fill
-    priority
-    fetchPriority="high"
+    sizes="100vw"
     className="object-cover object-center "
   />
 
@@ -375,9 +373,8 @@ return(
         <Image
             src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
             alt="background"
-            fill
-            priority
-            fetchPriority="high"
+          fill
+            sizes="100vw"
             className="object-cover  object-center"
           />
       </div>
@@ -385,9 +382,7 @@ return(
        <Image
            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
            alt="background"
-           fill
-           priority
-           fetchPriority="high"
+            fill
            className="object-cover object-center"
          />
       </div>
@@ -395,9 +390,7 @@ return(
        <Image 
            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582825/samples/shoe.jpg"
            alt="background"
-           fill
-           priority
-           fetchPriority="high"
+            fill
            className="object-cover  object-center"
            
          />
@@ -406,9 +399,7 @@ return(
        <Image
            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582823/samples/two-ladies.jpg"
            alt="background"
-           fill
-           priority
-           fetchPriority="high"
+          fill
            className="object-cover  object-center"
          />
       </div>
@@ -444,8 +435,15 @@ return(
 
       {/* Large Editorial Card */}
       <div className="md:col-span-2 relative group overflow-hidden rounded-2xl">
-        <img
+        <Image
+        alt='black guy'
+          
+          priority
+            width={800}
+  height={600}
           src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
+             
+  
           className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
         />
 
@@ -466,7 +464,12 @@ return(
       <div className="flex flex-col gap-6">
         {["Oversized Tees", "Minimal Sets"].map((text, i) => (
           <div key={i} className="relative group overflow-hidden rounded-2xl">
-            <img
+            <Image  
+            alt="guy"
+    priority
+        
+          width={800}
+  height={600}
               src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto,c_fill,g_auto/v1777183530/photo-1516826957135-700dedea698c_yw21xp.jpg"
               className="w-full h-[240px] object-cover group-hover:scale-105 transition duration-700"
             />
@@ -494,7 +497,14 @@ return(
             className="group cursor-pointer"
           >
             <div className="relative overflow-hidden rounded-xl bg-neutral-900">
-              <img
+              <Image
+                
+                alt="tees"
+              
+                 width={600}
+  height={600}
+    priority
+  
                 src="https://res.cloudinary.com/dfehgukz3/image/upload/c_fill,g_auto,w_auto/f_auto/q_auto/v1777183566/photo-1523381210434-271e8be1f52b_yquzuo.jpg"
                 className="w-full h-60 object-cover group-hover:scale-105 transition duration-500"
               />
@@ -532,7 +542,12 @@ return(
 
     {/* 🖼 Image */}
     <div className="relative group overflow-hidden rounded-2xl">
-      <img
+      <Image
+          
+          alt = 'black guy'
+    priority
+         width={800}
+  height={600}
         src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
         className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
       />

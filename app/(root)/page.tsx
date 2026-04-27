@@ -15,11 +15,11 @@ const data = [
     text: "Elegant casual wear model featuring a modern fit and comfortable fabric, perfect for everyday style."
   },
   { 
-    image: "https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776796428/model4_fpvmwt.png",
+    image: "https://res.cloudinary.com/dfehgukz3/image/upload/w_300,q_auto,f_auto/v1776796428/model4_fpvmwt.png",
     text: "Trendy outfit with a sleek design, ideal for both casual outings and semi-formal occasions."
   },
   { 
-    image: "https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1776796431/model7_cnaslx.png",
+    image: "https://res.cloudinary.com/dfehgukz3/image/upload/w_300,q_auto,f_auto/v1776796431/model7_cnaslx.png",
     text: "Premium fashion piece with a bold look, crafted for style and confidence."
   }
 ];
@@ -40,7 +40,7 @@ const Page = () => {
     alt="hero"
     fill
     priority
-    fetchPriority="high"
+     sizes="100vw"
     className="object-cover  "
   />
 </section>
