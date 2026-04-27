@@ -28,29 +28,29 @@ const Page = () => {
   
  
   return (
-    <main className="p-0 m-0 h-full w-full">
+    <main className="p-0 m-0 h-full border-none w-full">
 
       {/* ================= MOBILE (UNCHANGED) ================= */}
-      <div className="block md:hidden">
+      <div className="block md:hidden ">
 
         {/* HERO IMAGE SECTION */}
-   <section className="relative h-[580px] w-full overflow-hidden">
+   <section className="relative h-[480px] border-none  w-full overflow-hidden">
   <Image
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776795695/boyband2_kgfuol.png"
     alt="hero"
     fill
     priority
-     sizes="100vw"
-    className="object-cover  "
+  
+    className="  object-scale-down object-top  border-none  "
   />
 </section>
 
         {/* STICKY SECTION */}
-        <section className="w-full h-auto sticky shadow-xl  -top-30 z-50 bg-gradient-to-b from-white via-gray-50 to-white pb-2">
+        <section className="w-full h-auto sticky -top-33 shadow-xl  z-50 bg-gradient-to-b from-white via-gray-50 to-white pb-2">
 
           <div className="bg-white/40 backdrop-blur-md  border-b-0 flex flex-col items-center py-3  ">
            
-            <h1 className="text-gray-900  text-[16px]   text-sm tracking-widest uppercase text-center">
+            <h1 className="text-gray-900  text-[23px]   text-sm tracking-widest uppercase text-center">
               Authentic Assamese Collection
             </h1>
 

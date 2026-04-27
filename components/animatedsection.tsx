@@ -58,7 +58,7 @@ const ref2 = useRef(null);
     if(v >= 0.3){
      setVisibleSec(false)
     }
-    if (v >= 0.9) {
+    if (v >= 1) {
       setVisible(false)
     }
   });
@@ -114,19 +114,18 @@ return(
             scale: scaleFg,
           }}
   className="min-h-[600px] w-full   z-20 
-  bg-white
+  backdrop-blur-lg bg-orange-300
           text-shadow-none  text-black  rounded-3xl 
                      p-10 flex flex-col justify-between"
         >
          
           {/* Header */}
-          <div className="max-w-xl">
-            
-            <p className="text-2xl  handwriting text-gray-700 mb-2">New Arrival</p>
-    <h2 className="text-5xl  handwriting text-orange-500  leading-10">
+          <div className={`max-w-xl ${bebas.className} mb-5 `}>
+           
+    <h2 className={`text-5xl   handwriting text-white ${rockSalt.className}  leading-10`}>
               Minimal Summer Essentials
             </h2>
-            <p className="text-gray-600 tracking-widest handwriting mt-3">
+            <p className="text-gray-600 tracking-widest handwriting mt-10">
       Thoughtfully designed pieces for everyday comfort and effortless style.
             </p>
           </div>
@@ -226,11 +225,11 @@ return(
     opacity: opacityFg2,
     scale: scaleFg2,
   }}
-  className="min-h-[400px] w-full sticky rounded-2xl shadow-sm z-40
+  className={`min-h-[400px] w-full sticky rounded-2xl shadow-sm z-40
   relative overflow-hidden
-  bg-gray-100/80
+  bg-gray-100/80 ${bebas.className}
   backdrop-blur-lg border border-white/20
-  p-10 flex flex-col"
+  p-10 flex flex-col`}
 >
   {/* Glow Overlay */}
   <div className="absolute inset-0 rounded-2xl 
@@ -238,12 +237,12 @@ return(
   pointer-events-none" />
 
   {/* Header */}
-  <div className="text-xs max-w-2xl relative z-10">
-    <p className="tracking-[0.3em] uppercase text-2xl text-neutral-900 mb-3">
+  <div className={`text-xs  max-w-2xl relative z-10`}>
+    <p className={`tracking-[0.3em]   font-extrabold text-2xl leading-10  text-orange-600 uppercase  mb-5`}>
       Men's Collection
     </p>
 
-    <h2 className="text-[20px] tracking-widest handwriting font-semibold text-neutral-900 leading-tight">
+    <h2 className="text-[20px] tracking-widest font-extralight  text-neutral-900 leading-tight">
       Modern Summer Staples
     </h2>
   </div>
@@ -252,7 +251,7 @@ return(
   <div className="mt-5 w-[300px] overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-8 pr-5 pb-8 relative z-10">
 
     {/* Card 1 */}
-    <div className="min-w-[280px] snap-start bg-white/70 backdrop-blur-md 
+    <div className="min-w-[280px] snap-start  bg-orange-300  backdrop-blur-md 
     rounded-3xl p-5 shadow-xl ml-2 hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
@@ -261,7 +260,7 @@ return(
     </div>
 
     {/* Card 2 */}
-    <div className="min-w-[280px] snap-center bg-white/70 backdrop-blur-md 
+    <div className="min-w-[280px] snap-center bg-orange-300 backdrop-blur-md 
     rounded-3xl p-5 shadow-md hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
@@ -270,7 +269,7 @@ return(
     </div>
 
     {/* Card 3 */}
-    <div className="min-w-[280px] snap-center bg-white/70 backdrop-blur-md 
+    <div className="min-w-[280px] snap-center  bg-orange-300  backdrop-blur-md 
     rounded-3xl p-5 shadow-md hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
@@ -279,7 +278,7 @@ return(
     </div>
 
     {/* Card 4 */}
-    <div className="min-w-[280px] snap-center bg-white/70 backdrop-blur-md 
+    <div className="min-w-[280px] snap-center  bg-orange-300  backdrop-blur-md 
     rounded-3xl p-5 shadow-md hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
@@ -317,11 +316,11 @@ return(
             <div className="absolute  inset-0">
            <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
-                    <section className={`bg-gray-50 h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ease-linear absolute py-16 px-6 md:px-20`}>
+                    <section className={`bg-gray-50 tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${rockSalt.className} ease-linear absolute py-16 px-6 md:px-20`}>
       <div className="max-w-4xl mx-auto text-center">
         
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-orange-600 mb-6">
           Summer Collection 2026
         </h2>
 
@@ -410,7 +409,7 @@ return(
     </div>
     </div>
 
-     <div className={`absolute ${!visible ? 'opacity-100  z-10' : '  opacity-0 -z-10'}  inset-0   `}>
+     <div className={`absolute ${!visible ? 'opacity-100  z-10' : '  opacity-0 -z-10'} ${bebas.className}  inset-0   `}>
       <div className=" absolute overflow-y-auto top-10 h-full w-full">
     <section
   className={`min-h-full
@@ -536,8 +535,8 @@ return(
             
 
       <section  ref={ref3}
-             className=" bg-gray-100/80
-  backdrop-blur-lg   text-white px-6 py-24 ">
+             className={ `bg-gray-100/80 ${bebas.className}
+  backdrop-blur-lg   text-white px-6 py-24 `}>
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
     {/* 🖼 Image */}
@@ -560,7 +559,7 @@ return(
         OUR STORY
       </p>
 
-      <h2 className="text-4xl text-black md:text-5xl font-semibold leading-tight mb-6">
+      <h2 className="text-4xl  tracking-wider text-black md:text-5xl font-semibold leading-tight mb-6">
         Built from the Streets.
         <br />
         Designed for the Culture.
@@ -582,7 +581,7 @@ return(
         This isn’t just fashion. It’s expression. It’s culture.
       </p>
 
-      <button className="px-6 py-3 border border-white/40 hover:border-white text-sm tracking-wide transition">
+      <button className="px-6 py-3 border text-white bg-black rounded-4xl border-white/40 hover:border-white text-sm tracking-wide transition">
         Explore Collection
       </button>
     </div>

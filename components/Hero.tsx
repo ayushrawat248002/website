@@ -4,19 +4,18 @@
 import Link from "next/link"
 import { useState } from "react"
 import Image from "next/image"
-import { bebas } from "@/lib/font"
 import { useRouter } from "next/navigation"
 const Hero = () => {
 
-      const router = useRouter()
+   const router = useRouter()
       const[index, setindex] = useState<undefined|number>(0)
 
   return(
        <div className="w-full h-24   flex justify-center">
   <div className="flex justify-center  gap-10 h-full pb-2 md:gap-14 lg:gap-20  px-4 w-full max-w-5xl">
-     
+        
     {/* MEN */}
-    <div className={`flex flex-col ${bebas.className}  items-center group cursor-pointer`}>
+    <div className="flex flex-col  items-center group cursor-pointer">
      <Image
   onClick={() => {
     setindex(0);
@@ -32,18 +31,18 @@ const Hero = () => {
     group-hover:scale-105 group-hover:-translate-y-1
   "
 />
-      <button
+            <button
         onClick={() => setindex(0)}
         className={`mt-2 text-xs font-mono  md:text-sm font-medium tracking-wider transition-all
         ${index === 0 
           ? 'text-black' 
           : 'text-gray-400 group-hover:text-black'}`}
-      >
+            >
         MEN
         {index === 0 && (
           <div className="h-[2px] w-5 bg-black mx-auto mt-1 rounded-full"></div>
         )}
-      </button>
+            </button>
     </div>
 
     {/* WOMEN */}
@@ -77,8 +76,8 @@ const Hero = () => {
           <div className="h-[2px] w-5 bg-black mx-auto mt-1 rounded-full"></div>
         )}
       </Link>
-    </div>
-
+          </div>
+        
     {/* ACCESSORIES */}
     <div className="flex flex-col items-center group cursor-pointer">
       <Image
@@ -106,8 +105,8 @@ const Hero = () => {
       </Link>
     </div>
 
-  </div>
-</div>
+      </div>
+    </div>
   )
 }
 
