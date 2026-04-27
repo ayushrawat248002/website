@@ -47,7 +47,7 @@ const ref2 = useRef(null);
   // Crossfade
   const opacityBg2 = useTransform(scrollZProgress, [0.35, 0.5], [1, 0]);
   const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
-  const  x = useTransform(scrollMProgress, [0.2, 0.7], ["-20%", "-82.5%"]);
+  const  x = useTransform(scrollMProgress, [0.3, 0.7], ["-35%", "-82.5%"]);
   // 🔥 Scale effect
   const scaleBg2 = useTransform(scrollZProgress, [0.2, 1], [1, 0.7]); // shrink
   const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
@@ -109,8 +109,9 @@ return(
             opacity: opacityFg,
             scale: scaleFg,
           }}
-  className="min-h-[600px] w-full   z-[20] 
-        bg-orange-100 text-shadow-none  text-black  rounded-3xl 
+  className="min-h-[600px] w-full   z-20 
+  bg-white
+          text-shadow-none  text-black  rounded-3xl 
                      p-10 flex flex-col justify-between"
         >
          
@@ -199,75 +200,86 @@ return(
    
 <div className=" h-[600px]  sticky top-10 w-full">
 <motion.div
-  style={{
-  
-      
-    scale: scaleBg2,
-  }}
-  className=" w-full h-full  relative rounded-none shadow-xl overflow-hidden "
+  style={{ scale: scaleBg2 }}
+  className="w-full h-full relative overflow-hidden"
 >
-     
   <Image
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
     alt="assam background"
     fill
     priority
     fetchPriority="high"
-    className="object-cover opacity-90 object-center"
+    className="object-cover object-center "
   />
+
+  {/* Glass Blur Layer */}
+  
 </motion.div>
 </div>
         {/* Second image (fade in + zoom in slightly) */}
-        <motion.div
+         ```jsx
+<motion.div
   style={{
-     y : y,
+    y: y,
     opacity: opacityFg2,
     scale: scaleFg2,
-  
   }}
-  className="min-h-[400px] w-full sticky rounded-2xl  shadow-xl z-[40] 
-              bg-orange-100
-             p-10 flex flex-col "
+  className="min-h-[400px] w-full sticky rounded-2xl shadow-sm z-40
+  relative overflow-hidden
+  bg-gray-100/80
+  backdrop-blur-lg border border-white/20
+  p-10 flex flex-col"
 >
+  {/* Glow Overlay */}
+  <div className="absolute inset-0 rounded-2xl 
+  bg-gradient-to-br from-yellow-300/20 via-transparent to-white/10 
+  pointer-events-none" />
+
   {/* Header */}
-  <div className=" text-xs  max-w-2xl">
-    <p className=" tracking-[0.3em] uppercase text-2xl text-black mb-3">
+  <div className="text-xs max-w-2xl relative z-10">
+    <p className="tracking-[0.3em] uppercase text-2xl text-neutral-900 mb-3">
       Men's Collection
     </p>
 
-    <h2 className="text-[20px] tracking-widest handwriting font-semibold text-black leading-tight">
+    <h2 className="text-[20px] tracking-widest handwriting font-semibold text-neutral-900 leading-tight">
       Modern Summer Staples
     </h2>
-
-   
   </div>
 
   {/* Product Scroll */}
-  <div className="mt-5 w-[300px] overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-8 pr-5 pb-8">
+  <div className="mt-5 w-[300px] overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-8 pr-5 pb-8 relative z-10">
 
     {/* Card 1 */}
-    <div className="min-w-[280px] snap-start bg-white rounded-3xl p-5 shadow-sm hover:shadow-lg transition-all duration-300">
+    <div className="min-w-[280px] snap-start bg-white/70 backdrop-blur-md 
+    rounded-3xl p-5 shadow-xl ml-2 hover:shadow-2xl 
+    transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
       <p className="text-neutral-900 font-medium handwriting text-lg">Linen Shirt</p>
       <p className="text-neutral-500 text-sm mt-1">₹2,499</p>
     </div>
 
     {/* Card 2 */}
-    <div className="min-w-[280px] snap-center bg-white rounded-3xl p-5 shadow-sm hover:shadow-lg transition-all duration-300">
+    <div className="min-w-[280px] snap-center bg-white/70 backdrop-blur-md 
+    rounded-3xl p-5 shadow-md hover:shadow-2xl 
+    transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
       <p className="text-neutral-900 handwriting font-medium text-lg">Tailored Trousers</p>
       <p className="text-neutral-500 text-sm mt-1">₹3,199</p>
     </div>
 
     {/* Card 3 */}
-    <div className="min-w-[280px] snap-center bg-white rounded-3xl p-5 shadow-sm hover:shadow-lg transition-all duration-300">
+    <div className="min-w-[280px] snap-center bg-white/70 backdrop-blur-md 
+    rounded-3xl p-5 shadow-md hover:shadow-2xl 
+    transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
       <p className="text-neutral-900 handwriting font-medium text-lg">Leather Sneakers</p>
       <p className="text-neutral-500 text-sm mt-1">₹4,999</p>
     </div>
 
     {/* Card 4 */}
-    <div className="min-w-[280px] snap-center bg-white rounded-3xl p-5 shadow-sm hover:shadow-lg transition-all duration-300">
+    <div className="min-w-[280px] snap-center bg-white/70 backdrop-blur-md 
+    rounded-3xl p-5 shadow-md hover:shadow-2xl 
+    transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
       <p className="text-neutral-900 font-medium handwriting text-lg">Overshirt Jacket</p>
       <p className="text-neutral-500 text-sm mt-1">₹3,999</p>
@@ -276,16 +288,21 @@ return(
   </div>
 
   {/* CTA */}
-  <div className="mt-0 flex items-center justify-between">
-    <p className=" handwriting text-[22px] leading-6 text-black">
+  <div className="mt-0 flex items-center justify-between relative z-10">
+    <p className="handwriting text-[22px] leading-6 text-neutral-900">
       Discover refined menswear essentials crafted for modern lifestyles.
     </p>
 
-    <button className="px-2 ml-3 py-1 rounded-xl bg-white text-black text-xs handwriting   hover:bg-neutral-800 transition-all duration-300">
-      Shop Men's Collection →
+    <button className="px-3 ml-3 py-1 rounded-xl 
+    bg-white/80 backdrop-blur-md text-black text-xs handwriting 
+    hover:bg-black hover:text-white 
+    transition-all duration-300 border border-white/30">
+      EXPLORE →
     </button>
   </div>
 </motion.div>
+```
+
         
         {/* Second image (fade in + zoom in slightly) */}
        
@@ -293,10 +310,11 @@ return(
       
     </section>
              
-             <section ref={ref2} className="h-[300vh]  w-full relative">
-            <div className="absolute inset-0">
+             <section ref={ref2} className="h-[300vh]  bg-gray-100/80
+  backdrop-blur-lg   w-full relative">
+            <div className="absolute  inset-0">
            <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
-                   <h2 className="text-black h-10 w-full text-center  shrink-0 mt-10 text-3xl">Collection</h2>
+                   <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
                  <motion.div style={{ x : x ,scale:scaleBg3,}}  className="flex opacity-100  rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
       
       {/* Card 1 */}
@@ -352,12 +370,13 @@ return(
     </div>
     </div>
 
-     <div className="absolute  inset-0 ">
-      
+     <div className="absolute  inset-0   ">
+      <div className=" absolute overflow-y-auto top-10 h-full w-full">
     <section
-  className={`min-h-[1100px] 
+  className={`min-h-full
   ${!visible ? 'opacity-100 absolute z-10' : 'opacity-0'} 
-  bg-white transition-opacity duration-500 ease-in-out 
+  bg-gray-100/80
+  backdrop-blur-lg   transition-opacity duration-500 ease-in-out 
   text-black px-6 py-20`}
 >
   <div className="max-w-7xl mx-auto  space-y-20">
@@ -378,7 +397,7 @@ return(
       {/* Large Editorial Card */}
       <div className="md:col-span-2 relative group overflow-hidden rounded-2xl">
         <img
-          src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
+          src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
           className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
         />
 
@@ -400,7 +419,7 @@ return(
         {["Oversized Tees", "Minimal Sets"].map((text, i) => (
           <div key={i} className="relative group overflow-hidden rounded-2xl">
             <img
-              src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183530/photo-1516826957135-700dedea698c_yw21xp.jpg"
+              src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto,c_fill,g_auto/v1777183530/photo-1516826957135-700dedea698c_yw21xp.jpg"
               className="w-full h-[240px] object-cover group-hover:scale-105 transition duration-700"
             />
             <div className="absolute inset-0 bg-black/40"></div>
@@ -421,14 +440,14 @@ return(
       </div>
 
       <div className="grid grid-cols-2  md:grid-cols-2 gap-6">
-        {[1,2,3,4].map((item) => (
+        {[1,2,3,4,5,6,7,8].map((item) => (
           <div
             key={item}
             className="group cursor-pointer"
           >
             <div className="relative overflow-hidden rounded-xl bg-neutral-900">
               <img
-                src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183566/photo-1523381210434-271e8be1f52b_yquzuo.jpg"
+                src="https://res.cloudinary.com/dfehgukz3/image/upload/c_fill,g_auto,w_auto/f_auto/q_auto/v1777183566/photo-1523381210434-271e8be1f52b_yquzuo.jpg"
                 className="w-full h-60 object-cover group-hover:scale-105 transition duration-500"
               />
 
@@ -452,19 +471,21 @@ return(
   </div>
 </section>
 </div>
+</div>
 
   
    </section>
             
 
       <section  ref={ref3}
-             className="bg-white text-white px-6 py-24 ">
+             className=" bg-gray-100/80
+  backdrop-blur-lg   text-white px-6 py-24 ">
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
     {/* 🖼 Image */}
     <div className="relative group overflow-hidden rounded-2xl">
       <img
-        src="https://res.cloudinary.com/dfehgukz3/image/upload/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
+        src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
         className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
@@ -506,7 +527,8 @@ return(
   </div>
 </section>
 
-     <footer className={`bg-white/40 shadow-2xl ${bebas.className} tracking-widest text-orange-500 px-6 py-16 text-3xl`}>
+     <footer className={` bg-gray-100/50
+  backdrop-blur-lg shadow-2xl ${bebas.className} tracking-widest text-orange-500 px-6 py-16 text-3xl`}>
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
         
         {/* Brand */}
