@@ -6,6 +6,7 @@ import {rockSalt,bebas,caveat} from "@/lib/font"
 const Animatedsection = () => {
 
   const [visible, setVisible] = useState<boolean>(true)
+    const [visiblesec, setVisibleSec] = useState<boolean>(true)
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -47,14 +48,16 @@ const ref2 = useRef(null);
   // Crossfade
   const opacityBg2 = useTransform(scrollZProgress, [0.35, 0.5], [1, 0]);
   const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
-  const  x = useTransform(scrollMProgress, [0.3, 0.7], ["-35%", "-82.5%"]);
+  const  x = useTransform(scrollMProgress, [0.3, 0.7], ["-20%", "-82.5%"]);
   // 🔥 Scale effect
   const scaleBg2 = useTransform(scrollZProgress, [0.2, 1], [1, 0.7]); // shrink
   const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
   
   useEffect(()=>{
         const unsubscribe = scrollMProgress.on("change", (v) => {
-   
+    if(v >= 0.2){
+     setVisibleSec(false)
+    }
     if (v >= 1) {
       setVisible(false)
     }
@@ -67,6 +70,7 @@ const ref2 = useRef(null);
      const unsubscribe = scrollMProgress.on("change", (v) => {
     if (v <= 0) {
      setVisible(true)
+     setVisibleSec(true)
     }
     
   });
@@ -315,6 +319,51 @@ return(
             <div className="absolute  inset-0">
            <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
+                    <section className={`bg-gray-50 h-screen ${!visiblesec ? 'opacity-0 ' :'opacity-100'} transform transition-opacity duration-600 ease-linear absolute py-16 px-6 md:px-20`}>
+      <div className="max-w-4xl mx-auto text-center">
+        
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Summer Collection 2026
+        </h2>
+
+        {/* Subheading */}
+        <p className="text-lg text-gray-600 mb-8">
+          Discover a blend of comfort, elegance, and modern fashion designed
+          for everyday wear and special occasions.
+        </p>
+
+        {/* Description */}
+        <div className="text-gray-700 space-y-4 text-base leading-relaxed">
+          <p>
+            Our latest collection features breathable fabrics, vibrant colors,
+            and versatile designs that fit seamlessly into your lifestyle.
+            Whether you're heading out for a casual day or dressing up for an
+            evening event, we've got you covered.
+          </p>
+
+          <p>
+            Each piece is crafted with attention to detail, ensuring durability
+            while keeping up with the latest fashion trends. From relaxed fits
+            to tailored silhouettes, explore styles that reflect your unique
+            personality.
+          </p>
+
+          <p>
+            Step into the season with confidence and redefine your wardrobe
+            with our exclusive range.
+          </p>
+        </div>
+
+        {/* Button */}
+        <div className="mt-10">
+          <button className="bg-black text-white px-6 py-3 rounded-2xl shadow-md hover:bg-gray-800 transition">
+            Explore Collection
+          </button>
+        </div>
+
+      </div>
+    </section>
                  <motion.div style={{ x : x ,scale:scaleBg3,}}  className="flex opacity-100  rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
       
       {/* Card 1 */}
@@ -376,7 +425,7 @@ return(
   className={`min-h-full
   ${!visible ? 'opacity-100 absolute z-10' : 'opacity-0'} 
   bg-gray-100/80
-  backdrop-blur-lg   transition-opacity duration-500 ease-in-out 
+  backdrop-blur-lg  transform  transition-opacity duration-500 ease-linear 
   text-black px-6 py-20`}
 >
   <div className="max-w-7xl mx-auto  space-y-20">
