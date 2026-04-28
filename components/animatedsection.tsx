@@ -40,7 +40,7 @@ const ref2 = useRef(null);
   const opacityFg = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
   const y = useTransform(scrollMProgress,[0 ,0.1],[0 , 0])
   // 🔥 Scale effect
-  const scaleBg = useTransform(scrollYProgress, [0.3, 1], [0.95, 0.7]); // shrink
+  const scaleBg = useTransform(scrollYProgress, [0.3, 0.5], [0.95, 0.5]); // shrink
   const scaleFg = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1]); // settle in
 
      const opacityFg3 = useTransform(scrollMProgress, [0.65, 0.75], [1, 0]);//adsa
@@ -50,7 +50,7 @@ const ref2 = useRef(null);
   const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
   const  x = useTransform(scrollMProgress, [0.3, 0.7], ["-20%", "-82.5%"]);
   // 🔥 Scale effect
-  const scaleBg2 = useTransform(scrollZProgress, [0.2, 1], [1, 0.7]); // shrink
+  const scaleBg2 = useTransform(scrollZProgress, [0.2, 0.5], [1, 0.5]); // shrink
   const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
   
   useEffect(()=>{
@@ -108,24 +108,20 @@ return(
 
         {/* Second image (fade in + zoom in slightly) */}
         <motion.div
-          style={{
-  
-            opacity: opacityFg,
-            scale: scaleFg,
-          }}
+
   className="min-h-[600px] w-full   z-20 
-  backdrop-blur-lg bg-orange-300
-          text-shadow-none  text-black  rounded-3xl 
+  backdrop-blur-lg bg-orange-700/40
+          text-shadow-none  text-black   
                      p-10 flex flex-col justify-between"
         >
          
           {/* Header */}
           <div className={`max-w-xl ${bebas.className} mb-5 `}>
            
-    <h2 className={`text-5xl   handwriting text-white ${rockSalt.className}  leading-10`}>
+    <h2 className={`text-5xl   handwriting text-white   leading-10`}>
               Minimal Summer Essentials
             </h2>
-            <p className="text-gray-600 tracking-widest handwriting mt-10">
+            <p className="text-white tracking-widest handwriting mt-10">
       Thoughtfully designed pieces for everyday comfort and effortless style.
             </p>
           </div>
@@ -203,14 +199,13 @@ return(
 <div className=" h-[600px]  sticky top-10 w-full">
 <motion.div
   style={{ scale: scaleBg2 }}
-  className="w-full h-full relative overflow-hidden"
+  className="w-full h-full relative overflow-hidden  "
 >
   <Image
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
     alt="assam background"
     fill
-    sizes="100vw"
-    className="object-cover object-center "
+    className="object-scale-down object-center "
   />
 
   {/* Glass Blur Layer */}
@@ -290,7 +285,7 @@ return(
 
   {/* CTA */}
   <div className="mt-0 flex items-center justify-between relative z-10">
-    <p className="handwriting text-[22px] leading-6 text-neutral-900">
+    <p className="handwriting text-[22px] leading-6 tracking-wider text-neutral-900">
       Discover refined menswear essentials crafted for modern lifestyles.
     </p>
 
@@ -316,7 +311,7 @@ return(
             <div className="absolute  inset-0">
            <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
-                    <section className={`bg-gray-50 tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${rockSalt.className} ease-linear absolute py-16 px-6 md:px-20`}>
+                    <section className={`bg-gray-50 tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${bebas.className} ease-linear absolute py-16 px-6 md:px-20`}>
       <div className="max-w-4xl mx-auto text-center">
         
         {/* Heading */}
@@ -365,7 +360,7 @@ return(
       
       {/* Card 1 */}
     
-     <div className=" w-[600px] shadow-2xl rounded-3xl mr-1 relative text-black text-center shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill priority fetchPriority="high" className="object-cover object-center" /> </div>
+     <div className=" w-[600px] shadow-2xl rounded-3xl mr-1 relative text-black text-center shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill  className="object-cover object-center" /> </div>
 
       {/* Card 2 */}
       <div className="relative w-[600px] h-full shadow-2xl   text-black shrink-0">
@@ -373,7 +368,7 @@ return(
             src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
             alt="background"
           fill
-            sizes="100vw"
+            
             className="object-cover  object-center"
           />
       </div>
