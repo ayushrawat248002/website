@@ -11,20 +11,23 @@ const Page = () => {
     useEffect(() => {
     changeStep('cart')
    },[])
-     
+ 
+
+
   const router = useRouter();
    const changeStep = useCartStore((s) => s.setStep)
    const cart = useCartStore((s) => s.obj.cart);
   const handleContinue = () => {
   
       changeStep('address')
-         // ✅ update step → address
-    router.push("/paymentSteps/address"); // ✅ navigate
+      router.push('/paymentSteps/address')
+            console.log('runed address')
+   
   
   };
-   console.log('runed')
+
   
-   if(!valid)return null;
+   if(!valid.valid)return null;
   return (
     <main className="h-[100vh] w-full">
       <div className="h-full overflow-y-scroll">

@@ -1,38 +1,32 @@
-
 'use client'
-import { useStepGuard } from "@/components/useStepGuard";
-import AddressStep from "@/components/addressStep";
-import { useEffect } from "react";
-import { useCartStore } from "@/components/Cartstore";
+import { Suspense, lazy, useEffect } from "react";
+ import { useCartStore } from "@/components/Cartstore";
 import { useRouter } from "next/navigation";
-
-
-const Page = () => {
-  const router = useRouter();
-  const changeStep = useCartStore((s) => s.setStep)
-   const {valid, step} =   useStepGuard('address')
-   
-   useEffect(() => {
-    if (!valid) {
-     return;
-    }
-  }, [valid, router]);
-    
-     console.log(valid)
-     console.log('hit')
-     if(!valid){
-      return null;
-     }
+ import { useStepGuard } from "@/components/useStepGuard";
+const AddressStep = lazy(() => import("@/components/addressStep"));
 
 
   
- 
+      
+           
+  
+export default function Page() {
+  
+  const step = useCartStore((state) => state.obj.step)
+  const valid = useStepGuard("address");
 
+   const router = useRouter()
+
+    useEffect(() => {
+           if (!valid.valid) {
+             router.replace(`/paymentSteps/${step}`);
+           }
+         }, [valid, router]);
   return (
-    <main>
+    <main className="h-svh w-svw">
+      <Suspense fallback={<p>Loading...</p>}>
       <AddressStep />
+      </Suspense>
     </main>
   );
-};
-
-export default Page;
+}

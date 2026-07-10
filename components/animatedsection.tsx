@@ -54,7 +54,7 @@ const ref2 = useRef(null);
   // const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
   const  x = useTransform(scrollMProgress, [0.35, 0.75], ["-10%", "-82.5%"]);
   // // 🔥 Scale effect
-  const scaleBg2 = useTransform(scrollZProgress, [0.1, 1], [1, 0.5]); // shrink
+  const scaleBg2 = useTransform(scrollZProgress, [0.1, 0.7], [1, 0.5]); // shrink
   // const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
   
   useEffect(()=>{

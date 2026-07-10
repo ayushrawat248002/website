@@ -1,10 +1,9 @@
 
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
-import Image from "next/image";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
+import Script from "next/script";
 export const metadata = {
   metadataBase: new URL("https://dripbohag.com"),
   title: {
@@ -53,25 +52,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-
- 
-
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} w-full scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} scroll-smooth`}
     >
-      <body className="m-0 p-0 min-w-svw  max-h-svh   relative bg-yellow-200  text-black font-[var(--font-poppins)]">
+      <body className="min-h-screen bg-yellow-200 text-black font-[var(--font-poppins)]">
+       
+        <Header prop="section" />
 
-        {/* 📦 MAIN CONTENT */}
-        <main className ="w-full bg-white ">
-             <Header prop ={'section'}/>
+        <main className="min-h-screen w-full bg-white">
           {children}
         </main>
 
-           <Footer/>
-
+        <Footer />
       </body>
     </html>
   );

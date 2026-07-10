@@ -18,7 +18,7 @@ type Address = {
   pincode: string;
 };
 
-type Step = "cart" | "address" | "payment";
+type Step = "cart" | "address" | "payment"|'statusPage';
 
 type Store = {
   hasHydrated: boolean;

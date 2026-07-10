@@ -62,7 +62,7 @@ const AddressStep = () => {
   };
 
   const handleSubmit = () => {
-    let chosenAddress;
+  
 
     if (addToggle) {
       if (!validate()) return;
@@ -80,7 +80,7 @@ const AddressStep = () => {
 
     localStorage.setItem('total', JSON.stringify(total));
        changeStep('payment')
-      router.push('/paymentSteps/payment')
+       router.push('/paymentSteps/payment')
   };
 
   const inputClass = (field: keyof FormType) =>
