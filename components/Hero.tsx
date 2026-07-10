@@ -16,14 +16,14 @@ const Hero = () => {
       <div className="flex justify-center gap-10 h-full pb-2 md:gap-14 lg:gap-20 px-4 w-full max-w-5xl">
 
         {/* MEN */}
-        <div      
+        <div     onClick={() => {
+            setIndex(0);
+            router.push("/mensection");
+          }}  
           className="flex flex-col items-center group cursor-pointer"
         >
           <Image
-           onClick={() => {
-            setIndex(0);
-            router.push("/mensection");
-          }}
+          
             alt="men"
             width={80}
             height={80}

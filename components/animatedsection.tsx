@@ -45,14 +45,14 @@ const ref2 = useRef(null);
 
      const opacityFg3 = useTransform(
   scrollMProgress,
-  [0.2, 0.4, 0.6, 0.9],
-  [0.5, 1, 1, 0]
+  [0.3 , 0.4, 0.7],
+  [0, 1,0]
 );
         const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.65]); // shrink
   // Crossfade
   // const opacityBg2 = useTransform(scrollZProgress, [0.35, 0.6], [1, 0]);
   // const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
-  const  x = useTransform(scrollMProgress, [0.3, 0.75], ["-10%", "-82.5%"]);
+  const  x = useTransform(scrollMProgress, [0.35, 0.75], ["-10%", "-82.5%"]);
   // // 🔥 Scale effect
   // const scaleBg2 = useTransform(scrollZProgress, [0.2, 1], [1, 0.5]); // shrink
   // const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
@@ -327,7 +327,7 @@ return(
                
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
                     
-                     <section    className={`bg-white ${caveat.className}    absolute inset-0  bg-cover bg-center text-3xl font-extrabold  border border-t-2 border-red-500 to-white backdrop-blur-xs tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${bebas.className} ease-linear absolute py-16 px-6 md:px-20 `}>
+                     <section    className={`bg-white ${caveat.className}    absolute inset-0  bg-cover bg-center text-3xl font-extrabold  shadow-2xl backdrop-blur-xs tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${bebas.className} ease-linear absolute py-16 px-6 md:px-20 `}>
                               <Image
             src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
             alt="background"
