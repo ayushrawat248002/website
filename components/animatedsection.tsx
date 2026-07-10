@@ -45,8 +45,8 @@ const ref2 = useRef(null);
 
      const opacityFg3 = useTransform(
   scrollMProgress,
-  [0.3 , 0.4, 0.7],
-  [0, 1,0]
+  [0.2 , 0.4],
+  [0, 1]
 );
         const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.65]); // shrink
   // Crossfade
@@ -54,7 +54,7 @@ const ref2 = useRef(null);
   // const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
   const  x = useTransform(scrollMProgress, [0.35, 0.75], ["-10%", "-82.5%"]);
   // // 🔥 Scale effect
-  // const scaleBg2 = useTransform(scrollZProgress, [0.2, 1], [1, 0.5]); // shrink
+  const scaleBg2 = useTransform(scrollZProgress, [0.1, 1], [1, 0.5]); // shrink
   // const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
   
   useEffect(()=>{
@@ -103,7 +103,7 @@ return(
   className="h-[550px] w-full sticky top-0 rounded-none shadow-xl z-[10] overflow-hidden relative"
 >
   <Image
-    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/v1776796425/assam1_ma7htp.jpg"
     alt="background"
     fill
     preload
@@ -113,7 +113,7 @@ return(
 
         {/* Second image (fade in + zoom in slightly) */}
         <motion.div
-
+          
   className="min-h-[600px] w-full   z-20 
           bg-gradient-to-t  from-orange-200  to-white
           text-shadow-none  text-black   
@@ -203,17 +203,17 @@ return(
           
         {/* First image (fade out + shrink) */}
    
-<div className=" h-[600px]  sticky top-10 w-full    ">
+<div className=" h-[600px]  sticky top-10 bg-transparent w-full   bg-gradient-to-b from-orange-200 to-white     ">
 <motion.div
-
-  className="w-full h-full relative    "
+   style={{scale : scaleBg2}}
+  className="w-full h-full relative     "
 >
   <Image
-    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
+    src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/e_background_removal/assam3_uqd9ye.jpg"
     alt="assam background"
     fill
     preload
-    className="  rounded-2xl  object-center opacity-100  "
+    className="  rounded-2xl   object-center opacity-100  "
   />
 
   {/* Glass Blur Layer */}
@@ -225,7 +225,7 @@ return(
 <motion.div
    
   className={`min-h-[400px] shadow-[0_-20px_40px_rgba(0,0,0,0.3)] w-full
-  backdrop-blur-md bg-blue-200/70
+  bg-gradient-to-t  from-orange-200  to-white
   relative overflow-hidden 
   ${caveat.className}
   p-9 flex flex-col  `}
@@ -320,56 +320,14 @@ return(
            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
            alt="background"
             fill
-          
+                               
            className="object-cover transition-opacity duration-500 ease-linear  absolute -z-10   object-center"
          />
                        </motion.div>
                
-                   <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
+                   <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
                     
-                     <section    className={`bg-white ${caveat.className}    absolute inset-0  bg-cover bg-center text-3xl font-extrabold  shadow-2xl backdrop-blur-xs tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${bebas.className} ease-linear absolute py-16 px-6 md:px-20 `}>
-                              <Image
-            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
-            alt="background"
-          fill
-            
-            className="object-cover absolute -z-10 opacity-70  object-center"
-          />
-      <div className="max-w-4xl mx-auto text-center ">
-        
-         
-        {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-orange-600 mb-6">
-          Summer Collection 2026
-        </h2>
-
-        {/* Subheading */}
-        <p className="text-lg font-extrabold text-black mb-8">
-          Discover a blend of comfort, elegance, and modern fashion designed
-          for everyday wear and special occasions.
-        </p>
-
-        {/* Description */}
-        <div className=" font-extrabold text-black text-xl space-y-4  leading-relaxed">
-          <p>
-            Our latest collection features breathable fabrics, vibrant colors,
-            and versatile designs that fit seamlessly into your lifestyle.
-            Whether you're heading out for a casual day or dressing up for an
-            evening event, we've got you covered.
-          </p>
-
-         
-        </div>
-
-        {/* Button */}
-        <div className="mt-10">
-          <button className="bg-black text-white px-6 py-3 rounded-2xl shadow-md hover:bg-gray-800 transition">
-            Explore Collection
-          </button>
-        </div>
-
-      </div>
-    </section>
+               
                  <motion.div style={{ x : x, scale:scaleBg3 }}  className="flex opacity-100  rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
       
       {/* Card 1 */}
@@ -608,7 +566,7 @@ return(
           transition={{ duration: 0.6 }}
         >
           <h3 className="text-2xl font-bold mb-4">
-            Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Brand</span>
+            Drip<span className=" bg-clip-text text-black">Bohag</span>
           </h3>
           <p className="text-black leading-relaxed tracking-widest text-xl">
             Crafting beautiful, modern web experiences with a focus on
