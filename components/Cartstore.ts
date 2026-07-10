@@ -9,26 +9,37 @@ type CartItem = {
   quantity: number;
 };
 
+type Address = {
+  fullName: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+};
+
 type Step = "cart" | "address" | "payment";
 
 type Store = {
+  hasHydrated: boolean;
+  setHasHydrated: (value: boolean) => void;
+
   obj: {
     step: Step;
-    address: any[];
-    currentaddress: any;
+    address: Address[];
+    currentaddress: Address | null;
     cart: CartItem[];
     orders: any[];
     theme: "white" | "black";
   };
 
-  // 🔥 NEW
   setStep: (step: Step) => void;
   nextStep: () => void;
   prevStep: () => void;
 
-  setcurrentAddress: (adress: Object) => void;
-  setAddress: (address: Object) => void;
-  setorderSummary: (orderSummary: Object) => void;
+  setcurrentAddress: (address: Address) => void;
+  setAddress: (address: Address) => void;
+  setorderSummary: (orderSummary: any) => void;
   changeorderSummary: (orderid: any) => void;
 
   addItem: (item: Omit<CartItem, "quantity">) => void;
@@ -40,7 +51,7 @@ type Store = {
   setTheme: (theme: "white" | "black") => void;
 };
 
-const isSameAddress = (a: any, b: any) =>
+const isSameAddress = (a: Address, b: Address) =>
   a.fullName === b.fullName &&
   a.phone === b.phone &&
   a.address === b.address &&
@@ -51,8 +62,13 @@ const isSameAddress = (a: any, b: any) =>
 export const useCartStore = create<Store>()(
   persist(
     (set, get) => ({
+      hasHydrated: false,
+
+      setHasHydrated: (value) =>
+        set({ hasHydrated: value }),
+
       obj: {
-        step: "cart", // ✅ default
+        step: "cart",
         address: [],
         currentaddress: null,
         cart: [],
@@ -60,11 +76,9 @@ export const useCartStore = create<Store>()(
         theme: "black",
       },
 
-      // 🔥 STEP CONTROL
-
       setStep: (step) =>
         set((state) => ({
-          obj: { ...state.obj, step : step },
+          obj: { ...state.obj, step },
         })),
 
       nextStep: () =>
@@ -97,16 +111,12 @@ export const useCartStore = create<Store>()(
           return state;
         }),
 
-      // -------------------------
-      // EXISTING LOGIC (kept)
-      // -------------------------
-
       setTheme: (theme) =>
         set((state) => ({
           obj: { ...state.obj, theme },
         })),
 
-      setorderSummary: (orderSummary: any) =>
+      setorderSummary: (orderSummary) =>
         set((state) => ({
           obj: {
             ...state.obj,
@@ -114,7 +124,7 @@ export const useCartStore = create<Store>()(
           },
         })),
 
-      changeorderSummary: (orderid: any) =>
+      changeorderSummary: (orderid) =>
         set((state) => ({
           obj: {
             ...state.obj,
@@ -126,9 +136,9 @@ export const useCartStore = create<Store>()(
           },
         })),
 
-      setAddress: (newAddress: any) =>
+      setAddress: (newAddress) =>
         set((state) => {
-          const exists = state.obj.address.some((addr: any) =>
+          const exists = state.obj.address.some((addr) =>
             isSameAddress(addr, newAddress)
           );
 
@@ -144,7 +154,10 @@ export const useCartStore = create<Store>()(
 
       setcurrentAddress: (address) =>
         set((state) => ({
-          obj: { ...state.obj, currentaddress: address },
+          obj: {
+            ...state.obj,
+            currentaddress: address,
+          },
         })),
 
       addItem: (item) =>
@@ -208,11 +221,18 @@ export const useCartStore = create<Store>()(
 
       clearCart: () =>
         set((state) => ({
-          obj: { ...state.obj, cart: [] },
+          obj: {
+            ...state.obj,
+            cart: [],
+          },
         })),
     }),
     {
       name: "cart-product",
+
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );
