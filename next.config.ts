@@ -1,14 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
-  optimizeCss: true
-}
-};
-
-export default nextConfig;
-module.exports = {
+    optimizeCss: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -19,3 +14,4 @@ module.exports = {
   },
 };
 
+export default nextConfig;
