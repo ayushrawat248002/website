@@ -12,7 +12,9 @@ const isValidTransition = (current, next) => {
   return steps[current]?.includes(next);
 };
 
-const checkoutReducer = (state, action) => {
+ const checkoutReducer = (state, action) => {
+  
+
   switch (action.type) {
 
     case 'GO_TO_STEP': {
@@ -35,6 +37,6 @@ const checkoutReducer = (state, action) => {
     default:
       return state;
   }
-};
+ }
 
 export default checkoutReducer;

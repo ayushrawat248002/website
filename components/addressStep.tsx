@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCartStore } from "./Cartstore";
-
+import { useRouter } from "next/navigation";
 type Props = {
   dispatch: any;
 };
@@ -16,7 +16,9 @@ type FormType = {
   pincode: string;
 };
 
-const AddressStep = ({ dispatch, changeState }:any) => {
+const AddressStep = () => {
+  const router = useRouter();
+  const changeStep = useCartStore((s) => s.setStep);
   const cart = useCartStore((state) => state.obj.cart);
   const addAddress = useCartStore((state) => state.setAddress);
   const saveAddress = useCartStore((state) => state.obj.address);
@@ -40,8 +42,11 @@ const AddressStep = ({ dispatch, changeState }:any) => {
     0
   );
 
+  
+
   const deliveryFee = total > 499 ? 0 : 40;
 
+  // ✅ Validation
   const validate = () => {
     const newErrors: Partial<FormType> = {};
 
@@ -57,6 +62,8 @@ const AddressStep = ({ dispatch, changeState }:any) => {
   };
 
   const handleSubmit = () => {
+    let chosenAddress;
+
     if (addToggle) {
       if (!validate()) return;
 
@@ -72,14 +79,20 @@ const AddressStep = ({ dispatch, changeState }:any) => {
     }
 
     localStorage.setItem('total', JSON.stringify(total));
-    dispatch({ type: "GO_TO_STEP", payload: "payment" });
-     changeState(false)
+       changeStep('payment')
+      router.push('/paymentSteps/payment')
   };
 
   const inputClass = (field: keyof FormType) =>
     `w-full px-4 py-2.5 rounded-xl border text-sm ${
       errors[field] ? "border-red-400" : "border-gray-300"
     } focus:outline-none focus:ring-2 focus:ring-black`;
+
+  // ⛔ Prevent render flicker before redirect
+
+
+
+
 
   return (
     <div className="h-auto bg-gray-100 p-6">
@@ -198,10 +211,10 @@ const AddressStep = ({ dispatch, changeState }:any) => {
           <div className="space-y-3 text-black text-sm">
             {cart.map((item: any) => (
               <div key={item.id} className="flex justify-between">
-                <span>{item.name} × {item.quantity}</span>
-                <span>₹{item.price * item.quantity}</span>
-              </div>
-            ))}
+              <span>{item.name} × {item.quantity}</span>
+              <span>₹{item.price * item.quantity}</span>
+            </div>
+          ))}
           </div>
 
           <hr className="my-4" />

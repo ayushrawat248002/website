@@ -7,6 +7,7 @@ import { Spinner } from "./ui/spinner";
 import { useCartStore } from "./Cartstore";
 export default function Home() {
   const router = useRouter();
+  
   const [total, setTotal] = useState<number | null>(null);
   const displayTotal = total ?? 0;
   const [order, setorder] = useState<null|number>(null);
@@ -14,16 +15,31 @@ export default function Home() {
   const clearcart = useCartStore((state)=>state.clearCart)
   const buyerDetail = useCartStore((state) => state.obj.currentaddress)
   useEffect(() => {
+
     const stored = localStorage.getItem("total");
     if (stored) setTotal(JSON.parse(stored));
   }, []);
 
   useEffect(()=>{
+        const handlePageShow = (e: PageTransitionEvent) => {
+     console.log('clickedddd')
+  };
+
+  window.addEventListener("pageshow", handlePageShow);
+
+  return () => {
+    window.removeEventListener("pageshow", handlePageShow);
+  };
 
       return()=>{
+      
         setloading(false)
       }
   },[])
+
+
+    
+
 
   const handlePayment = async () => {
     if (!total) return;
@@ -63,7 +79,7 @@ export default function Home() {
     clearcart()
   
        await new Promise<void>((res) => setTimeout(() => {res()},3000) )
-           router.push(`/statuspage`)
+           router.replace(`/statuspage`)
     const result = await res.json();
     console.log(result);
   },
@@ -76,7 +92,7 @@ export default function Home() {
       
          setloading(true)
             await new Promise<void>((res) => setTimeout(() => {res()},3000) )
-          router.push(`/statuspage`)
+          router.replace(`/statuspage`)
     }
   }
 };
@@ -92,11 +108,12 @@ rzp.on("payment.failed", async function (response: any) {
 });
   setloading(true);
         await new Promise<void>((res) => setTimeout(() => {res()},3000) )
-         router.push(`/statuspage`)
+         router.replace(`/statuspage`)
 })
     rzp.open();
   };
 
+  
   return (
    <div className="min-h-screen  bg-gray-100 flex justify-center items-center p-6">
   <Script

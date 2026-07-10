@@ -75,7 +75,7 @@ function CarouselSize({ data }) {
                         src={item.image}
                         alt={`image${index}`}
                           fill
-    priority
+    preload
        sizes="100vw"
                         className={`
         ${index === 0 ? 'object-cover' : 'object-contain object-[167%_0%] '} backdrop-blur-lg transition-all duration-700

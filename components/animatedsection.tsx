@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import {rockSalt,bebas,caveat} from "@/lib/font"
+import {bebas,caveat} from "@/lib/font"
 const Animatedsection = () => {
 
   const [visible, setVisible] = useState<boolean>(true)
@@ -36,22 +36,26 @@ const ref2 = useRef(null);
 
  
   // Crossfade
-  const opacityBg = useTransform(scrollYProgress, [0.35, 0.5], [1, 0]);
-  const opacityFg = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
-  const y = useTransform(scrollMProgress,[0 ,0.1],[0 , 0])
+  // const opacityBg = useTransform(scrollYProgress, [0.35, 0.5], [1, 0]);
+  // const opacityFg = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
+  // const y = useTransform(scrollMProgress,[0 ,0.1],[0 , 0])
   // 🔥 Scale effect
   const scaleBg = useTransform(scrollYProgress, [0.3, 0.5], [0.95, 0.5]); // shrink
-  const scaleFg = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1]); // settle in
+  // const scaleFg = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1]); // settle in
 
-     const opacityFg3 = useTransform(scrollMProgress, [0.65, 0.75], [1, 0]);//adsa
-        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.7], [0.5,0.65]); // shrink
+     const opacityFg3 = useTransform(
+  scrollMProgress,
+  [0.2, 0.4, 0.6, 0.9],
+  [0.5, 1, 1, 0]
+);
+        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.65]); // shrink
   // Crossfade
-  const opacityBg2 = useTransform(scrollZProgress, [0.35, 0.5], [1, 0]);
-  const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
-  const  x = useTransform(scrollMProgress, [0.3, 0.7], ["-20%", "-82.5%"]);
-  // 🔥 Scale effect
-  const scaleBg2 = useTransform(scrollZProgress, [0.2, 0.5], [1, 0.5]); // shrink
-  const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
+  // const opacityBg2 = useTransform(scrollZProgress, [0.35, 0.6], [1, 0]);
+  // const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
+  const  x = useTransform(scrollMProgress, [0.3, 0.75], ["-10%", "-82.5%"]);
+  // // 🔥 Scale effect
+  // const scaleBg2 = useTransform(scrollZProgress, [0.2, 1], [1, 0.5]); // shrink
+  // const scaleFg2 = useTransform(scrollZProgress, [0, 0.3 ], [1, 1]); // settle in
   
   useEffect(()=>{
         const unsubscribe = scrollMProgress.on("change", (v) => {
@@ -92,7 +96,9 @@ return(
         <motion.div
   style={{
     
-    scale: scaleBg,
+    scale : scaleBg,
+    
+   
   }}
   className="h-[550px] w-full sticky top-0 rounded-none shadow-xl z-[10] overflow-hidden relative"
 >
@@ -100,8 +106,7 @@ return(
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
     alt="background"
     fill
-    priority
-    fetchPriority="high"
+    preload
     className="object-cover opacity-95 object-center"
   />
 </motion.div>
@@ -110,33 +115,35 @@ return(
         <motion.div
 
   className="min-h-[600px] w-full   z-20 
-  backdrop-blur-lg bg-orange-700/40
+          bg-gradient-to-t  from-orange-200  to-white
           text-shadow-none  text-black   
                      p-10 flex flex-col justify-between"
         >
+       
+    
          
           {/* Header */}
-          <div className={`max-w-xl ${bebas.className} mb-5 `}>
+          <div className={`max-w-xl ${caveat.className}  mb-5 `}>
            
-    <h2 className={`text-5xl   handwriting text-white   leading-10`}>
+    <h2 className={`text-5xl   handwriting text-orange-500   leading-10`}>
               Minimal Summer Essentials
             </h2>
-            <p className="text-white tracking-widest handwriting mt-10">
+            <p className="text-black tracking-widest handwriting mt-10">
       Thoughtfully designed pieces for everyday comfort and effortless style.
             </p>
           </div>
 
   {/* Product Grid */}
-  <div className="grid w-[300px] shadow-2xl  overflow-x-scroll scrollbar-hide rounded-2xl   snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-5">
+  <div className="grid w-[300px]   overflow-x-scroll scrollbar-hide rounded-2xl   snap-mandatory snap-x grid-cols-[repeat(3,300px)] gap-6 mt-5">
 
     {/* Card */}
-    <div className="bg-white h-80 shadow-sm text-shadow-none  snap-start rounded-2xl p-4  hover:shadow-md transition">
+    <div className = " bg-white  h-80 shadow-sm text-shadow-none  snap-start rounded-2xl p-4  hover:shadow-md transition">
                 <div className="h-60 bg-gray-100 relative rounded-xl mb-4" >
                   <Image
                   alt="girl"
                   fill
-                  sizes="100vw"
-                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1766582818/samples/bike.jpg'}
+                   sizes="100vw"
+                   src={'https://res.cloudinary.com/dfehgukz3/image/upload/w_700,q_auto,f_auto/v1766582818/samples/bike.jpg'}
                    className="object-cover object-center"
                   />
                 </div>
@@ -149,8 +156,7 @@ return(
            <Image
                   alt="girl"
                   fill
-                   priority
-                  fetchPriority="high"
+                    sizes="100vw"
                    src={'https://res.cloudinary.com/dfehgukz3/image/upload/w_600,q_auto,f_auto/v1766582828/samples/look-up.jpg'}
                    className="object-cover object-center"
                   />
@@ -164,8 +170,7 @@ return(
             <Image
                   alt="girl"
                   fill
-                   priority
-                  fetchPriority="high"
+                   sizes = "100vw"
                    src={'https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1766582831/samples/upscale-face-1.jpg'}
                    className="object-cover object-center"
                   />
@@ -191,21 +196,24 @@ return(
           
     </section>
 
-      <section ref={secondRef} className="h-auto mt-6 font-bold  bg-white">
+      <section ref={secondRef} className="h-auto mt-0 font-bold border-none ">
                 <div    className="relative flex flex-col items-start">
+
+                  
           
         {/* First image (fade out + shrink) */}
    
-<div className=" h-[600px]  sticky top-10 w-full">
+<div className=" h-[600px]  sticky top-10 w-full    ">
 <motion.div
-  style={{ scale: scaleBg2 }}
-  className="w-full h-full relative overflow-hidden  "
+
+  className="w-full h-full relative    "
 >
   <Image
     src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776796425/assam3_uqd9ye.jpg"
     alt="assam background"
     fill
-    className="object-scale-down object-center "
+    preload
+    className="  rounded-2xl  object-center opacity-100  "
   />
 
   {/* Glass Blur Layer */}
@@ -213,26 +221,20 @@ return(
 </motion.div>
 </div>
         {/* Second image (fade in + zoom in slightly) */}
-         ```jsx
+       
 <motion.div
-  style={{
-    y: y,
-    opacity: opacityFg2,
-    scale: scaleFg2,
-  }}
-  className={`min-h-[400px] w-full sticky rounded-2xl shadow-sm z-40
-  relative overflow-hidden
-  bg-gray-100/80 ${bebas.className}
-  backdrop-blur-lg border border-white/20
-  p-10 flex flex-col`}
+   
+  className={`min-h-[400px] shadow-[0_-20px_40px_rgba(0,0,0,0.3)] w-full
+  backdrop-blur-md bg-blue-200/70
+  relative overflow-hidden 
+  ${caveat.className}
+  p-9 flex flex-col  `}
+ 
 >
   {/* Glow Overlay */}
-  <div className="absolute inset-0 rounded-2xl 
-  bg-gradient-to-br from-yellow-300/20 via-transparent to-white/10 
-  pointer-events-none" />
-
+  
   {/* Header */}
-  <div className={`text-xs  max-w-2xl relative z-10`}>
+  <div className={`text-xs  max-w-2xl  relative z-10 `}>
     <p className={`tracking-[0.3em]   font-extrabold text-2xl leading-10  text-orange-600 uppercase  mb-5`}>
       Men's Collection
     </p>
@@ -246,8 +248,8 @@ return(
   <div className="mt-5 w-[300px] overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-8 pr-5 pb-8 relative z-10">
 
     {/* Card 1 */}
-    <div className="min-w-[280px] snap-start  bg-orange-300  backdrop-blur-md 
-    rounded-3xl p-5 shadow-xl ml-2 hover:shadow-2xl 
+    <div className="min-w-[280px] snap-start  bg-white  backdrop-blur-md 
+    rounded-3xl p-5  ml-2 hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
       <p className="text-neutral-900 font-medium handwriting text-lg">Linen Shirt</p>
@@ -255,7 +257,7 @@ return(
     </div>
 
     {/* Card 2 */}
-    <div className="min-w-[280px] snap-center bg-orange-300 backdrop-blur-md 
+    <div className="min-w-[280px] snap-center bg-white backdrop-blur-md 
     rounded-3xl p-5 shadow-md hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
@@ -264,7 +266,7 @@ return(
     </div>
 
     {/* Card 3 */}
-    <div className="min-w-[280px] snap-center  bg-orange-300  backdrop-blur-md 
+    <div className="min-w-[280px] snap-center  bg-white  backdrop-blur-md 
     rounded-3xl p-5 shadow-md hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
@@ -273,7 +275,7 @@ return(
     </div>
 
     {/* Card 4 */}
-    <div className="min-w-[280px] snap-center  bg-orange-300  backdrop-blur-md 
+    <div className="min-w-[280px] snap-center  bg-white  backdrop-blur-md 
     rounded-3xl p-5 shadow-md hover:shadow-2xl 
     transition-all duration-300 border border-white/30">
       <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
@@ -290,14 +292,14 @@ return(
     </p>
 
     <button className="px-3 ml-3 py-1 rounded-xl 
-    bg-white/80 backdrop-blur-md text-black text-xs handwriting 
+    bg-white/80 backdrop-blur-md text-black text-xl handwriting 
     hover:bg-black hover:text-white 
-    transition-all duration-300 border border-white/30">
+    transition-all duration-300 ">
       EXPLORE →
     </button>
   </div>
 </motion.div>
-```
+
 
         
         {/* Second image (fade in + zoom in slightly) */}
@@ -306,27 +308,49 @@ return(
       
     </section>
              
-             <section ref={ref2} className="h-[300vh]  bg-gray-100/80
+             <section ref={ref2} className="h-[300vh]  
   backdrop-blur-lg   w-full relative">
             <div className="absolute  inset-0">
-           <div className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'}  z-10 flex flex-row overflow-hidden `}>
+                
+           <motion.div   
+           
+         className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'} transform transition-opacity duration-600 ease-in  z-10 flex flex-row overflow-hidden `}>
+                       <motion.div style={{opacity : opacityFg3}} className="absolute inset-0">
+                                   <Image
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
+           alt="background"
+            fill
+          
+           className="object-cover transition-opacity duration-500 ease-linear  absolute -z-10   object-center"
+         />
+                       </motion.div>
+               
                    <h2 className="text-black h-10 w-full text-center  shrink-0 mt-15 text-5xl">Collection</h2>
-                    <section className={`bg-gray-50 tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${bebas.className} ease-linear absolute py-16 px-6 md:px-20`}>
-      <div className="max-w-4xl mx-auto text-center">
+                    
+                     <section    className={`bg-white ${caveat.className}    absolute inset-0  bg-cover bg-center text-3xl font-extrabold  border border-t-2 border-red-500 to-white backdrop-blur-xs tracking-widest h-screen ${!visiblesec ? 'opacity-0 -z-30' :'opacity-100 z-30'} transform transition-opacity duration-600 ${bebas.className} ease-linear absolute py-16 px-6 md:px-20 `}>
+                              <Image
+            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
+            alt="background"
+          fill
+            
+            className="object-cover absolute -z-10 opacity-70  object-center"
+          />
+      <div className="max-w-4xl mx-auto text-center ">
         
+         
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold text-orange-600 mb-6">
           Summer Collection 2026
         </h2>
 
         {/* Subheading */}
-        <p className="text-lg text-gray-600 mb-8">
+        <p className="text-lg font-extrabold text-black mb-8">
           Discover a blend of comfort, elegance, and modern fashion designed
           for everyday wear and special occasions.
         </p>
 
         {/* Description */}
-        <div className="text-gray-700 space-y-4 text-base leading-relaxed">
+        <div className=" font-extrabold text-black text-xl space-y-4  leading-relaxed">
           <p>
             Our latest collection features breathable fabrics, vibrant colors,
             and versatile designs that fit seamlessly into your lifestyle.
@@ -334,17 +358,7 @@ return(
             evening event, we've got you covered.
           </p>
 
-          <p>
-            Each piece is crafted with attention to detail, ensuring durability
-            while keeping up with the latest fashion trends. From relaxed fits
-            to tailored silhouettes, explore styles that reflect your unique
-            personality.
-          </p>
-
-          <p>
-            Step into the season with confidence and redefine your wardrobe
-            with our exclusive range.
-          </p>
+         
         </div>
 
         {/* Button */}
@@ -356,19 +370,18 @@ return(
 
       </div>
     </section>
-                 <motion.div style={{ x : x ,scale:scaleBg3,}}  className="flex opacity-100  rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
+                 <motion.div style={{ x : x, scale:scaleBg3 }}  className="flex opacity-100  rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
       
       {/* Card 1 */}
     
-     <div className=" w-[600px] shadow-2xl rounded-3xl mr-1 relative text-black text-center shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill  className="object-cover object-center" /> </div>
+     <div className=" w-[600px] shadow-2xl rounded-3xl mr-1 relative text-black text-center  shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill  className="object-cover object-center" /> </div>
 
       {/* Card 2 */}
       <div className="relative w-[600px] h-full shadow-2xl   text-black shrink-0">
         <Image
             src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
             alt="background"
-          fill
-            
+          fill   
             className="object-cover  object-center"
           />
       </div>
@@ -401,10 +414,10 @@ return(
    
     </motion.div>
     
-    </div>
+    </motion.div>
     </div>
 
-     <div className={`absolute ${!visible ? 'opacity-100  z-10' : '  opacity-0 -z-10'} ${bebas.className}  inset-0   `}>
+     <div className={`absolute ${!visible ? 'opacity-100 z-20 ' : '  opacity-0 -z-10'} ${bebas.className} bg-white  inset-0   `}>
       <div className=" absolute overflow-y-auto top-10 h-full w-full">
     <section
   className={`min-h-full
@@ -432,7 +445,7 @@ return(
         <Image
         alt='black guy'
           
-          priority
+          preload
             width={800}
   height={600}
           src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
@@ -530,7 +543,7 @@ return(
             
 
       <section  ref={ref3}
-             className={ `bg-gray-100/80 ${bebas.className}
+             className={ `bg-blend-color-burn bg-white ${bebas.className}
   backdrop-blur-lg   text-white px-6 py-24 `}>
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
@@ -585,7 +598,7 @@ return(
 </section>
 
      <footer className={` bg-gray-100/50
-  backdrop-blur-lg shadow-2xl ${bebas.className} tracking-widest text-orange-500 px-6 py-16 text-3xl`}>
+  backdrop-blur-lg shadow-2xl ${caveat.className} tracking-widest text-orange-500 px-6 py-16 text-3xl`}>
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
         
         {/* Brand */}
@@ -631,14 +644,14 @@ return(
         >
           <h4 className="font-semibold mb-4 text-orange-500">Stay Updated</h4>
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 blur-lg opacity-20 rounded-2xl"></div>
-            <div className="relative flex bg-gray-900 rounded-2xl overflow-hidden">
+            <div className="absolute -inset-1 bg-black/20 rounded-2xl"></div>
+            <div className="relative flex bg-white rounded-2xl overflow-hidden">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-transparent px-4 py-3 outline-none w-full text-sm text-gray-300"
+                className= {`bg-transparent ${bebas.className}  px-4 py-3 outline-none w-full text-sm text-black`}
               />
-              <button className="px-5 text-white py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-sm font-semibold hover:scale-105 transition">
+              <button className="px-5 text-white py-3 bg-black text-sm font-semibold hover:scale-105 transition">
                 Join
               </button>
             </div>

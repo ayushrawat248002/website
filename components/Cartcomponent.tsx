@@ -1,9 +1,12 @@
 'use client'
-export const dynamic = "force-dynamic";
+
 
 import { useCartStore } from "@/components/Cartstore";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+const Cart = () => {
+  const router = useRouter()
 
-const Cart = ({ dispatch , changeState }: any) => {
   const cart = useCartStore((state) => state.obj.cart);
   const increase = useCartStore((state) => state.increase);
   const decrease = useCartStore((state) => state.decrease);
@@ -13,6 +16,8 @@ const Cart = ({ dispatch , changeState }: any) => {
     (acc: number, item: any) => acc + item.price * item.quantity,
     0
   );
+  
+
 
   return (
     <section className="min-h-screen bg-gray-50 p-6">
@@ -88,17 +93,7 @@ const Cart = ({ dispatch , changeState }: any) => {
               <span className="text-green-600">₹{total}</span>
             </p>
 
-            <button
-              onClick={() =>{
-                 changeState(false) 
-                dispatch({ type: "GO_TO_STEP", payload: "address" });
-                
-              }
-              }
-              className="mt-4 md:mt-0 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow"
-            >
-              Proceed to Checkout →
-            </button>
+        
           </div>
         </>
       )}

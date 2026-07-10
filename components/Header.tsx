@@ -41,7 +41,7 @@ const Header = ({prop} : {prop : string}) => {
 
           {/* Right - Cart */}
           <div
-            onClick={() => router.push('/cart')}
+            onClick={() => router.push('/paymentSteps/cart')}
             className={`absolute  ${rockSalt.className} right-4 md:right-8 lg:right-12 cursor-pointer active:scale-90 transition`}
           >
             <FaShoppingCart className={`text-orange-500`} size={22} />

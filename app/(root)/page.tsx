@@ -1,8 +1,11 @@
 
+
 import CarouselSize from "@/components/slides"
 import Hero from "@/components/Hero"
 import Animatedsection from "@/components/animatedsection";
     import Image from "next/image";
+    import Header from "@/components/Header";
+
 ;
 
 
@@ -25,10 +28,11 @@ const data = [
 ];
 
 const Page = () => {
+  console.log('runno=ing')
   
- 
   return (
     <main className="p-0 m-0 h-full border-none w-full">
+        <Header prop="" />
 
       {/* ================= MOBILE (UNCHANGED) ================= */}
       <div className="block md:hidden ">

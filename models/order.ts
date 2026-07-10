@@ -21,7 +21,10 @@ const orderSchema = new mongoose.Schema(
                 type : Number
         }
     ,
-
+        statusOrd : {
+             type : String,
+            default : 'not marked'
+        },
     // 💰 amount
     amount: {
       type: Number,

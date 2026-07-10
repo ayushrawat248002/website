@@ -14,7 +14,7 @@ export async function PATCH(req : NextRequest, { params  } : {params : any}) {
 
    const order = await Order.findOneAndUpdate(
   { order_id },
-  { paymentStatus: "failed" },
+  { status : "failed" },
   {
     returnDocument: "after",
     runValidators: true,
