@@ -43,7 +43,7 @@ function CarouselSize({ data }) {
             transition-all duration-300
             ${
               index === ind
-                ? index === 0 ? 'bg-white scale-135' : "bg-black scale-135"
+                ? index === 0 ? 'bg-white   scale-x-165' : "bg-black scale-x-165 "
                 : "bg-gray-400"
             }
           `}
@@ -80,7 +80,7 @@ function CarouselSize({ data }) {
                 
                 <CarouselItem
                   key={index}
-          className="basis-[105%] sm:basis-full lg:basis-[40%]  ml-2"
+          className="basis-[105%] sm:basis-full lg:basis-[40%] ml-2 "
                 >
            
 

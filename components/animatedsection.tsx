@@ -384,7 +384,7 @@ return(
   backdrop-blur-lg  transform  transition-opacity duration-500 ease-linear 
   text-black px-6 py-20`}
 >
-  <div className="max-w-7xl mx-auto  space-y-20">
+  <div className="max-w-7xl mx-auto  space-y-10">
 
     {/* 🔥 Minimal Heading */}
     <div className="flex justify-between items-end">
@@ -457,7 +457,7 @@ return(
       </div>
 
       <div className="grid grid-cols-2  md:grid-cols-2 gap-6">
-        {[1,2,3,4,5,6].map((item) => (
+        {[1,2,3,4].map((item) => (
           <div
             key={item}
             className="group cursor-pointer"
