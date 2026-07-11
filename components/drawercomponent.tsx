@@ -33,7 +33,7 @@ export function MenuDrawer() {
       </DrawerTrigger>
 
       {/* Drawer */}
-      <DrawerContent className="h-full w-[300px] left-0 right-auto rounded-none bg-white border-r border-neutral-200">
+      <DrawerContent className="h-full w-[300px] left-0 right-auto rounded-none bg-gradient-to-b  from-orange-200 to-white border-r border-neutral-200">
 
         <DrawerHeader>
           <DrawerTitle className="text-lg font-semibold tracking-tight text-neutral-900">
@@ -42,7 +42,7 @@ export function MenuDrawer() {
         </DrawerHeader>
 
         {/* Menu Items */}
-        <div className="flex flex-col gap-6 px-6 py-6">
+        <div className="flex flex-col gap-10 px-6 py-6">
            <style jsx global>{`
   @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
@@ -67,16 +67,7 @@ export function MenuDrawer() {
         </div>
 
         {/* Footer */}
-        <div className="mt-auto px-6 pb-6">
-          <DrawerClose asChild>
-            <Button
-              variant="outline"
-              className="w-full border-neutral-300 text-neutral-900 hover:bg-neutral-100"
-            >
-              Logout
-            </Button>
-          </DrawerClose>
-        </div>
+   
 
       </DrawerContent>
     </Drawer>

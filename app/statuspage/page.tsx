@@ -7,7 +7,7 @@ const fetcher = (url: string) => fetch(url).then(res => res.json());
 export default function Orders() {
 
   const { data, error, isLoading } = useSWR("/api/order", fetcher, {
-    refreshInterval: 2000,
+    refreshInterval: 60 * 1000,
   });
   console.log(data)
 

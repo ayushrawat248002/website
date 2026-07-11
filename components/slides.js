@@ -32,6 +32,29 @@ function CarouselSize({ data }) {
     return () => api.off("select", onSelect)
   }, [api])
 
+  const Slider = ({ index }) => {
+  return (
+    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-4">
+      {Array.from({ length: 3 }).map((_, ind) => (
+        <span
+          key={ind}
+          className={`
+            h-3 w-3 rounded-full
+            transition-all duration-300
+            ${
+              index === ind
+                ? index === 0 ? 'bg-white scale-135' : "bg-black scale-135"
+                : "bg-gray-400"
+            }
+          `}
+        />
+      ))}
+    </div>
+  );
+};
+
+ 
+
   return (
     <div className="bg-white border border-white">
         <Carousel
@@ -46,6 +69,7 @@ function CarouselSize({ data }) {
           ]}
   className="w-full  max-w-5xl mx-auto"
         >
+        
           <CarouselContent className="-ml-4 w-auto">
      
             {data?.map((item, index) => {
@@ -53,6 +77,7 @@ function CarouselSize({ data }) {
               const isActive = index === activeIndex
 
               return (
+                
                 <CarouselItem
                   key={index}
           className="basis-[105%] sm:basis-full lg:basis-[40%]  ml-2"
@@ -103,13 +128,19 @@ function CarouselSize({ data }) {
                       </div>
 
                     </CardContent>
+                    
                   </Card>
-
+                  
                 </CarouselItem>
+                    
+                 
               )
             })}
 
           </CarouselContent>
+             
+               <Slider index = {activeIndex} />
+        
         </Carousel>
       </div>
 

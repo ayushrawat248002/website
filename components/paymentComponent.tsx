@@ -77,9 +77,11 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(response)
     });
+
+    console.log(res);
     clearcart()
   
-       await new Promise<void>((res) => setTimeout(() => {res()},3000) )
+       await new Promise<void>((res) => setTimeout(() => {res()},30000) )
            router.replace(`/statuspage`)
     const result = await res.json();
     console.log(result);

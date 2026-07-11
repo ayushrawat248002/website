@@ -457,7 +457,7 @@ return(
       </div>
 
       <div className="grid grid-cols-2  md:grid-cols-2 gap-6">
-        {[1,2,3,4,5,6,7,8].map((item) => (
+        {[1,2,3,4,5,6].map((item) => (
           <div
             key={item}
             className="group cursor-pointer"
