@@ -1,29 +1,33 @@
-'use client'
+'use client';
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Home from "@/components/paymentComponent";
 import { useStepGuard } from "@/components/useStepGuard";
- import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useCartStore } from "@/components/Cartstore";
 
-const Page = () => {
-     const router = useRouter();
-   const valid = useStepGuard("payment");
-  const step = useCartStore((state) => state.obj.step)
-  console.log(valid)
+export default function Page() {
+  const router = useRouter();
+  const guard = useStepGuard("payment");
+
   useEffect(() => {
-    if (!valid.valid) {
-      router.replace(`/paymentSteps/${step}`);
-    }
-  }, [valid, router]);
+    return () => {
+      console.log("unmount");
+    };
+  }, []);
 
-  if (!valid) return null;
+  useEffect(() => {
+    if (!guard.valid) {
+      router.replace(`/paymentSteps/${guard.step}`);
+    }
+  }, [guard.valid, guard.step, router]);
+
+  if (!guard.valid) {
+    return null;
+  }
 
   return (
     <main>
       <Home />
     </main>
   );
-};
-
-export default Page;
+}

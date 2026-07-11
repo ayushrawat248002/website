@@ -29,11 +29,12 @@ export default function Home() {
 
   return () => {
     window.removeEventListener("pageshow", handlePageShow);
+         setloading(false)
   };
 
       return()=>{
       
-        setloading(false)
+   
       }
   },[])
 

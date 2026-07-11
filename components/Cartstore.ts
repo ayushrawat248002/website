@@ -81,36 +81,37 @@ export const useCartStore = create<Store>()(
           obj: { ...state.obj, step },
         })),
 
-      nextStep: () =>
-        set((state) => {
-          const { step, cart, currentaddress } = state.obj;
+   nextStep: () =>
+  set((state) => {
+    const { step, cart, currentaddress } = state.obj;
 
-          if (step === "cart" && cart.length > 0) {
-            return { obj: { ...state.obj, step: "address" } };
-          }
+    switch (step) {
+      case "cart":
+        if (cart.length > 0) {
+          return {
+            obj: { ...state.obj, step: "address" },
+          };
+        }
+        break;
 
-          if (step === "address" && currentaddress) {
-            return { obj: { ...state.obj, step: "payment" } };
-          }
+      case "address":
+        if (currentaddress) {
+          return {
+            obj: { ...state.obj, step: "payment" },
+          };
+        }
+        break;
 
-          return state;
-        }),
+      case "payment":
+        return {
+          obj: { ...state.obj, step: "statusPage" },
+        };
+    }
 
-      prevStep: () =>
-        set((state) => {
-          const { step } = state.obj;
+    return state;
+  }),
 
-          if (step === "payment") {
-            return { obj: { ...state.obj, step: "address" } };
-          }
-
-          if (step === "address") {
-            return { obj: { ...state.obj, step: "cart" } };
-          }
-
-          return state;
-        }),
-
+     prevStep: () => set((state) => state),
       setTheme: (theme) =>
         set((state) => ({
           obj: { ...state.obj, theme },

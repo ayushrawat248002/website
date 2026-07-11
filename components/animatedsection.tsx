@@ -46,9 +46,9 @@ const ref2 = useRef(null);
      const opacityFg3 = useTransform(
   scrollMProgress,
   [0.2 , 0.4],
-  [0, 1]
+  [1, 1]
 );
-        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.65]); // shrink
+        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.5]); // shrink
   // Crossfade
   // const opacityBg2 = useTransform(scrollZProgress, [0.35, 0.6], [1, 0]);
   // const opacityFg2 = useTransform(scrollZProgress, [1, 1], [1, 1]);
@@ -314,7 +314,8 @@ return(
                 
            <motion.div   
            
-         className={`h-[100vh]  w-full ${visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'} transform transition-opacity duration-600 ease-in  z-10 flex flex-row overflow-hidden `}>
+         className={`h-[100vh]  w-full ${!visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'} transform transition-opacity duration-600 ease-in  z-10 flex flex-row overflow-hidden `}>
+                      
                        <motion.div style={{opacity : opacityFg3}} className="absolute inset-0">
                                    <Image
            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
@@ -328,7 +329,7 @@ return(
                    <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
                     
                
-                 <motion.div style={{ x : x, scale:scaleBg3 }}  className="flex opacity-100  rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
+                 <motion.div style={{ x : x, scale : scaleBg3}}  className="flex opacity-100   rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
       
       {/* Card 1 */}
     
@@ -340,7 +341,7 @@ return(
             src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
             alt="background"
           fill   
-            className="object-cover  object-center"
+           className="object-cover object-[50%_50%]"
           />
       </div>
         <div className="relative  w-[600px] shadow-2xl text-black text-center shrink-0">
@@ -375,7 +376,7 @@ return(
     </motion.div>
     </div>
 
-     <div className={`absolute ${!visible ? 'opacity-100 z-20 ' : '  opacity-0 -z-10'} ${bebas.className} bg-white  inset-0   `}>
+     <div className={`absolute ${visible ? 'opacity-100 z-20 ' : '  opacity-0 -z-10'} ${bebas.className} bg-white  inset-0   `}>
       <div className=" absolute overflow-y-auto top-10 h-full w-full">
     <section
   className={`min-h-full
