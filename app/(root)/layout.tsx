@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import "./globals.css";
-
+import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import {bebas,caveat,rockSalt} from '@/lib/font'
 
@@ -53,7 +53,7 @@ export default function RootLayout({
         {/* 🔝 HEADER */}
       
         
-
+        
               
          
              
@@ -61,6 +61,7 @@ export default function RootLayout({
 
         {/* 📦 MAIN CONTENT */}
         <main className ={`w-full h-full border-none   bg-white ${bebas.className} `}>
+             
           {children}
         
         </main>

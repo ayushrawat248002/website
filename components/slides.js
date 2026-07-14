@@ -1,150 +1,73 @@
 'use client'
 
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import Autoplay from "embla-carousel-autoplay"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 
-function CarouselSize({ data }) {
+ function CarouselSize({ data }) {
+  const [active, setActive] = useState(0);
 
-  const [api, setApi] = useState()
-  const [activeIndex, setActiveIndex] = useState(0)
- const data2 = [
-  { image: "/img1.jpg", text: "First Slide Text" },
-  { image: "/img2.jpg", text: "Second Slide Text" },
-  { image: "/img3.jpg", text: "Third Slide Text" },
-]
   useEffect(() => {
-    if (!api) return
+    if (!data?.length) return;
 
-    const onSelect = () => {
-      setActiveIndex(api.selectedScrollSnap())
-    }
+    const id = setInterval(() => {
+      setActive((prev) => (prev + 1) % data.length);
+    }, 3500);
 
-    api.on("select", onSelect)
+    return () => clearInterval(id);
+  }, [data]);
 
-    return () => api.off("select", onSelect)
-  }, [api])
-
-  const Slider = ({ index }) => {
   return (
-    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-4">
-      {Array.from({ length: 3 }).map((_, ind) => (
-        <span
-          key={ind}
-          className={`
-            h-3 w-3 rounded-full
-            transition-all duration-300
-            ${
-              index === ind
-                ? index === 0 ? 'bg-white   scale-x-165' : "bg-black scale-x-165 "
-                : "bg-gray-400"
-            }
-          `}
-        />
+    <div className="relative max-w-5xl mx-auto h-[480px] overflow-hidden rounded-xl">
+      {data.map((item, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            active === index
+              ? "opacity-100 z-10"
+              : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <Image
+            src={item.image}
+            alt={item.text}
+            fill
+            priority={index === 0}
+            sizes="(max-width:768px)100vw,1280px"
+            className={`${
+              index === 0
+                ? "object-cover object-top"
+                : "object-contain object-[167%_0%]"
+            }`}
+          />
+
+          {index !== 0 && (
+            <div className="absolute inset-0 flex items-center px-8">
+              <p className="text-2xl font-bebas tracking-widest text-black">
+                {item.text}
+              </p>
+            </div>
+          )}
+        </div>
       ))}
+
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        {data.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActive(index)}
+            className={`h-3 w-3 rounded-full transition-all duration-300 ${
+              active === index
+                ? index === 0
+                  ? "bg-white scale-x-150"
+                  : "bg-black scale-x-150"
+                : "bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
-};
-
- 
-
-  return (
-    <div className="bg-white border border-white">
-        <Carousel
-          setApi={setApi}
-          opts={{ align: "center", loop: true }}
-          plugins={[
-            Autoplay({
-              delay: 3500,
-              stopOnInteraction: false,
-              stopOnMouseEnter: true,
-            }),
-          ]}
-  className="w-full  max-w-5xl mx-auto"
-        >
-        
-          <CarouselContent className="-ml-4 w-auto">
-     
-            {data?.map((item, index) => {
-
-              const isActive = index === activeIndex
-
-              return (
-                
-                <CarouselItem
-                  key={index}
-          className="basis-[105%] sm:basis-full lg:basis-[40%] ml-2 "
-                >
-           
-
-                  <Card
-                    className={`
-                      h-[480px]  relative w-full overflow-hidden
-                      transition-all duration-800 group
-                      ${isActive ? "scale-100" : "scale-90 "}
-                     
-                    `}
-                  >
-   
-  <CardContent className="relative h-full  w-full p-0">
- 
-    {/* Image */}
-                      <Image
-                        src={item.image}
-                        alt={`image${index}`}
-                          fill
-    preload
-       sizes="100vw"
-                        className={`
-        ${index === 0 ? 'object-cover' : 'object-contain object-[167%_0%] '} backdrop-blur-lg transition-all duration-700
-       ${isActive ? (index === 0 ? "scale-100 object-top "  : "scale-85") : "scale-75"}
-                          group-hover:scale-110
-                        `}
-                      />
-
-
-    {/* LEFT gradient only (for readability, not full black) */}
-  
-
-    {/* Side Text Content */}
-                      <div className={`absolute top-10 h-full flex flex-col justify-center px-8 z-10 max-w-[60%] ${
-                        index === 0 ? "" : "left-0"
-                      }`}>
-
-      <p className={`${index === 0 ? 'text-none' : 'text-black'} text-2xl relative font-bebas leading-6 tracking-widest`}>
-    
-                          { index !== 0 ? item.text: ''}
-                        </p>
-
-                     
-
-                      </div>
-
-                    </CardContent>
-                    
-                  </Card>
-                  
-                </CarouselItem>
-                    
-                 
-              )
-            })}
-
-          </CarouselContent>
-             
-               <Slider index = {activeIndex} />
-        
-        </Carousel>
-      </div>
-
-      )
 }
 
 export default CarouselSize
