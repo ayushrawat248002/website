@@ -2,7 +2,7 @@
 
 import "./globals.css";
 import Footer from "@/components/Footer";
-import {bebas} from '@/lib/font'
+import {bebas, caveat} from '@/lib/font'
 
 export const metadata = {
   metadataBase: new URL("https://dripbohag.com"),
@@ -53,7 +53,7 @@ export default function RootLayout({
         
 
         {/* 📦 MAIN CONTENT */}
-        <main className ={`w-full h-full border-none   bg-white ${bebas.className} `}>
+        <main className ={`w-full h-full border-none   bg-white ${bebas.className}  `}>
              
           {children}
         

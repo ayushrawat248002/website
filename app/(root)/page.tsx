@@ -153,6 +153,7 @@ export default function Page() {
           flex-col
           w-full
           justify-center
+          px-2 
         "
       >
         <CarouselSize data={data} />

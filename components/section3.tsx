@@ -22,7 +22,7 @@ const ref2 = useRef(null);
 );
         const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.5]); // shrink
 
-  const  x = useTransform(scrollMProgress, [0.35, 0.75], ["-10%", "-75%"]);
+  const  x = useTransform(scrollMProgress, [0.35, 0.85], ["-10%", "-75%"]);
 
       useEffect(()=>{
         const unsubscribe = scrollMProgress.on("change", (v) => {
@@ -53,7 +53,7 @@ const ref2 = useRef(null);
     return(
      
 
-        <section className="flex relative flex-col">
+        <section className="flex relative  flex-col">
          <div className={`  ${bebas.className} bg-white  `}>
       <div className="  overflow-y-auto h-full w-full">
     <section
@@ -62,31 +62,40 @@ const ref2 = useRef(null);
   backdrop-blur-lg  transform  transition-opacity duration-500 ease-linear 
   text-black px-2  py-10`}
 >
-  <div className="max-w-7xl mx-auto  space-y-10">
+  <div className="max-w-7xl mx-auto space-y-16 md:px-8">
 
     {/* 🔥 Minimal Heading */}
-    <div className="flex justify-between items-end">
-      <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
+  <div className="md:flex md:justify-between md:items-end">
+      <h2 className="text-4xl md:text-7xl leading-none font-semibold tracking-tight">
         New Drop
       </h2>
-      <span className="text-black text-sm uppercase tracking-widest">
+      <span className="text-sm md:text-5xl uppercase tracking-[0.35em] text-neutral-500">
         SS / 24 Collection
       </span>
     </div>
 
     {/* 🧥 Editorial Grid */}
-    <div className="grid md:grid-cols-3 gap-6">
+<div className="grid gap-6 md:gap-8 md:grid-cols-[2fr_1fr] md:min-h-[80vh]">
 
       {/* Large Editorial Card */}
-      <div className="md:col-span-2 relative group overflow-hidden rounded-2xl">
+      <div className="md:h-[80vh] md:w-full   relative group overflow-hidden rounded-2xl">
     <Image
   alt="black guy"
   src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255138/_BBB9715_vjhzry.jpg"
   width={800}
-  height={600}
+  height={800}
   priority
-  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 66vw, 800px"
-  className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
+  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 800px"
+  className="
+w-full
+h-[500px]
+md:h-full
+object-cover
+rounded-2xl
+group-hover:scale-105
+transition-transform
+duration-700
+"
 />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
@@ -103,9 +112,9 @@ const ref2 = useRef(null);
       </div>
 
       {/* Side Vertical Cards */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col mx-auto gap-6">
        {["Oversized Tees", "Minimal Sets"].map((text, i) => (
-  <div key={i} className="relative group overflow-hidden rounded-2xl">
+  <div key={i} className="relative group overflow-hidden h-[20vh] w-[40vh] rounded-2xl">
     <Image
       alt={text}
       src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255253/_BBB9503_efkvcw.jpg"
@@ -113,7 +122,7 @@ const ref2 = useRef(null);
       height={600}
       loading="lazy"
       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 420px"
-      className="w-full h-[240px] object-cover group-hover:scale-105 transition-transform duration-700"
+      className="w-full h-[240px] md:h-full object-cover group-hover:scale-105 transition-transform duration-700"
     />
 
     <div className="absolute inset-0 bg-black/40" />
@@ -128,7 +137,7 @@ const ref2 = useRef(null);
     </div>
 
     {/* 🛍 Product Grid */}
-    <div className="">
+    <div className="flex flex-col md:h-[80vh] justify-between gap-6">
       <div className="flex justify-between items-center mb-8">
         <h3 className="text-2xl font-medium">Featured Pieces</h3>
         <span className="text-black text-sm">View All</span>
@@ -138,7 +147,7 @@ const ref2 = useRef(null);
         {[1, 2, 3, 4, 5, 6, 8, 9].map((item, index) => (
   <div key={item} className={`
     ${index > 3 ? "[@media(max-height:800px)]:hidden" : ""}
-      group cursor-pointer`}>
+      group cursor-pointer md:h-[40vh]`}>
     <div className="relative overflow-hidden rounded-xl bg-neutral-900">
       <Image
         alt="Oversized Hoodie"
@@ -147,7 +156,7 @@ const ref2 = useRef(null);
         height={600}
         loading="lazy"
         sizes="(max-width:768px) 50vw, 50vw"
-        className="w-full  h-60 object-cover group-hover:scale-105 transition-transform duration-500"
+        className="w-full  h-60 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
 
       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
