@@ -27,7 +27,6 @@ const { scrollYProgress: scrollZProgress } = useScroll({
              
           <div className=" h-[600px]  sticky top-0 bg-transparent w-full   bg-gradient-to-b from-blue-200 to-white     ">
           <motion.div
-             style={{scale : scaleBg2}}
             className="w-full h-full relative     "
           >
             <Image

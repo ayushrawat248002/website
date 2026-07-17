@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 
     const id = setInterval(() => {
       setActive((prev) => (prev + 1) % data.length);
-    }, 3500);
+    }, 5500);
 
     return () => clearInterval(id);
   }, [data]);
@@ -24,7 +24,7 @@ import { useEffect, useState } from "react";
           key={index}
           className={`absolute inset-0 transition-opacity duration-700 ${
             active === index
-              ? "opacity-100 z-10"
+              ? "opacity-95 z-10"
               : "opacity-0 pointer-events-none"
           }`}
         >
@@ -37,13 +37,13 @@ import { useEffect, useState } from "react";
             className={` ${
               index === 0
                 ? "object-cover object-top"
-                : "object-cover object-[167%_0%]"
+                : "object-cover object-center"
             }`}
           />
 
           {index !== 0 && (
-            <div className="absolute inset-0 flex items-center px-8">
-              <p className="text-2xl font-bebas tracking-widest text-black">
+            <div className="absolute inset-0 flex items-end px-8">
+              <p className="text-2xl block backdrop-blur-xs  font-bebas tracking-widest mb-10 text-white shadow-2xl text-shadow-black">
                 {item.text}
               </p>
             </div>
@@ -60,7 +60,7 @@ import { useEffect, useState } from "react";
               active === index
                 ? index === 0
                   ? "bg-white scale-x-150"
-                  : "bg-black scale-x-150"
+                  : "bg-white scale-x-150"
                 : "bg-gray-400"
             }`}
           />

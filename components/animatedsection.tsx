@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import Page from '@/components/footersection'
 import Image from "next/image";
 import {bebas,caveat} from "@/lib/font"
-import Section1 from "./section1";
-const Section2 = dynamic(() => import("./section2"));
+
+
 const Section3 = dynamic(() => import("./section3"));
 
 
@@ -14,34 +14,32 @@ const Animatedsection = () => {
 return(
     <div className={`${caveat.className}`}>    
       
-          <Section1/>
-
-          <Section2/>
+          
              
           <Section3/>
             
 
       <section  
-             className={ `bg-blend-color-burn bg-white ${bebas.className}
-  backdrop-blur-lg   text-white px-6 py-24 `}>
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+             className={ ` bg-gray-50 ${bebas.className}
+  backdrop-blur-lg   text-white px-2  py-10 `}>
+  <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-2 gap-16 items-start">
 
     {/* 🖼 Image */}
-    <div className="relative group overflow-hidden rounded-2xl">
+    <div className="relative group w-[50vw]  rounded-2xl">
       <Image
           
           alt = 'black guy'
     priority
-         width={800}
+         width={900}
   height={600}
         src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255295/_BBB9571_caisye.jpg"
-        className="w-full h-[500px]  object-cover object-center group-hover:scale-105 transition duration-700"
+        className=" h-[350px] w-[300px]   object-cover object-bottom group-hover:scale-105 transition duration-700"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
     </div>
 
     {/* ✍️ Story */}
-    <div>
+    <div className="w-[40vw]">
       <p className="text-xl tracking-[0.3em] text-black mb-4">
         OUR STORY
       </p>
@@ -52,13 +50,17 @@ return(
         Designed for the Culture.
       </h2>
 
-      <p className="text-gray-400 text-[20px] leading-relaxed mb-6">
+      
+
+     </div>
+
+  </div>
+  <p className="text-gray-400 text-[20px] mt-5 leading-relaxed mb-6">
         What started as a small idea between creators turned into a movement.
         We weren’t trying to follow trends — we were creating pieces that
         reflected identity, attitude, and individuality.
       </p>
-
-      <p className="text-gray-400 text-[20px] leading-relaxed mb-6">
+   <p className="text-gray-400 text-[20px] leading-relaxed mb-6">
         Every drop is intentional. Every design tells a story. From oversized
         silhouettes to minimal palettes, we craft clothing that blends
         comfort with statement.
@@ -71,9 +73,7 @@ return(
       <button className="px-6 py-3 border text-white bg-black rounded-4xl border-white/40 hover:border-white text-sm tracking-wide transition">
         Explore Collection
       </button>
-    </div>
-
-  </div>
+  
 </section>
 
    <>

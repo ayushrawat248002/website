@@ -24,13 +24,13 @@ const data = [
   },
   {
     image:
-      "https://res.cloudinary.com/dfehgukz3/image/upload/w_300,q_auto,f_auto/v1776796428/model4_fpvmwt.png",
+     "https://res.cloudinary.com/dfehgukz3/image/upload/v1784255250/_BBB9479_bcfgke.jpg",
     text:
       "Trendy outfit with a sleek design, ideal for both casual outings and semi-formal occasions.",
   },
   {
     image:
-      "https://res.cloudinary.com/dfehgukz3/image/upload/w_300,q_auto,f_auto/v1776796431/model7_cnaslx.png",
+      "https://res.cloudinary.com/dfehgukz3/image/upload/v1784255294/_BBB9515_swpjvh.jpg",
     text:
       "Premium fashion piece with a bold look, crafted for style and confidence.",
   },
@@ -38,7 +38,7 @@ const data = [
 
 export default function Page() {
   return (
-    <main className="p-0 m-0 w-full">
+    <main className=" m-0 w-full">
       <Header prop="" />
 
       {/* HERO SECTION */}
@@ -48,12 +48,12 @@ export default function Page() {
       <div
         className="
           md:col-span-7
-          relative
+          relative px-2
         "
       >
         <div
           className="
-            relative
+            relative 
             h-[480px]
             w-full
             overflow-hidden

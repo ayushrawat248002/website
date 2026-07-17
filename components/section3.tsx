@@ -17,12 +17,12 @@ const ref2 = useRef(null);
   
      const opacityFg3 = useTransform(
   scrollMProgress,
-  [0.2 , 0.4],
-  [1, 1]
+  [0.2 , 0.6],
+  [1, 0.5]
 );
         const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.5]); // shrink
 
-  const  x = useTransform(scrollMProgress, [0.35, 0.75], ["-10%", "-82.5%"]);
+  const  x = useTransform(scrollMProgress, [0.35, 0.75], ["-10%", "-75%"]);
 
       useEffect(()=>{
         const unsubscribe = scrollMProgress.on("change", (v) => {
@@ -51,81 +51,16 @@ const ref2 = useRef(null);
 
 
     return(
-        <>
-           <section ref={ref2} className=" [@media(max-height:800px)]:h-[300vh]  h-[300vh]  
-  backdrop-blur-lg   w-full relative">
-            <div className="absolute  inset-0">
-                
-           <motion.div   
-           
-         className={`h-[100vh]  w-full ${!visible ? ' sticky top-0 ' : ' sticky top-0  opacity-0'} transform transition-opacity duration-600 ease-in  z-10 flex flex-row overflow-hidden `}>
-                      
-                       <motion.div style={{opacity : opacityFg3}} className="absolute inset-0">
-                                   <Image
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255310/_BBB9588_ini622.jpg"
-            fill
-            alt="back"            
-           className="object-cover transition-opacity duration-500 ease-linear py-10  absolute -z-10   object-center"
-         />
-                       </motion.div>
-               
-                   <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
-                    
-               
-                 <motion.div style={{ x : x, scale : scaleBg3}}  className="flex opacity-100   rounded-3xl h-[100vh]  gap-2 p-2  bg-white shadow-2xl    w-max">
-      
-      {/* Card 1 */}
-    
-     <div className=" w-[600px] shadow-2xl rounded-3xl mr-1 relative text-black text-center  shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill  className="object-cover object-center" /> </div>
+     
 
-      {/* Card 2 */}
-      <div className="relative w-[600px] h-full shadow-2xl   text-black shrink-0">
-        <Image
-            src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255250/_BBB9498_lwwc4v.jpg"
-            alt="background"
-          fill   
-           className="object-cover object-[50%_50%]"
-          />
-      </div>
-        <div className="relative  w-[600px] shadow-2xl text-black text-center shrink-0">
-       <Image
-          alt=""
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255283/_BBB9558_y1b52n.jpg"
-            fill
-           className="object-cover object-center"
-         />
-      </div>
-        <div className=" w-[600px] shadow-2xl sticky left-0 text-black text-center  shrink-0">
-       <Image 
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255272/_BBB9511_dafx14.jpg"
-           alt="background"
-            fill
-           className="object-cover  object-center"
-           
-         />
-      </div>
-       <div className=" w-[600px] shadow-2xl relative text-black  text-center  shrink-0">
-       <Image
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582823/samples/two-ladies.jpg"
-           alt="background"
-          fill
-           className="object-cover  object-center"
-         />
-      </div>
-
-   
-    </motion.div>
-    
-    </motion.div>
-    </div>
-
-     <div className={`absolute ${visible ? 'opacity-100 z-20 ' : '  opacity-0 -z-10'} ${bebas.className} bg-white  inset-0   `}>
-      <div className=" absolute overflow-y-auto top-10 h-full w-full">
+        <section className="flex relative flex-col">
+         <div className={`  ${bebas.className} bg-white  `}>
+      <div className="  overflow-y-auto h-full w-full">
     <section
   className={`min-h-full
   bg-gray-100/80
   backdrop-blur-lg  transform  transition-opacity duration-500 ease-linear 
-  text-black px-6 py-20`}
+  text-black px-2  py-10`}
 >
   <div className="max-w-7xl mx-auto  space-y-10">
 
@@ -234,11 +169,79 @@ const ref2 = useRef(null);
   </div>
 </section>
 </div>
-</div>
+         </div>
+           <section ref={ref2} className={` ${visible ? 'h-[300vh] ' : 'h-[100vh]' }
+  backdrop-blur-lg    w-full relative`}>
+         
+      
+    <motion.div   
+           
+         className={`h-[100vh]  w-full sticky top-0 transform transition-opacity duration-600 ease-in  z-10 flex flex-row  overflow-hidden `}>
+                      
+                       <motion.div  style={{
+  opacity: visible ? opacityFg3 : 100,
+}} className="absolute inset-0 ">
+                                   <Image
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255310/_BBB9588_ini622.jpg"
+            fill
+            alt="back"            
+           className={`object-cover ${visible ? 'blur-sm' : ''} transition-opacity duration-500 ease-linear py-0 px-2 rounded-2xl  absolute -z-10   object-center`}
+         />
+                       </motion.div>
+               
+                   <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
+                    
+               
+                 <motion.div style={{ x : x, scale : scaleBg3}}  className={`flex opacity-100 ${!visible ? 'hidden' : ''}  mt-10  rounded-3xl [@media(max-height:800px)]:h-[90vh] h-[70vh]  gap-2 p-2  bg-white shadow-2xl    w-max`}>
+      
+      {/* Card 1 */}
+    
+     <div className=" w-[600px] shadow-2xl rounded-3xl mr-1 relative text-black text-center  shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill  className="object-cover object-center" /> </div>
+
+      {/* Card 2 */}
+      <div className="relative w-[600px] h-full shadow-2xl   text-black shrink-0">
+        <Image
+            src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255250/_BBB9498_lwwc4v.jpg"
+            alt="background"
+          fill   
+           className="object-cover object-[50%_50%]"
+          />
+      </div>
+        <div className="relative  w-[600px] shadow-2xl text-black text-center shrink-0">
+       <Image
+          alt=""
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255283/_BBB9558_y1b52n.jpg"
+            fill
+           className="object-cover object-center"
+         />
+      </div>
+        <div className=" w-[600px] shadow-2xl sticky left-0 text-black text-center  shrink-0">
+       <Image 
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255272/_BBB9511_dafx14.jpg"
+           alt="background"
+            fill
+           className="object-cover  object-center"
+           
+         />
+      </div>
+       <div className=" w-[600px] shadow-2xl relative text-black  text-center  shrink-0">
+       <Image
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582823/samples/two-ladies.jpg"
+           alt="background"
+          fill
+           className="object-cover  object-center"
+         />
+      </div>
+
+   
+    </motion.div>
+    
+    </motion.div>
+
 
   
    </section>
-        </>
+        </section>
     )
 }
 
