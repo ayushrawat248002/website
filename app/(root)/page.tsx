@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import Header from "@/components/Header";
 
-
 const Hero = dynamic(() => import("@/components/Hero"), {
   loading: () => <div>Loading...</div>,
 });
@@ -12,13 +11,9 @@ const CarouselSize = dynamic(() => import("@/components/slides"), {
   loading: () => <div>Loading carousel...</div>,
 });
 
-
 const Animatedsection = dynamic(
   () => import("@/components/animatedsection"),
-
-  
 );
-
 
 const data = [
   {
@@ -41,213 +36,129 @@ const data = [
   },
 ];
 
-
 export default function Page() {
-
   return (
     <main className="p-0 m-0 w-full">
-
-
       <Header prop="" />
-
 
       {/* HERO SECTION */}
 
-      <section
+      {/* IMAGE */}
+
+      <div
         className="
-          grid
-          grid-cols-1
-          md:grid-cols-12
-          gap-6
-          lg:gap-10
-          px-4
-          md:px-10
-          lg:px-20
-          py-6
+          md:col-span-7
+          relative
         "
       >
-
-
-        {/* IMAGE */}
-
         <div
           className="
-            md:col-span-7
             relative
+            h-[480px]
+            w-full
+            overflow-hidden
           "
         >
-
-          <div
-            className="
-              relative
-              h-[480px]
-              w-full
-              overflow-hidden
+          <Image
+            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776795695/boyband2_kgfuol.png"
+            alt="Authentic Assamese Collection"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="
+              (max-width:768px) 100vw,
+              60vw
             "
-          >
-
-            <Image
-              src="https://res.cloudinary.com/dfehgukz3/image/upload/w_900,q_auto,f_auto/v1776795695/boyband2_kgfuol.png"
-              alt="Authentic Assamese Collection"
-              fill
-              priority
-              fetchPriority="high"
-              sizes="
-                (max-width:768px) 100vw,
-                60vw
-              "
-              className="
-                object-cover
-                md:object-[80%_100%]
-              "
-            />
-
-          </div>
-
-
-
-          {/* DESKTOP OVERLAY */}
-
-          <div
             className="
-              hidden
-              md:block
-              absolute
-              bottom-6
-              left-6
-              bg-white/70
-              backdrop-blur-md
-              px-5
-              py-3
-              rounded-xl
+              object-cover
+              md:object-[80%_100%]
             "
-          >
-
-            <h1
-              className="
-                text-xl
-                lg:text-2xl
-                font-semibold
-                tracking-widest
-                uppercase
-                text-gray-900
-              "
-            >
-              Authentic Assamese Collection
-            </h1>
-
-          
-        
-            <p
-              className="
-                text-xs
-                text-gray-600
-                mt-1
-              "
-            >
-              Explore premium handcrafted fashion
-            </p>
-
-        
-                   
-          </div>
-
-
+          />
         </div>
 
-
-
-        {/* CONTENT */}
-
-       
+        {/* DESKTOP OVERLAY */}
 
         <div
           className="
-            md:col-span-5
-            flex
-            flex-col
+            hidden
+            md:block
+            absolute
+            bottom-6
+            left-6
+            bg-white/70
+            backdrop-blur-md
+            px-5
+            py-3
+            rounded-xl
           "
         >
-
-
-          {/* MOBILE TITLE */}
-
-       
-
-
-        
-                  
-
-          {/* CAROUSEL */}
-
-          <div
+          <h1
             className="
-              mt-6
-              lg:mt-10
-            "
-          >
-
-            <CarouselSize data={data} />
-
-          </div>
-
-
-        </div>
-
-
-      </section>
-
-             <div
-            className="
-              bg-white
-              backdrop-blur-md
-              
-              shadow-md
-              sticky -top-35
-              z-50
-              p-4
-              lg:p-6
-            "
-          >
-
-               <h1
-            className="
-              md:hidden
-              text-gray-900
-              text-[17px]
+              text-xl
+              lg:text-2xl
+              font-semibold
               tracking-widest
               uppercase
-              text-center
-              mb-5
+              text-gray-900
             "
           >
             Authentic Assamese Collection
           </h1>
 
+          <p
+            className="
+              text-xs
+              text-gray-600
+              mt-1
+            "
+          >
+            Explore premium handcrafted fashion
+          </p>
+        </div>
+      </div>
 
-            <Hero />
-
-
-               </div>
-
-       
-
-
-      {/* BELOW FOLD ANIMATION */}
-
-      <section
+      <div
         className="
-          mt-10
-          w-full
+          bg-white
+          backdrop-blur-md
+          shadow-md
+          sticky -top-25
+          z-90
+          p-4
+          lg:p-6
         "
       >
+        <h1
+          className="
+            md:hidden
+            text-gray-900
+            text-[17px]
+            tracking-widest
+            uppercase
+            text-center
+            mb-5
+          "
+        >
+          Authentic Assamese Collection
+        </h1>
 
-        <Animatedsection />
+        <Hero />
+      </div>
 
-      </section>
+      {/* CAROUSEL */}
 
+      <div
+        className="
+          flex
+          flex-col
+          w-full
+          justify-center
+        "
+      >
+        <CarouselSize data={data} />
+      </div>
 
-
+      <Animatedsection />
     </main>
   );
 }

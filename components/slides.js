@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
   }, [data]);
 
   return (
-    <div className="relative max-w-5xl mx-auto h-[480px] overflow-hidden rounded-xl">
+    <div className="relative w-full   h-[480px]  overflow-hidden">
       {data.map((item, index) => (
         <div
           key={index}
@@ -33,11 +33,11 @@ import { useEffect, useState } from "react";
             alt={item.text}
             fill
             priority={index === 0}
-            sizes="(max-width:768px)100vw,1280px"
-            className={`${
+            sizes="(max-width:768px)100vw"
+            className={` ${
               index === 0
                 ? "object-cover object-top"
-                : "object-contain object-[167%_0%]"
+                : "object-cover object-[167%_0%]"
             }`}
           />
 

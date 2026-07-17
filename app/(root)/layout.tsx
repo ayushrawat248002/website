@@ -1,10 +1,8 @@
 
 
-import Image from "next/image";
 import "./globals.css";
-import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import {bebas,caveat,rockSalt} from '@/lib/font'
+import {bebas} from '@/lib/font'
 
 export const metadata = {
   metadataBase: new URL("https://dripbohag.com"),
@@ -51,12 +49,7 @@ export default function RootLayout({
       <body className="m-0 p-0 min-w-svw  max-h-svh   relative bg-yellow-200  text-black font-[var(--font-poppins)]">
 
         {/* 🔝 HEADER */}
-      
-        
-        
-              
-         
-             
+
         
 
         {/* 📦 MAIN CONTENT */}

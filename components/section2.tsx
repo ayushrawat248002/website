@@ -25,7 +25,7 @@ const { scrollYProgress: scrollZProgress } = useScroll({
                     
                   {/* First image (fade out + shrink) */}
              
-          <div className=" h-[600px]  sticky top-10 bg-transparent w-full   bg-gradient-to-b from-orange-200 to-white     ">
+          <div className=" h-[600px]  sticky top-0 bg-transparent w-full   bg-gradient-to-b from-blue-200 to-white     ">
           <motion.div
              style={{scale : scaleBg2}}
             className="w-full h-full relative     "
@@ -47,7 +47,7 @@ const { scrollYProgress: scrollZProgress } = useScroll({
           <motion.div
              
             className={`min-h-[400px] shadow-[0_-20px_40px_rgba(0,0,0,0.3)] w-full
-            bg-gradient-to-t  from-orange-200  to-white
+          bg-black/10 backdrop-blur-2xl
             relative overflow-hidden 
             ${caveat.className}
             p-9 flex flex-col  `}
@@ -58,7 +58,7 @@ const { scrollYProgress: scrollZProgress } = useScroll({
             {/* Header */}
             <div className={`text-xs  max-w-2xl  relative z-10 `}>
               <p className={`tracking-[0.3em]   font-extrabold text-2xl leading-10  text-orange-600 uppercase  mb-5`}>
-                Men's Collection
+               artisanal collection
               </p>
           
               <h2 className="text-[20px] tracking-widest font-extralight  text-neutral-900 leading-tight">
@@ -67,50 +67,50 @@ const { scrollYProgress: scrollZProgress } = useScroll({
             </div>
           
             {/* Product Scroll */}
-            <div className="mt-5 w-[300px] overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-8 pr-5 pb-8 relative z-10">
+            <div className="mt-5 w-[300px] overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-2 pr-5 pb-8 relative z-10">
           
               {/* Card 1 */}
-              <div className="min-w-[280px] snap-start  bg-white  backdrop-blur-md 
-              rounded-3xl p-5  ml-2 hover:shadow-2xl 
+               <div className="min-w-[250px] h-[50vh] snap-center relative   bg-white backdrop-blur-md 
+              rounded-3xl  shadow-md hover:shadow-2xl  
               transition-all duration-300 border border-white/30">
-                <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
-                <p className="text-neutral-900 font-medium handwriting text-lg">Linen Shirt</p>
-                <p className="text-neutral-500 text-sm mt-1">₹2,499</p>
+                
+                 <Image
+              src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255127/_BBB9686_lvrtqj.jpg"
+              alt="assam background"
+              fill
+              className="  object-fill rounded-2xl  object-center opacity-100  "
+            />
+                <p className="text-white  block absolute left-0 bottom-0 mb-5 p-2 z-60 handwriting font-medium text-2xl">Tailored Trousers</p>
+                <p className="text-white block absolute z-60 mt-10 bottom-0 text-lg ">₹3,199</p>
               </div>
           
               {/* Card 2 */}
-              <div className="min-w-[280px] snap-center bg-white backdrop-blur-md 
+                <div className="min-w-[250px] h-[50vh] snap-center   bg-white backdrop-blur-md 
               rounded-3xl p-5 shadow-md hover:shadow-2xl 
               transition-all duration-300 border border-white/30">
-                <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
-                <p className="text-neutral-900 handwriting font-medium text-lg">Tailored Trousers</p>
-                <p className="text-neutral-500 text-sm mt-1">₹3,199</p>
+                
+                 <Image
+              src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255127/_BBB9686_lvrtqj.jpg"
+              alt="assam background"
+              fill
+              className="  rounded-2xl object-fill  object-center opacity-100  "
+            />
+                <p className="text-white  block absolute left-0 bottom-0 mb-5 p-2 z-60 handwriting font-medium text-2xl">Tailored Trousers</p>
+                <p className="text-white block absolute z-60 mt-10 bottom-0 text-lg ">₹3,199</p>
               </div>
           
               {/* Card 3 */}
-              <div className="min-w-[280px] snap-center  bg-white  backdrop-blur-md 
-              rounded-3xl p-5 shadow-md hover:shadow-2xl 
-              transition-all duration-300 border border-white/30">
-                <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
-                <p className="text-neutral-900 handwriting font-medium text-lg">Leather Sneakers</p>
-                <p className="text-neutral-500 text-sm mt-1">₹4,999</p>
-              </div>
+             
           
               {/* Card 4 */}
-              <div className="min-w-[280px] snap-center  bg-white  backdrop-blur-md 
-              rounded-3xl p-5 shadow-md hover:shadow-2xl 
-              transition-all duration-300 border border-white/30">
-                <div className="h-64 bg-neutral-200 rounded-xl mb-5" />
-                <p className="text-neutral-900 font-medium handwriting text-lg">Overshirt Jacket</p>
-                <p className="text-neutral-500 text-sm mt-1">₹3,999</p>
-              </div>
+          
           
             </div>
           
             {/* CTA */}
             <div className="mt-0 flex items-center justify-between relative z-10">
               <p className="handwriting text-[22px] leading-6 tracking-wider text-neutral-900">
-                Discover refined menswear essentials crafted for modern lifestyles.
+                Discover refined  essentials crafted for modern lifestyles.
               </p>
           
               <button className="px-3 ml-3 py-1 rounded-xl 

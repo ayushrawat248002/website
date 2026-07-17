@@ -1,113 +1,85 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Shirt, Sparkle, Gem } from "lucide-react";
 
-const Hero = () => {
 
+const items = [
+  {
+    id: 0,
+    label: "MEN",
+    href: "/mensection",
+    icon: Shirt,
+    color: "text-gray-500",
+  },
+  {
+    id: 1,
+    label: "WOMEN",
+    href: "/womensection",
+    icon: Sparkle,
+    color: "text-yellow-500",
+  },
+  {
+    id: 2,
+    label: "ACCESSORIES",
+    href: "/accessories",
+    icon: Gem,
+    color: "text-red-500",
+  },
+];
+
+export default function Hero() {
   const router = useRouter();
-
   const [index, setIndex] = useState(9);
 
-
   return (
-    <div className="w-full h-24 flex justify-center">
-      <div className="flex justify-center gap-10 h-full pb-2 md:gap-14 lg:gap-20 px-4 w-full max-w-5xl">
+    <div className="w-full md:flex md:justify-center  ">
+      <div className="flex justify-evenly gap-11   items-center w-full md:gap-[200px] md:justify-center">
+        {items.map((item) => {
+          const Icon = item.icon;
+          const active = index === item.id;
 
-        {/* MEN */}
-        <div     onClick={() => {
-            setIndex(0);
-            router.push("/mensection");
-          }}  
-          className="flex flex-col items-center group cursor-pointer"
-        >
-          <Image
-          
-            alt="men"
-            width={80}
-            height={80}
-            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_160,q_auto,f_auto/v1776796427/boyicon2_tfwzwe.png"
-            className="h-[80px] w-[80px] transition-all duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-1"
-          />
+          return (
+            <button
+              key={item.id}
+              onClick={() => {
+                setIndex(item.id);
+                router.push(item.href);
+              }}
+              className="flex flex-col items-center gap-2 group cursor-pointer"
+            >
+            <Icon
+  size={26}
+  strokeWidth={2.5}
+  className={`transition-colors duration-300 ${
+    active
+      ? "text-black"
+      : `${item.color} group-hover:text-black`
+  }`}
+/>
 
-          <span
-            className={`mt-2 text-xs md:text-sm font-medium font-mono tracking-wider transition-all ${
-              index === 0
-                ? "text-black"
-                : "text-gray-400 group-hover:text-black"
-            }`}
-          >
-            MEN
-            {index === 0 && (
-              <div className="h-[2px] w-5 bg-black mx-auto mt-1 rounded-full" />
-            )}
-          </span>
-        </div>
+              <span
+                className={`relative mt-5 text-xs md:text-3xl font-mono tracking-[0.2em] transition-colors duration-300 whitespace-nowrap ${
+                  active
+                    ? "text-black"
+                    : "text-gray-500 group-hover:text-black"
+                }`}
+              >
+                {item.label}
 
-        {/* WOMEN */}
-        <div
-          onClick={() => {
-            setIndex(1);
-            router.push("/womensection");
-          }}
-          className="flex flex-col items-center -translate-y-2 group cursor-pointer"
-        >
-          <Image
-            alt="women"
-            width={80}
-            height={80}
-            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_160,q_auto,f_auto/v1776797077/girlicon3_jkt8bh.png"
-            className="h-[100px] w-[100px] md:h-[110px] md:w-[110px] lg:h-[120px] lg:w-[120px] transition-all duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-1"
-          />
-
-          <span
-            className={`-mt-1 text-xs md:text-sm font-medium font-mono tracking-widest transition-all ${
-              index === 1
-                ? "text-black"
-                : "text-gray-400 group-hover:text-black"
-            }`}
-          >
-            WOMEN
-            {index === 1 && (
-              <div className="h-[2px] w-5 bg-black mx-auto mt-1 rounded-full" />
-            )}
-          </span>
-        </div>
-
-        {/* ACCESSORIES */}
-        <div
-          onClick={() => {
-            setIndex(2);
-            router.push("/accessories");
-          }}
-          className="flex flex-col items-center group cursor-pointer"
-        >
-          <Image
-            alt="jewellery"
-            width={80}
-            height={80}
-            src="https://res.cloudinary.com/dfehgukz3/image/upload/w_160,q_auto,f_auto/v1776796428/jwellery1_jvsadj.png"
-            className="h-[60px] w-[60px] md:h-[65px] md:w-[65px] lg:h-[70px] lg:w-[70px] mt-2 transition-all duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-2"
-          />
-
-          <span
-            className={`mt-[20px] ml-2 text-xs md:text-sm font-medium font-mono tracking-wider transition-all ${
-              index === 2
-                ? "text-black"
-                : "text-gray-400 group-hover:text-black"
-            }`}
-          >
-            ACCESSORIES
-            {index === 2 && (
-              <div className="h-[2px] w-6 bg-black mx-auto mt-1 rounded-full" />
-            )}
-          </span>
-        </div>
-
+                <span
+                  className={`absolute left-1/2 -bottom-2 h-[2px] bg-black rounded-full transition-all duration-300 ${
+                    active
+                      ? "w-6 -translate-x-1/2 opacity-100"
+                      : "w-0 -translate-x-1/2 opacity-0"
+                  }`}
+                />
+              </span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
-};
-
-export default Hero;
+}

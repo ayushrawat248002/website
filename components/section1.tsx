@@ -15,13 +15,13 @@ import {caveat} from "@/lib/font"
     offset: ["start end", "end start"],
   });
 
-    const scaleBg = useTransform(scrollYProgress, [0.3, 0.5], [0.95, 0.5]); // shrink
+    const scaleBg = useTransform(scrollYProgress, [0.4, 0.6], [0.95, 0.6]); // shrink
 
     return(
         <>
-         <section ref={ref} className="h-auto text-shadow-2xs  text-shadow-orange-500 bg-gray-200 font-bold  backdrop-blur-md">
+         <section ref={ref} className="h-auto  mt-3 text-shadow-2xs  text-shadow-orange-500 font-bold  backdrop-blur-md">
                
-               <div  className="relative flex flex-col bg-white items-start">
+               <div  className="relative  bg-white flex flex-col bg-white items-start">
             
                  {/* First image (fade out + shrink) */}
                  <motion.div
@@ -31,7 +31,7 @@ import {caveat} from "@/lib/font"
              
             
            }}
-           className="h-[550px] w-full sticky top-0 rounded-none shadow-xl z-[10] overflow-hidden relative"
+           className="h-[550px]  w-full sticky top-0 rounded-none shadow-xl z-10 overflow-hidden "
          >
       <Image
   src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto/v1776796425/assam1_ma7htp.jpg"

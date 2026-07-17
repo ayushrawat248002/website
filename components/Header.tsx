@@ -10,12 +10,9 @@ import { rockSalt} from "@/lib/font";
 const Header = ({prop} : {prop : string}) => {
 
   const router = useRouter()
-  const [cartItemsNumber, setItemsnumber] = useState<null | number>(null)
+  // const [cartItemsNumber, setItemsnumber] = useState<null | number>(null)
   const cartiitems = useCartStore((state) => state.obj.cart.length)
 
-  useEffect(() => {
-    setItemsnumber(cartiitems)
-  }, [cartiitems])
 
   return (
     <>
@@ -48,7 +45,7 @@ const Header = ({prop} : {prop : string}) => {
 
             {/* Cart Badge */}
             <span className="absolute -top-3 -right-3 bg-black text-white text-[10px] px-1.5 py-[1px] rounded-full">
-              {cartItemsNumber ?? 0}
+              {cartiitems ?? 0}
             </span>
           </div>
         </div>

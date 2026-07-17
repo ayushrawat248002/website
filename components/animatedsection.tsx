@@ -12,7 +12,7 @@ const Animatedsection = () => {
 
   
 return(
-    <div className={`${caveat.className} h-full`}>    
+    <div className={`${caveat.className}`}>    
       
           <Section1/>
 
@@ -34,8 +34,8 @@ return(
     priority
          width={800}
   height={600}
-        src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,w_auto/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
-        className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
+        src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255295/_BBB9571_caisye.jpg"
+        className="w-full h-[500px]  object-cover object-center group-hover:scale-105 transition duration-700"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
     </div>

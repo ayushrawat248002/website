@@ -52,7 +52,7 @@ const ref2 = useRef(null);
 
     return(
         <>
-           <section ref={ref2} className="h-[300vh]  
+           <section ref={ref2} className=" [@media(max-height:800px)]:h-[300vh]  h-[300vh]  
   backdrop-blur-lg   w-full relative">
             <div className="absolute  inset-0">
                 
@@ -62,18 +62,17 @@ const ref2 = useRef(null);
                       
                        <motion.div style={{opacity : opacityFg3}} className="absolute inset-0">
                                    <Image
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
-           alt="background"
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255310/_BBB9588_ini622.jpg"
             fill
-                               
-           className="object-cover transition-opacity duration-500 ease-linear  absolute -z-10   object-center"
+            alt="back"            
+           className="object-cover transition-opacity duration-500 ease-linear py-10  absolute -z-10   object-center"
          />
                        </motion.div>
                
                    <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
                     
                
-                 <motion.div style={{ x : x, scale : scaleBg3}}  className="flex opacity-100   rounded-3xl h-[100vh] gap-10 p-5  bg-white shadow-2xl    w-max">
+                 <motion.div style={{ x : x, scale : scaleBg3}}  className="flex opacity-100   rounded-3xl h-[100vh]  gap-2 p-2  bg-white shadow-2xl    w-max">
       
       {/* Card 1 */}
     
@@ -82,7 +81,7 @@ const ref2 = useRef(null);
       {/* Card 2 */}
       <div className="relative w-[600px] h-full shadow-2xl   text-black shrink-0">
         <Image
-            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582828/samples/outdoor-woman.jpg"
+            src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255250/_BBB9498_lwwc4v.jpg"
             alt="background"
           fill   
            className="object-cover object-[50%_50%]"
@@ -90,15 +89,15 @@ const ref2 = useRef(null);
       </div>
         <div className="relative  w-[600px] shadow-2xl text-black text-center shrink-0">
        <Image
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/w_500,q_auto,f_auto/v1776796425/assam1_ma7htp.jpg"
-           alt="background"
+          alt=""
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255283/_BBB9558_y1b52n.jpg"
             fill
            className="object-cover object-center"
          />
       </div>
         <div className=" w-[600px] shadow-2xl sticky left-0 text-black text-center  shrink-0">
        <Image 
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582825/samples/shoe.jpg"
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255272/_BBB9511_dafx14.jpg"
            alt="background"
             fill
            className="object-cover  object-center"
@@ -147,7 +146,7 @@ const ref2 = useRef(null);
       <div className="md:col-span-2 relative group overflow-hidden rounded-2xl">
     <Image
   alt="black guy"
-  src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto/v1777183462/photo-1523398002811-999ca8dec234_qisb0t.jpg"
+  src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255138/_BBB9715_vjhzry.jpg"
   width={800}
   height={600}
   priority
@@ -174,7 +173,7 @@ const ref2 = useRef(null);
   <div key={i} className="relative group overflow-hidden rounded-2xl">
     <Image
       alt={text}
-      src="https://res.cloudinary.com/dfehgukz3/image/upload/f_auto,q_auto,c_fill,g_auto/v1777183530/photo-1516826957135-700dedea698c_yw21xp.jpg"
+      src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255253/_BBB9503_efkvcw.jpg"
       width={800}
       height={600}
       loading="lazy"
@@ -201,17 +200,19 @@ const ref2 = useRef(null);
       </div>
 
       <div className="grid grid-cols-2  md:grid-cols-2 gap-6">
-        {[1, 2, 3, 4].map((item) => (
-  <div key={item} className="group cursor-pointer">
+        {[1, 2, 3, 4, 5, 6, 8, 9].map((item, index) => (
+  <div key={item} className={`
+    ${index > 3 ? "[@media(max-height:800px)]:hidden" : ""}
+      group cursor-pointer`}>
     <div className="relative overflow-hidden rounded-xl bg-neutral-900">
       <Image
         alt="Oversized Hoodie"
-        src="https://res.cloudinary.com/dfehgukz3/image/upload/c_fill,g_auto,f_auto,q_auto/v1777183566/photo-1523381210434-271e8be1f52b_yquzuo.jpg"
+        src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255132/_BBB9674_ygg0rm.jpg"
         width={600}
         height={600}
         loading="lazy"
         sizes="(max-width:768px) 50vw, 50vw"
-        className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500"
+        className="w-full  h-60 object-cover group-hover:scale-105 transition-transform duration-500"
       />
 
       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
