@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";   
 
-export async function POST(req: NextRequest) {
+export async function GET() {
     const cookieStore = await cookies()
  try {
 

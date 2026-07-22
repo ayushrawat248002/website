@@ -10,6 +10,12 @@ const orderSchema = new mongoose.Schema(
       index: true,
     },
 
+    idomkey : {
+        type : Number,
+        required : true,
+        unique : true,
+    },
+
     // 👤 user reference (optional but recommended)
     user_id: {
       type: mongoose.Schema.Types.ObjectId,

@@ -7,7 +7,8 @@ import {bebas} from "@/lib/font";
 const Section3 = () => {
 
       const [visible, setVisible] = useState<boolean>(true)
-     
+     const[blr, setblur] = useState<boolean>(false);
+      const boolref = useRef(true)
 const ref2 = useRef(null);
   const { scrollYProgress:scrollMProgress } = useScroll({
     target: ref2,
@@ -17,21 +18,26 @@ const ref2 = useRef(null);
   
      const opacityFg3 = useTransform(
   scrollMProgress,
-  [0.2 , 0.6],
-  [1, 0.5]
+  [0 , 0.6],
+  [1, 0]
 );
-        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.5,0.5]); // shrink
+        const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.35,0.35]); // shrink
 
-  const  x = useTransform(scrollMProgress, [0.35, 0.85], ["-10%", "-75%"]);
+  const  x = useTransform(scrollMProgress, [0.35, 0.9], ["-80%", "-15%"]);
 
       useEffect(()=>{
         const unsubscribe = scrollMProgress.on("change", (v) => {
-    if(v >= 0.3){
-    
-    }
+
     if (v >= 1) {
-      setVisible(false)
+      setVisible(() => false )
+      setblur(false)
     }
+
+    if(v >= 0.8){
+       boolref.current = false;
+    }
+
+   
   });
 
   return () => unsubscribe();
@@ -41,7 +47,8 @@ const ref2 = useRef(null);
      const unsubscribe = scrollMProgress.on("change", (v) => {
     if (v <= 0) {
      setVisible(true)
-   
+     boolref.current = true
+     setblur(false)
     }
     
   });
@@ -49,20 +56,41 @@ const ref2 = useRef(null);
   return () => unsubscribe();
    },[scrollMProgress])
 
+      
+     useEffect(()=>{
+     const unsubscribe = scrollMProgress.on("change", (v) => {
+            console.log(v >= 0.3 && v <= 0.4 && boolref.current)
+           
+           if(v >= 0.3 && v <= 0.4 && boolref.current){
+              console.log(v, 'asdsdas')
+         setblur(true)
+    }
+
+        if(v >= 0.8 && !boolref.current){
+              console.log(v, 'asdsdas')
+         setblur(false)
+    }
+
+  });
+
+  return () => unsubscribe();
+   },[scrollMProgress])
+    
+
 
     return(
      
 
-        <section className="flex relative  flex-col">
-         <div className={`  ${bebas.className} bg-white  `}>
-      <div className="  overflow-y-auto h-full w-full">
+        <section className="flex relative   flex-col">
+         <div className={`  ${bebas.className}      `}>
+      <div className="    h-full w-full">
     <section
   className={`min-h-full
   bg-gray-100/80
   backdrop-blur-lg  transform  transition-opacity duration-500 ease-linear 
   text-black px-2  py-10`}
 >
-  <div className="max-w-7xl mx-auto space-y-16 md:px-8">
+  <div className="max-w-7xl mx-auto md:mx-0 space-y-16 md:px-2">
 
     {/* 🔥 Minimal Heading */}
   <div className="md:flex md:justify-between md:items-end">
@@ -75,170 +103,184 @@ const ref2 = useRef(null);
     </div>
 
     {/* 🧥 Editorial Grid */}
-<div className="grid gap-6 md:gap-8 md:grid-cols-[2fr_1fr] md:min-h-[80vh]">
+ <div className=" ">
+<div className="flex md:h-[80vh]  flex-col md:flex-ro  md:w-[100vw]  gap-6 md:py-10 md:overflow-auto md:bg-amber-100 md:gap-18">
+  {/* Large Editorial Card */}
 
-      {/* Large Editorial Card */}
-      <div className="md:h-[80vh] md:w-full   relative group overflow-hidden rounded-2xl">
+  <div className=" md:flex rounded-4xl md:flex-row-reverse    ">
+   
+  <div className="relative group overflow-hidden md:h-[80vh] rounded-2xl   md:w-full">
     <Image
-  alt="black guy"
-  src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255138/_BBB9715_vjhzry.jpg"
-  width={800}
-  height={800}
-  priority
-  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 800px"
-  className="
-w-full
-h-[500px]
-md:h-full
-object-cover
-rounded-2xl
-group-hover:scale-105
-transition-transform
-duration-700
-"
-/>
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-
-        <div className="absolute bottom-8 left-8">
-          <p className="text-xs tracking-widest text-white mb-2">
-            LIMITED EDITION
-          </p>
-          <h3 className="text-3xl text-white font-semibold">Urban Shadow Fit</h3>
-          <button className="mt-4 px-6 text-white py-2 border border-white/40 hover:border-white text-sm tracking-wide">
-            EXPLORE
-          </button>
-        </div>
-      </div>
-
-      {/* Side Vertical Cards */}
-      <div className="flex flex-col mx-auto gap-6">
-       {["Oversized Tees", "Minimal Sets"].map((text, i) => (
-  <div key={i} className="relative group overflow-hidden h-[20vh] w-[40vh] rounded-2xl">
-    <Image
-      alt={text}
-      src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255253/_BBB9503_efkvcw.jpg"
+      alt="black guy"
+      src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255138/_BBB9715_vjhzry.jpg"
+      priority
+      height={800}
       width={800}
-      height={600}
-      loading="lazy"
-      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 420px"
-      className="w-full h-[240px] md:h-full object-cover group-hover:scale-105 transition-transform duration-700"
+      sizes="(max-width:768px) 100vw, 80vw"
+      className="
+       w-full
+        h-[500px]
+        md:h-[80vh]
+        object-cover
+        rounded-2xl
+        group-hover:scale-105
+        transition-transform
+        duration-700
+      "
     />
 
-    <div className="absolute inset-0 bg-black/40" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-    <div className="absolute bottom-5 left-5 text-lg text-white font-medium">
-      {text}
+    <div className="absolute bottom-8 left-8">
+      <p className="text-xs tracking-widest text-white mb-2">
+        LIMITED EDITION
+      </p>
+
+      <h3 className="text-3xl text-white font-semibold">
+        Urban Shadow Fit
+      </h3>
+
+      <button className="mt-4 px-6 py-2 border border-white/40 hover:border-white text-white text-sm tracking-wide">
+        EXPLORE
+      </button>
     </div>
   </div>
-))}
-      </div>
 
+  </div>
+
+  {/* Featured Pieces */}
+  <div className=" flex flex-col gap-6">
+    <div className="flex justify-between items-center">
+      <h3 className="md:text-2xl font-medium">
+        Featured Pieces
+      </h3>
+
+      <span className="text-sm md:text-4xl underline underline-offset-2">
+        View All
+      </span>
     </div>
+
+    <div className="grid grid-cols-2 gap-6  md:gap-30">
+      {[1,2,3,4,5,6,7,8].map((item,index)=>(
+        <div
+          key={item}
+          className={`
+            group cursor-pointer
+            md:mt-2
+            md:h-[450px]
+            md:w-[500px]
+            ${index>3 ? "[@media(max-height:800px)]:hidden" : ""}
+          `}
+        >
+          <div className="relative overflow-hidden rounded-xl bg-neutral-900">
+            <Image
+              alt="Oversized Hoodie"
+              src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255132/_BBB9674_ygg0rm.jpg"
+              width={600}
+              height={600}
+              loading="lazy"
+              sizes="(max-width:768px) 50vw, 20vw"
+              className="
+                w-full
+                h-60
+                md:h-[450px]
+                object-cover
+                group-hover:scale-105
+                transition-transform
+                duration-500
+              "
+            />
+
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+              <button className="px-4 py-2 border border-white text-white text-6xl">
+                Quick View
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-3  md:mt-2">
+            <p className="text-xl md:text-6xl">
+              Oversized Hoodie
+            </p>
+
+            <p className="font-medium md:text-5xl md:mb-3">
+              ₹4,999
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+</div>
+
 
     {/* 🛍 Product Grid */}
-    <div className="flex flex-col md:h-[80vh] justify-between gap-6">
-      <div className="flex justify-between items-center mb-8">
-        <h3 className="text-2xl font-medium">Featured Pieces</h3>
-        <span className="text-black text-sm">View All</span>
-      </div>
-
-      <div className="grid grid-cols-2  md:grid-cols-2 gap-6">
-        {[1, 2, 3, 4, 5, 6, 8, 9].map((item, index) => (
-  <div key={item} className={`
-    ${index > 3 ? "[@media(max-height:800px)]:hidden" : ""}
-      group cursor-pointer md:h-[40vh]`}>
-    <div className="relative overflow-hidden rounded-xl bg-neutral-900">
-      <Image
-        alt="Oversized Hoodie"
-        src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255132/_BBB9674_ygg0rm.jpg"
-        width={600}
-        height={600}
-        loading="lazy"
-        sizes="(max-width:768px) 50vw, 50vw"
-        className="w-full  h-60 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      />
-
-      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-        <button className="px-4 py-2 border border-white text-black text-sm">
-          Quick View
-        </button>
-      </div>
-    </div>
-
-    <div className="mt-3">
-      <p className="text-[20px] text-black">Oversized Hoodie</p>
-      <p className="font-medium text-black">₹4,999</p>
-    </div>
-  </div>
-))}
-      </div>
-    </div>
+  
 
   </div>
 </section>
 </div>
          </div>
-           <section ref={ref2} className={` ${visible ? 'h-[300vh] ' : 'h-[100vh]' }
+           <section ref={ref2} className={` ${visible ? 'h-[300vh] ' : 'h-[90vh]   bg-[#f7f5f2]' }
   backdrop-blur-lg    w-full relative`}>
          
       
     <motion.div   
            
-         className={`h-[100vh]  w-full sticky top-0 transform transition-opacity duration-600 ease-in  z-10 flex flex-row  overflow-hidden `}>
+         className={`h-[100vh]  w-full sticky top-0 transform transition-opacity duration-600 ease-in z-10 flex flex-row  overflow-hidden `}>
                       
-                       <motion.div  style={{
-  opacity: visible ? opacityFg3 : 100,
-}} className="absolute inset-0 ">
+                       <motion.div className="absolute inset-0">
                                    <Image
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255310/_BBB9588_ini622.jpg"
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255137/_BBB9707_avhhy7.jpg"
             fill
             alt="back"            
-           className={`object-cover ${visible ? 'blur-sm' : ''} transition-opacity duration-500 ease-linear py-0 px-2 rounded-2xl  absolute -z-10   object-center`}
+           className={`object-cover object-top  ${blr ? 'blur-[3px]' : ''} ${blr ? 'opacity-35' : 'opacity-95'} transition-opacity duration-100 ease-in-out  py-0 px-2 rounded-2xl  absolute -z-10   object-center`}
          />
                        </motion.div>
                
                    <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
-                    
+                   
                
-                 <motion.div style={{ x : x, scale : scaleBg3}}  className={`flex opacity-100 ${!visible ? 'hidden' : ''}  mt-10  rounded-3xl [@media(max-height:800px)]:h-[90vh] h-[70vh]  gap-2 p-2  bg-white shadow-2xl    w-max`}>
+                 <motion.div style={{ x : x, scale : scaleBg3}}  className={`flex  opacity-100 ${!visible ? 'hidden' : ''}  mt-170  rounded-5xl rotate-25 [@media(max-height:800px)]:h-[150vh] h-[70vh]  gap-2 p-2  bg-white shadow-2xs `}>
       
       {/* Card 1 */}
     
-     <div className=" w-[600px] shadow-2xl rounded-3xl mr-1 relative text-black text-center  shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill  className="object-cover object-center" /> </div>
+     <div className=" w-[800px] shadow-2xl rounded-3xl mr-1 relative text-black text-center  shrink-0"> <Image src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582830/samples/woman-on-a-football-field.jpg" alt="background" fill  className="object-cover object-center  p-5" /> </div>
 
       {/* Card 2 */}
-      <div className="relative w-[600px] h-full shadow-2xl   text-black shrink-0">
+      <div className="relative w-[800px] h-full shadow-2xl   text-black shrink-0">
         <Image
             src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255250/_BBB9498_lwwc4v.jpg"
             alt="background"
           fill   
-           className="object-cover object-[50%_50%]"
+           className="object-cover p-5 object-[50%_50%]"
           />
       </div>
-        <div className="relative  w-[600px] shadow-2xl text-black text-center shrink-0">
+        <div className="relative  w-[800px] shadow-2xl text-black text-center shrink-0">
        <Image
           alt=""
            src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255283/_BBB9558_y1b52n.jpg"
             fill
-           className="object-cover object-center"
+           className="object-cover  p-5 object-center"
          />
       </div>
-        <div className=" w-[600px] shadow-2xl sticky left-0 text-black text-center  shrink-0">
+        <div className=" w-[800px] shadow-2xl sticky left-0 text-black text-center  shrink-0">
        <Image 
            src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255272/_BBB9511_dafx14.jpg"
            alt="background"
             fill
-           className="object-cover  object-center"
+           className="object-cover  p-5  object-center"
            
          />
       </div>
-       <div className=" w-[600px] shadow-2xl relative text-black  text-center  shrink-0">
+       <div className=" w-[800px] shadow-2xl relative text-black  text-center  shrink-0">
        <Image
            src="https://res.cloudinary.com/dfehgukz3/image/upload/q_auto,f_auto,w_600/v1766582823/samples/two-ladies.jpg"
            alt="background"
           fill
-           className="object-cover  object-center"
+           className="object-cover  p-5  object-center"
          />
       </div>
 

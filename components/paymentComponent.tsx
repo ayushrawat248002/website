@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Spinner } from "./ui/spinner";
 import { useCartStore } from "./Cartstore";
+import { randomUUID } from "crypto";
 export default function Home() {
   const router = useRouter();
   
   const [total, setTotal] = useState<number | null>(null);
   const displayTotal = total ?? 0;
-  const [order, setorder] = useState<null|number>(null);
   const[loading,setloading] = useState<boolean>(false);
   const clearcart = useCartStore((state)=>state.clearCart)
   const buyerDetail = useCartStore((state) => state.obj.currentaddress)
@@ -40,7 +40,7 @@ export default function Home() {
 
 
     
-
+  const idomkey = randomUUID()
 
   const handlePayment = async () => {
     if (!total) return;
@@ -50,16 +50,24 @@ export default function Home() {
       return;
     }
     setloading(true)
+       let order : any;
+
+    try{
+  
     const res = await fetch("/api/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: total }),
+      body: JSON.stringify({ amount: total,idomkey : idomkey }),
     });
 
-    const order = await res.json();
-     setorder(order.id)
+    order = await res.json();
+  }catch(err : any){
+          console.log(err?.message);
+          return;
+  }
+
      setloading(false)
 
   const options = {
@@ -72,19 +80,11 @@ export default function Home() {
   handler: async function (response: any) {
     console.log(response);
     setloading(true);
-    const res = await fetch('/api/verify-payment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(response)
-    });
-
-    console.log(res);
-    clearcart()
   
-       await new Promise<void>((res) => setTimeout(() => {res()},30000) )
+       await new Promise<void>((res) => setTimeout(() => {res()},30000) );
+
+       setloading(false);
            router.replace(`/statuspage`)
-    const result = await res.json();
-    console.log(result);
   },
 
   // ✅ Handle modal close (user cancels payment)

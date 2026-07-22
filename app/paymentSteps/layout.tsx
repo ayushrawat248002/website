@@ -59,13 +59,13 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-yellow-200 text-black font-[var(--font-poppins)]">
        
-        <Header prop="section" />
+   
 
         <main className="min-h-screen w-full bg-white">
           {children}
         </main>
 
-        <Footer />
+      
       </body>
     </html>
   );

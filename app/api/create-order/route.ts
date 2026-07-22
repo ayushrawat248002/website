@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
   try {
     // 📥 2. Parse request
     const body = await req.json();
-
+  
     if (!body.amount) {
       return NextResponse.json(
         { error: "Amount is required" },
@@ -49,6 +49,7 @@ export async function POST(req: NextRequest) {
 
     // 🗄️ 6. Save in DB
     await Order.create({
+      idomkey : body.idomkey,
       order_id: order.id,
       order_createdAt : Date.now(),
       amount: body.amount,
@@ -59,6 +60,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(order);
 
   } catch (err: any) {
+
     console.error("Create Order Error:", err);
 
     return NextResponse.json(

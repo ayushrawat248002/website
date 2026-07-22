@@ -5,9 +5,10 @@ import jwt from 'jsonwebtoken';
 export async function POST(req : NextRequest){
      
              const {email, password} = await req.json();
-
+                 console.log(email,password)
          try{
              const userExisted = await User.findOne({email : email})
+             console.log(userExisted)
               if(!userExisted){
 
                 return  NextResponse.json({status : 201, message : 'User not present' });
