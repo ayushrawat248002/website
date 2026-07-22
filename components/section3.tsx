@@ -25,56 +25,7 @@ const ref2 = useRef(null);
 
   const  x = useTransform(scrollMProgress, [0.35, 0.9], ["-80%", "-15%"]);
 
-      useEffect(()=>{
-        const unsubscribe = scrollMProgress.on("change", (v) => {
-
-    if (v >= 1) {
-      setVisible(() => false )
-      setblur(false)
-    }
-
-    if(v >= 0.8){
-       boolref.current = false;
-    }
-
-   
-  });
-
-  return () => unsubscribe();
-   },[scrollMProgress])
-
-   useEffect(()=>{
-     const unsubscribe = scrollMProgress.on("change", (v) => {
-    if (v <= 0) {
-     setVisible(true)
-     boolref.current = true
-     setblur(false)
-    }
-    
-  });
-
-  return () => unsubscribe();
-   },[scrollMProgress])
-
-      
-     useEffect(()=>{
-     const unsubscribe = scrollMProgress.on("change", (v) => {
-            console.log(v >= 0.3 && v <= 0.4 && boolref.current)
-           
-           if(v >= 0.3 && v <= 0.4 && boolref.current){
-              console.log(v, 'asdsdas')
-         setblur(true)
-    }
-
-        if(v >= 0.8 && !boolref.current){
-              console.log(v, 'asdsdas')
-         setblur(false)
-    }
-
-  });
-
-  return () => unsubscribe();
-   },[scrollMProgress])
+  
     
 
 
@@ -243,7 +194,7 @@ const ref2 = useRef(null);
                    <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
                    
                
-                 <motion.div style={{ x : x, scale : scaleBg3}}  className={`flex  opacity-100 ${!visible ? 'hidden' : ''}  mt-170  rounded-5xl rotate-25 [@media(max-height:800px)]:h-[150vh] h-[70vh]  gap-2 p-2  bg-white shadow-2xs `}>
+                 <motion.div style={{ x : x,scale:scaleBg3}}  className={`flex  opacity-100 ${!visible ? 'hidden' : ''}  mt-170  rounded-5xl rotate-25 [@media(max-height:800px)]:h-[150vh] h-[70vh]  gap-2 p-2  bg-white shadow-2xs `}>
       
       {/* Card 1 */}
     
