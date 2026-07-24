@@ -1,7 +1,7 @@
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import jwt from 'jsonwebtoken';
-import { compare,hash,genSalt } from "bcrypt";
+import { compare } from "bcrypt";
 import connectDB from "@/lib/mongodb";
 export async function POST(req : NextRequest){
      
@@ -10,10 +10,12 @@ export async function POST(req : NextRequest){
             
 
          try{
+          try{
            await connectDB();
+          }catch(err){
+            console.log('error during connection')
+          }
              const userExisted = await User.findOne({email : email})
-             console.log(userExisted.password)
-              console.log(typeof userExisted.password)
               if(!userExisted){
 
                 return  NextResponse.json({status : 201, message : 'User not present' });
@@ -62,7 +64,7 @@ export async function POST(req : NextRequest){
                   return NextResponse.json({status : 200})
                 }
          }catch(err){
-
+                  console.log(err)
               return NextResponse.json({status : 401, message : 'Authentication failed'})
          }    
 

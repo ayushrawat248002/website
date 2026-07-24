@@ -16,7 +16,7 @@ const Header = ({prop} : {prop : string}) => {
 
   return (
     <>
-      <header className={`w-full  ${prop === 'section' ? ' sticky z-70 top-0' : ''} border border-transparent  bg-gradient-to-br from-5% from-amber-950/80 to-white pb-6`}>
+      <header className={`w-full  ${prop === 'section' ? ' sticky z-70 top-0' : ''} border border-transparent bg-white pb-6`}>
        
         {/* Top Bar */}
         <div className="relative flex items-center justify-center h-[85px] px-4 md:px-10 lg:px-16">
@@ -51,7 +51,7 @@ const Header = ({prop} : {prop : string}) => {
         </div>
 
         {/* Tagline */}
-        <p className={`text-center ${rockSalt.className}  mt-2 text-[10px] md:text-sm text-shadow-2xs tracking-widest text-white -mt-2`}>
+        <p className={`text-center ${rockSalt.className}  mt-2 text-[10px] md:text-sm text-shadow-2xs tracking-widest text-gray-700 -mt-2`}>
           Whats Your Move Today ?
         </p>
 

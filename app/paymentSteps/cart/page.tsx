@@ -31,10 +31,15 @@ const Page =  () => {
                     flag = true
                    }
                    if(flag){window.alert('All fields are required to be filled'); return;};
-                           if(detailsObj.password !== detailsObj.confirmpassword){
+                    if(detailsObj.password.length < 5){
+                           window.alert('minimum length of password is 5')
+                           return 
+                          }      
+                   if(detailsObj.password !== detailsObj.confirmpassword){
                                   window.alert('password and reconfirm password not matching');
                                   return
                            }     
+                        
 
                       const res =   await fetch("/api/usersignup", {
   method: "POST",
@@ -45,8 +50,14 @@ const Page =  () => {
 });
 
      const data = await res.json();
+     console.log(data)
               if(data.status === 200){
                 setIsPresent(true)
+              }else{
+              
+              if( data.status === 409){
+                   window.alert('User already exists')
+              }
               }
          console.log(data.message)
                   }
@@ -428,10 +439,15 @@ const userStep: Record<string, React.ReactNode> = {
              });
     
              const result = await res.json();
+             console.log(result)
                           setisloading(false);
 
                           if(result.status === 200){
                                 setIsPresent(true)
+                          }else if(result.status === 201){
+                             window.alert('User not found')
+                          }else{
+                             window.alert('something went wrong')
                           }
           
               

@@ -38,7 +38,7 @@ const data = [
 
 export default function Page() {
   return (
-    <main className=" m-0 relative  bg-gradient-to-bl from-20% from-amber-200/80 to-white  w-full">
+    <main className=" m-0 relative     w-full">
       <Header prop="" />
         
       {/* HERO SECTION */}
@@ -49,15 +49,16 @@ export default function Page() {
         className="
           md:col-span-7
           relative 
-          py-2
+          px-2
+          
         "
       >
         <div
           className="
             relative 
-            h-[450px]
+            h-[480px]
             w-full
-            
+            rounded-2xl
             overflow-hidden
           "
         >
@@ -72,7 +73,7 @@ export default function Page() {
               60vw
             "
             className="
-            object-fill
+            object-cover
               
               md:object-[80%_100%]
             "
@@ -157,7 +158,8 @@ export default function Page() {
           flex-col
           w-full
           justify-center
-          py-2
+          px-2
+          
            
         "
       >

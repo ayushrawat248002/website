@@ -8,7 +8,7 @@ import {bebas,caveat} from "@/lib/font"
 const Section3 = dynamic(() => import("./section3"), {
   loading: () => (
     <div className="h-100vh flex items-center justify-center">
-          <div className="h-10 w-10 rounded-full border-5 border-gray-300 border-b-black  animate-spin "></div>
+          <div className="h-10 w-10 rounded-full border-5  border-b-black  animate-spin "></div>
     </div>
   ),
 });
@@ -18,7 +18,7 @@ const Animatedsection = () => {
 
   
 return(
-    <div className={`flex flex-col gap-3 bg-gradient-to-bl from-2% from-amber-100 to-white`}>    
+    <div className={`flex flex-col gap-3 `}>    
       
           
              

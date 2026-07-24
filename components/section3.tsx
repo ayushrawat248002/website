@@ -34,7 +34,7 @@ const ref2 = useRef(null);
 
         <section className="flex relative mt-5 pt-3  flex-col">
          <div className={`      `}>
-      <div className="    h-full w-full">
+      <div className="  mb-30 mt-10  h-full w-full">
     <section
   className={`min-h-full
  
@@ -44,11 +44,11 @@ const ref2 = useRef(null);
   <div className="max-w-7xl mx-auto md:mx-0 space-y-16 md:px-2">
 
     {/* 🔥 Minimal Heading */}
-  <div className="md:flex md:justify-between md:items-end">
-      <h2 className="text-4xl md:text-7xl leading-none font-semibold tracking-tight">
+  <div className="md:flex md:justify-between md:items-end ">
+      <h2 className="text-4xl  underline underline-offset-2 md:text-7xl leading-none font-semibold tracking-tight">
         New Drop
       </h2>
-      <span className="text-sm md:text-5xl uppercase tracking-[0.35em] text-neutral-500">
+      <span className="text-sm leading-10  md:text-5xl uppercase tracking-[0.35em] text-neutral-500">
         SS / 24 Collection
       </span>
     </div>
@@ -60,7 +60,7 @@ const ref2 = useRef(null);
 
   <div className=" md:flex rounded-4xl md:flex-row-reverse    ">
    
-  <div className="relative group overflow-hidden md:h-[80vh] rounded-2xl   md:w-full">
+  <div className="relative group  overflow-hidden md:h-[80vh] rounded-2xl   md:w-full">
     <Image
       alt="black guy"
       src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255138/_BBB9715_vjhzry.jpg"
@@ -100,7 +100,7 @@ const ref2 = useRef(null);
   </div>
 
   {/* Featured Pieces */}
-  <div className=" flex flex-col gap-6">
+  <div className=" flex flex-col gap-10 mt-10">
     <div className="flex justify-between items-center">
       <h3 className="md:text-2xl font-medium">
         Featured Pieces
