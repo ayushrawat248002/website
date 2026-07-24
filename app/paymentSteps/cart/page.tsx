@@ -39,7 +39,7 @@ const Page =  () => {
                                   window.alert('password and reconfirm password not matching');
                                   return
                            }     
-                        
+                         setisloading(true)
 
                       const res =   await fetch("/api/usersignup", {
   method: "POST",
@@ -48,7 +48,8 @@ const Page =  () => {
   },
   body: JSON.stringify(detailsObj),
 });
-
+        
+      setisloading(false)
      const data = await res.json();
      console.log(data)
               if(data.status === 200){
@@ -362,10 +363,14 @@ const Page =  () => {
         <button
           type="submit"
           onClick={(e) =>{ e.preventDefault(); SendDetails()}}
-          className="w-full rounded-xl bg-black py-4 text-white font-medium transition hover:bg-stone-800"
+          className={`w-full ${isloading ? 'hidden' : ''} rounded-xl bg-black py-4 text-white font-medium transition hover:bg-stone-800`}
         >
           Create Account
         </button>
+
+                     <div className={`h-full ${!isloading ? 'hidden' : ''} flex items-center justify-center`}>
+          <div className="h-10 w-10 rounded-full border-3 border-gray-300 border-b-black  animate-spin "></div>
+    </div>
 
         {/* Divider */}
         <div className="relative py-2">
