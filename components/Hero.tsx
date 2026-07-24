@@ -22,8 +22,8 @@ const items = [
   },
   {
     id: 2,
-    label: "ACCESSORIES",
-    href: "/accessories",
+    label: "ACCES",
+    href: "/access",
     icon: Gem,
     color: "text-red-500",
   },
@@ -35,7 +35,7 @@ export default function Hero() {
 
   return (
     <div className="w-full md:flex md:justify-center  ">
-      <div className="flex justify-evenly gap-11   items-center w-full md:gap-[200px] md:justify-center">
+      <div className="flex justify-evenly gap-11  items-center w-full md:gap-[200px] md:justify-center">
         {items.map((item) => {
           const Icon = item.icon;
           const active = index === item.id;

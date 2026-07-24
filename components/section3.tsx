@@ -23,7 +23,7 @@ const ref2 = useRef(null);
 );
         const scaleBg3 = useTransform(scrollMProgress, [0.6,0.75], [0.35,0.35]); // shrink
 
-  const  x = useTransform(scrollMProgress, [0.35, 0.9], ["-80%", "-15%"]);
+  const  x = useTransform(scrollMProgress, [0.35, 0.9], ["-75%", "-15%"]);
 
   
     
@@ -32,13 +32,13 @@ const ref2 = useRef(null);
     return(
      
 
-        <section className="flex relative   flex-col">
-         <div className={`  ${bebas.className}      `}>
+        <section className="flex relative mt-5 pt-3  flex-col">
+         <div className={`      `}>
       <div className="    h-full w-full">
     <section
   className={`min-h-full
-  bg-gray-100/80
-  backdrop-blur-lg  transform  transition-opacity duration-500 ease-linear 
+ 
+  backdrop-blur-xs  transform  transition-opacity duration-500 ease-linear 
   text-black px-2  py-10`}
 >
   <div className="max-w-7xl mx-auto md:mx-0 space-y-16 md:px-2">
@@ -174,27 +174,29 @@ const ref2 = useRef(null);
 </section>
 </div>
          </div>
-           <section ref={ref2} className={` ${visible ? 'h-[300vh] ' : 'h-[90vh]   bg-[#f7f5f2]' }
+           <section ref={ref2} className={` [@media(max-height:800px)]:h-[300vh] h-screen bg-black ' }
   backdrop-blur-lg    w-full relative`}>
          
       
     <motion.div   
            
-         className={`h-[100vh]  w-full sticky top-0 transform transition-opacity duration-600 ease-in z-10 flex flex-row  overflow-hidden `}>
+         className={`h-screen  w-full [@media(max-height:800px)]:sticky  top-0  z-10 flex flex-row  overflow-hidden `}>
                       
-                       <motion.div className="absolute inset-0">
+                       <motion.div className="absolute  inset-0">
                                    <Image
-           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255137/_BBB9707_avhhy7.jpg"
+           src="https://res.cloudinary.com/dfehgukz3/image/upload/v1784255120/_BBB9679_t6copk.jpg"
             fill
-            alt="back"            
-           className={`object-cover object-top  ${blr ? 'blur-[3px]' : ''} ${blr ? 'opacity-35' : 'opacity-95'} transition-opacity duration-100 ease-in-out  py-0 px-2 rounded-2xl  absolute -z-10   object-center`}
+            alt="back"       
+            sizes="100vh"     
+           className={`object-cover  absolute -z-10   object-center`}
          />
+ <div className="absolute  inset-0 bg-gradient-to-br from-black/10 via-white/20 to-amber-200/20"></div>
                        </motion.div>
                
-                   <h2 className="text-black h-10 w-full text-center block absolute z-80  shrink-0 mt-15 text-5xl">Collection</h2>
+                   <h2 className=" h-10 w-full text-center block absolute z-80  shrink-0 mt-20 text-shadow-2xs text-shadow-black text-amber-300 text-5xl">Collection</h2>
                    
                
-                 <motion.div style={{ x : x,scale:scaleBg3}}  className={`flex  opacity-100 ${!visible ? 'hidden' : ''}  mt-170  rounded-5xl rotate-25 [@media(max-height:800px)]:h-[150vh] h-[70vh]  gap-2 p-2  bg-white shadow-2xs `}>
+                 <motion.div style={{ x : x,scale:scaleBg3}}  className={`  opacity-100 [@media(max-height:800px)]:flex hidden  mt-170   rounded-5xl rotate-25 h-[150vh]  gap-2 p-2  bg-white shadow-2xs `}>
       
       {/* Card 1 */}
     

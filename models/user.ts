@@ -55,7 +55,7 @@ const userSchema = new Schema<UserDocument>(
     password: {
       type: String,
       required: true,
-      minlength: 8,
+      minlength : 5
     },
 
     // Cart
@@ -116,15 +116,13 @@ const userSchema = new Schema<UserDocument>(
 
 // Hash password before saving
 userSchema.pre("save", async function () {
+  console.log('hit')
   if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-// Compare password
-userSchema.methods.checkPassword = async function (password: string) {
-  return bcrypt.compare(password, this.password);
-};
+
 
 const User = models.User || model<UserDocument>("User", userSchema);
 

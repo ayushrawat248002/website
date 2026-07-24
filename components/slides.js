@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
   }, [data]);
 
   return (
-    <div className="relative w-full   h-[480px]  overflow-hidden">
+    <div className="relative w-full   h-[450px]  overflow-hidden">
       {data.map((item, index) => (
         <div
           key={index}
@@ -36,14 +36,14 @@ import { useEffect, useState } from "react";
             sizes="(max-width:768px)100vw"
             className={` ${
               index === 0
-                ? "object-cover object-top"
-                : "object-cover object-center"
-            }`}
+                ? "object-fill object-top"
+                : "object-fill object-center"
+            } `}
           />
 
           {index !== 0 && (
             <div className="absolute inset-0 flex items-end px-8">
-              <p className="text-2xl block backdrop-blur-xs  font-bebas tracking-widest mb-10 text-white shadow-2xl text-shadow-black">
+              <p className="text-2xl block backdrop-blur-[2px]  font-bebas tracking-widest mb-10 text-white shadow-2xl text-shadow-black">
                 {item.text}
               </p>
             </div>

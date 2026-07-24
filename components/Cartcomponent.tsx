@@ -20,7 +20,7 @@ const Cart = () => {
 
 
   return (
-    <section className="min-h-screen bg-gray-50 p-6">
+    <section className=" h-max py-5  bg-[#f7f5f2] p-6">
       <h1 className="text-3xl font-semibold mb-6 text-gray-800">
         Your Cart
       </h1>
@@ -30,7 +30,7 @@ const Cart = () => {
           🛒 Your cart is empty
         </div>
       ) : (
-        <>
+     <div className="flex flex-col overflow-y-auto">
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {cart.map((item: any) => (
               <div
@@ -86,7 +86,7 @@ const Cart = () => {
             ))}
           </div>
 
-          {/* Summary Section */}
+          
           <div className="mt-10 bg-white shadow-md rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center">
             <p className="text-xl font-semibold text-gray-800">
               Grand Total:{" "}
@@ -95,7 +95,7 @@ const Cart = () => {
 
         
           </div>
-        </>
+      </div>
       )}
     </section>
   );

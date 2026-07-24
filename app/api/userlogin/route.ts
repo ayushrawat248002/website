@@ -1,26 +1,34 @@
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import jwt from 'jsonwebtoken';
-
+import { compare,hash,genSalt } from "bcrypt";
+import connectDB from "@/lib/mongodb";
 export async function POST(req : NextRequest){
      
-             const {email, password} = await req.json();
-                 console.log(email,password)
+             const {email, password, cookieNeeded} = await req.json();
+                 console.log(email, password,cookieNeeded)
+            
+
          try{
+           await connectDB();
              const userExisted = await User.findOne({email : email})
-             console.log(userExisted)
+             console.log(userExisted.password)
+              console.log(typeof userExisted.password)
               if(!userExisted){
 
                 return  NextResponse.json({status : 201, message : 'User not present' });
 
               }
 
-                const passwordvalid =  await userExisted.checkpassword(password);
 
+      const passwordvalid = await compare(password, userExisted.password);
+                    console.log(passwordvalid, 'pass')
                 if(userExisted && passwordvalid){
 
-                    const response = NextResponse.json({ message: "User created" });
+                    const response = NextResponse.json({ message: "sucessfull", status : 200 });
                         const secret : any = process.env.JWT_SECRET
+                          console.log( cookieNeeded , 'cook')
+                        if(cookieNeeded){
 
                         const refreshToken = jwt.sign(
                       { userId: userExisted._id },
@@ -36,19 +44,22 @@ export async function POST(req : NextRequest){
                     
                     response.cookies.set("LoginCookie", token, {
                       httpOnly: true,
-                      secure: true,
+                      secure: false,
                       sameSite: "lax",
                       path: "/",
                     });
 
                     response.cookies.set("RefreshToken", refreshToken, {
                       httpOnly: true,
-                      secure: true,
+                      secure: false,
                       sameSite: "lax",
                       path: "/",
                     });
                   
+                  
                     return response;
+                  }
+                  return NextResponse.json({status : 200})
                 }
          }catch(err){
 

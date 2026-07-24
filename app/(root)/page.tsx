@@ -38,9 +38,9 @@ const data = [
 
 export default function Page() {
   return (
-    <main className=" m-0 w-full">
+    <main className=" m-0 relative  bg-gradient-to-bl from-20% from-amber-200/80 to-white  w-full">
       <Header prop="" />
-
+        
       {/* HERO SECTION */}
 
       {/* IMAGE */}
@@ -48,14 +48,16 @@ export default function Page() {
       <div
         className="
           md:col-span-7
-          relative px-2
+          relative 
+          py-2
         "
       >
         <div
           className="
             relative 
-            h-[480px]
+            h-[450px]
             w-full
+            
             overflow-hidden
           "
         >
@@ -70,7 +72,8 @@ export default function Page() {
               60vw
             "
             className="
-              object-cover
+            object-fill
+              
               md:object-[80%_100%]
             "
           />
@@ -118,22 +121,23 @@ export default function Page() {
       </div>
 
       <div
-        className="
-          bg-white
+        className={`
+           bg-white
           backdrop-blur-md
-          shadow-md
-          sticky -top-25
+          shadow-md 
+
+          sticky  -top-25
           z-90
           p-4
           lg:p-6
-        "
+        `}  
       >
         <h1
           className="
             md:hidden
             text-gray-900
-            text-[17px]
-            tracking-widest
+            text-[13px]
+            tracking-wide
             uppercase
             text-center
             mb-5
@@ -153,7 +157,8 @@ export default function Page() {
           flex-col
           w-full
           justify-center
-          px-2 
+          py-2
+           
         "
       >
         <CarouselSize data={data} />

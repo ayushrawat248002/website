@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Spinner } from "./ui/spinner";
 import { useCartStore } from "./Cartstore";
-import { randomUUID } from "crypto";
+
 export default function Home() {
   const router = useRouter();
   
@@ -40,7 +40,7 @@ export default function Home() {
 
 
     
-  const idomkey = randomUUID()
+const idomkey = crypto.randomUUID();
 
   const handlePayment = async () => {
     if (!total) return;
